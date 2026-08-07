@@ -1,0 +1,31 @@
+---
+---
+<section id="getting-started" class="py-20 md:py-28 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-gray-900 pb-1">How to get started: A practical checklist</h2>
+      <p class="text-gray-500 text-lg mt-4 leading-relaxed">The five things every first-time Yunnan visitor needs to sort. We have been where you are.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+      {[
+        { step: "1", title: "Visa", icon: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z", desc: "Apply for an L tourist visa 4-6 weeks ahead. Most nationalities need one. Some qualify for 144-hour transit in Kunming. Check your embassy website.", link: "", linkText: "" },
+        { step: "2", title: "VPN + Apps", icon: "M20 12H4M12 4v16", desc: "Install and test a VPN before departure. Download Didi, WeChat, Pleco dictionary, and offline Google Maps. Do all of this before you board the plane.", link: "", linkText: "" },
+        { step: "3", title: "SIM + Cash", icon: "M22 12h-4l-3 9L9 3l-3 9H2", desc: "Buy a Chinese SIM at Kunming airport (CNY 100-200/month). Withdraw CNY 2,000 in cash. Small notes for street food and local buses.", link: "", linkText: "" },
+        { step: "4", title: "First 2 Nights", icon: "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6", desc: "Book your Kunming accommodation in advance. After that, book 1-2 days ahead for flexibility. Kunming is your hub -- get oriented here.", link: "/kunming", linkText: "Kunming guide" },
+        { step: "5", title: "Pack Smart", icon: "M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4", desc: "One trip crosses four climate zones. Pack for your coldest destination (Shangri-La: down to -8C in winter). Layers are everything. See our full packing guide.", link: "#packing", linkText: "Packing guide" },
+      ].map((item) => (
+        <div class="rounded-2xl border border-gray-200 p-6 hover:border-brand-200 hover:shadow-sm transition-all">
+          <div class="w-10 h-10 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center mb-4 font-bold text-sm">{item.step}</div>
+          <h3 class="font-bold text-gray-900 mb-2">{item.title}</h3>
+          <p class="text-sm text-gray-500 leading-relaxed mb-3">{item.desc}</p>
+          {item.link && (
+            <a href={item.link} class="text-xs font-semibold text-brand-600 hover:text-brand-700 inline-flex items-center gap-1">
+              {item.linkText}
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,58 @@
+---
+import { destinations } from "../data/destinations";
+import { SITE } from "../data/config";
+---
+<footer class="bg-gray-950 text-gray-400 pt-20 pb-12">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
+      <div>
+        <h4 class="text-white font-semibold mb-4">Destinations</h4>
+        <ul class="space-y-2">
+          {destinations.map((d) => (
+            <li><a href={"/" + d.slug} class="text-sm hover:text-white transition-colors">{d.name}</a></li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-4">Plan</h4>
+        <ul class="space-y-2">
+          <li><a href="/itineraries" class="text-sm hover:text-white transition-colors">Itineraries</a></li>
+          <li><a href="/best-time-to-visit" class="text-sm hover:text-white transition-colors">Best Time to Visit</a></li>
+          <li><a href="/tickets" class="text-sm hover:text-white transition-colors">Ticket Prices</a></li>
+          <li><a href="/weather" class="text-sm hover:text-white transition-colors">Weather</a></li>
+          <li><a href="/travel-tips" class="text-sm hover:text-white transition-colors">Travel Tips</a></li>
+          <li><a href="/compare" class="text-sm hover:text-white transition-colors">Compare Destinations</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-4">Practical Info</h4>
+        <ul class="space-y-2">
+          <li><a href="/#transport" class="text-sm hover:text-white transition-colors">Getting Around</a></li>
+          <li><a href="/#altitude" class="text-sm hover:text-white transition-colors">Altitude Guide</a></li>
+          <li><a href="/#accommodation" class="text-sm hover:text-white transition-colors">Accommodation</a></li>
+          <li><a href="/food-guide" class="text-sm hover:text-white transition-colors">Food Guide</a></li>
+          <li><a href="/culture-guide" class="text-sm hover:text-white transition-colors">Culture & Ethnic Groups</a></li>
+          <li><a href="/photography" class="text-sm hover:text-white transition-colors">Photography Guide</a></li>
+          <li><a href="/#safety" class="text-sm hover:text-white transition-colors">Safety</a></li>
+          <li><a href="/#budget" class="text-sm hover:text-white transition-colors">Budget Guide</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-4">About</h4>
+        <ul class="space-y-2">
+          <li><a href="/about" class="text-sm hover:text-white transition-colors">About Us</a></li>
+          <li><a href="/contact" class="text-sm hover:text-white transition-colors">Contact</a></li>
+          <li><a href="/faq" class="text-sm hover:text-white transition-colors">FAQ</a></li>
+          <li><a href="/privacy" class="text-sm hover:text-white transition-colors">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-gray-800 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+      <div>
+        <p class="text-sm">&copy; {new Date().getFullYear()} Yunnan Province Travel Guide. An independent travel resource &mdash; not affiliated with any government or agency.</p>
+        <p class="text-xs text-gray-500 mt-1">Last updated: {SITE.updated}</p>
+      </div>
+      <p class="text-xs text-gray-500">Built with care for travelers exploring Yunnan. <a href="/about" class="hover:text-white transition-colors underline">By {SITE.author.name}.</a></p>
+    </div>
+  </div>
+</footer>

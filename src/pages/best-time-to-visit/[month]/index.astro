@@ -1,0 +1,130 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Nav from "../../../components/Nav.astro";
+import Footer from "../../../components/Footer.astro";
+import { months } from "../../../data/months";
+import { articleSchema, breadcrumbList } from "../../../utils/schema";
+import type { BreadcrumbItem } from "../../../utils/schema";
+ 
+ export function getStaticPaths() {
+   return months.map((m) => ({ params: { month: m.name.toLowerCase() } }));
+ }
+ 
+ const { month } = Astro.params;
+ const data = months.find((m) => m.name.toLowerCase() === month);
+ 
+ if (!data) {
+   return Astro.redirect("/404");
+ }
+ 
+ const breadcrumbs: BreadcrumbItem[] = [
+   { name: "Home", url: "https://yunnan-province.com/" },
+   { name: "Best Time to Visit", url: "https://yunnan-province.com/best-time-to-visit/" },
+   { name: data.name, url: "https://yunnan-province.com/best-time-to-visit/" + month },
+ ];
+ 
+ const pageSchema = {
+   "@graph": [
+     articleSchema({
+       headline: "Yunnan in " + data.name + ": Weather, Best Places and Travel Tips 2026",
+       description: "Visiting Yunnan Province in " + data.name + "? " + data.verdict,
+       datePublished: "2026-08-07",
+       dateModified: "2026-08-07",
+     }),
+     breadcrumbList(breadcrumbs),
+   ],
+ };
+ 
+ const shortVerdict = data.verdict.length > 85 ? data.verdict.substring(0, 85).trim() + "..." : data.verdict;
+ const ratingColor = data.rating === "Excellent" ? "text-green-600 bg-green-100" : data.rating === "Very Good" ? "text-brand-600 bg-brand-100" : data.rating === "Good" ? "text-blue-600 bg-blue-100" : "text-amber-600 bg-amber-100";
+ const pageDesc = "Visiting Yunnan in " + data.name + "? " + shortVerdict;
+ ---
+ 
+ <BaseLayout
+   title={"Yunnan in " + data.name + ": Weather, Best Places and Travel Tips 2026"}
+   description={pageDesc}
+   ogType="article"
+ >
+   <slot name="head"><script type="application/ld+json" set:html={JSON.stringify(pageSchema)}></script></slot>
+   <Nav />
+   <main class="min-h-screen">
+     <section class="pt-32 pb-12 bg-gradient-to-b from-brand-50 to-white">
+       <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+         <nav class="mb-4 flex items-center gap-2 text-sm text-gray-400" aria-label="Breadcrumb">
+           <a href="/" class="hover:text-brand-600 transition-colors">Home</a>
+           <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg>
+           <a href="/best-time-to-visit" class="hover:text-brand-600 transition-colors">Best Time</a>
+           <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg>
+           <span class="text-gray-600">{data.name}</span>
+         </nav>
+         <h1 class="text-3xl md:text-5xl font-bold tracking-tight text-gray-900 mb-4">Yunnan in {data.name}</h1>
+         <div class="flex flex-wrap items-center gap-3 mb-4">
+           <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-gray-100 text-gray-700 text-sm font-medium">
+             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg>
+             {data.temp}
+           </span>
+           <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-gray-100 text-gray-700 text-sm font-medium">
+             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 16.2A4.5 4.5 0 0 0 17.5 8h-1.8A7 7 0 1 0 4 14.9"/><path d="M16 14v2m0 0v2m0-2h2m-2 0h-2"/></svg>
+             Rain: {data.rain}
+           </span>
+           <span class={"inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium " + ratingColor}>
+             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+             {data.rating}
+           </span>
+         </div>
+         <p class="text-lg text-gray-600 max-w-2xl leading-relaxed">{data.verdict}</p>
+       </div>
+     </section>
+ 
+     <section class="py-12 bg-white">
+       <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 prose prose-lg">
+         <h2>Best Destinations in {data.name}</h2>
+         <p>{data.destinations}</p>
+         <h3>Recommended for</h3>
+         <p>{data.bestFor}</p>
+       </div>
+     </section>
+ 
+     <section class="py-12 bg-gray-50">
+       <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 prose prose-lg">
+         <h2>Travel Tips for {data.name}</h2>
+         <p class="whitespace-pre-line">{data.tips}</p>
+       </div>
+     </section>
+ 
+     <section class="py-12 bg-white">
+       <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 prose prose-lg">
+         <h2>Festivals & Events in {data.name}</h2>
+         <p class="whitespace-pre-line">{data.festivals}</p>
+       </div>
+     </section>
+ 
+     <section class="py-12 bg-gray-50">
+       <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+         <h2 class="text-2xl font-bold text-gray-900 mb-4">Explore Other Months</h2>
+         <div class="flex flex-wrap gap-3">
+           {months.map((m) => (
+             <a href={"/best-time-to-visit/" + m.name.toLowerCase()} class={"px-4 py-2 rounded-full text-sm font-medium transition-colors " + (m.name === data.name ? "bg-brand-600 text-white" : "bg-white border border-gray-200 text-gray-600 hover:border-brand-300 hover:text-brand-700")}>
+               {m.name}
+             </a>
+           ))}
+         </div>
+         <p class="mt-6 text-sm text-gray-500">
+           <a href="/best-time-to-visit" class="text-brand-600 hover:text-brand-700 underline">View the complete month-by-month comparison table</a>
+         </p>
+       </div>
+     </section>
+ 
+     <section class="py-16 bg-brand-950 text-center">
+       <div class="max-w-2xl mx-auto px-4">
+         <h2 class="text-2xl font-bold text-white mb-4">Ready to plan your trip?</h2>
+         <p class="text-white/70 mb-6">Browse our destination guides and suggested itineraries for {data.name}.</p>
+         <div class="flex flex-wrap justify-center gap-4">
+           <a href="/#destinations" class="px-6 py-3 bg-white text-gray-900 rounded-full font-semibold text-sm hover:bg-brand-50 transition-colors">View Destinations</a>
+           <a href="/itineraries" class="px-6 py-3 bg-brand-600 text-white rounded-full font-semibold text-sm hover:bg-brand-500 transition-colors">View Itineraries</a>
+         </div>
+       </div>
+     </section>
+   </main>
+   <Footer />
+ </BaseLayout>

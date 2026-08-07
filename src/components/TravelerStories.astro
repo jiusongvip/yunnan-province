@@ -1,0 +1,29 @@
+---
+const stories = [
+  { name: "Emma from Melbourne", quote: "I spent 3 weeks in Yunnan and it was the best part of my 3-month Asia trip. Lijiang at night with the lanterns, Dali cycling around Erhai Lake, and the Naxi music in an old courtyard... I would go back tomorrow.", verdict: "Highlight of the trip", color: "bg-brand-50 text-brand-700 border-brand-200", trip: "Solo backpacker, 21 days, ~AUD 1,800" },
+  { name: "James and Lisa from Toronto", quote: "We were nervous about bringing our kids (10 and 13) to China. Kunming was the perfect soft landing. The kids loved the Stone Forest, and Xishuangbanna felt like Thailand but safer and cleaner. The high-speed trains made everything easy.", verdict: "Great for families", color: "bg-sky-50 text-sky-700 border-sky-200", trip: "Family of 4, 12 days, ~CAD 3,200" },
+  { name: "Tom from London", quote: "I have been to 40+ countries and Yunnan is in my top 5. The scale of Tiger Leaping Gorge, the terraces at Yuanyang at sunrise, and the diversity of cultures in one province is unmatched. Skip Beijing and Shanghai -- go straight to Yunnan.", verdict: "Veteran traveler approved", color: "bg-amber-50 text-amber-700 border-amber-200", trip: "Solo, 16 days, ~GBP 850" },
+];
+---
+<section class="py-20 md:py-28 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-gray-900 pb-1">What travelers say about Yunnan</h2>
+      <p class="text-gray-500 text-lg mt-4 leading-relaxed">Real experiences from people who have made the trip. No influencers, no sponsored content.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {stories.map((s) => (
+        <div class="rounded-2xl bg-white border border-gray-200 p-8 flex flex-col">
+          <div class="flex-1">
+            <div class={"inline-block px-3 py-1 rounded-full text-xs font-semibold border mb-4 " + s.color}>{s.verdict}</div>
+            <blockquote class="text-gray-600 leading-relaxed text-sm italic">"{s.quote}"</blockquote>
+          </div>
+          <div class="mt-6 pt-4 border-t border-gray-100">
+            <div class="font-semibold text-gray-900 text-sm">{s.name}</div>
+            <div class="text-xs text-gray-400 mt-1">{s.trip}</div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

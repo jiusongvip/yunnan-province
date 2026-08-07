@@ -1,0 +1,74 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Nav from "../../components/Nav.astro";
+import Footer from "../../components/Footer.astro";
+
+const dishes = [
+  { name: "Across the Bridge Noodles (Guo Qiao Mi Xian)", region: "Kunming", desc: "The most famous Yunnan dish. A boiling broth is served with raw ingredients on the side - thinly sliced meat, vegetables, quail eggs, and rice noodles. You add everything at the table and it cooks instantly.", tip: "Try it at Jian Xin Yuan in Kunming for the most authentic experience." },
+  { name: "Steam Pot Chicken (Qi Guo Ji)", region: "Kunming", desc: "A whole chicken steamed in a clay pot with a chimney in the center. No water is added - the soup forms purely from condensation, creating an intensely pure, fragrant broth.", tip: "Often cooked with Yunnan ham and goji berries for added depth." },
+  { name: "Dai Grilled Fish", region: "Xishuangbanna", desc: "Fresh river fish rubbed with lemongrass, chili, and lime, wrapped in banana leaves, and grilled over charcoal. The banana leaf steams the fish while the grill adds smokiness.", tip: "Best eaten at the Mekong River night market in Jinghong." },
+  { name: "Pineapple Rice (Boluo Fan)", region: "Xishuangbanna", desc: "Glutinous rice steamed inside a hollowed pineapple with coconut milk, raisins, and cashews. Sweet, fragrant, and visually stunning.", tip: "A Dai specialty - pair with grilled dishes for the full experience." },
+  { name: "Yak Meat Hotpot", region: "Shangri-La", desc: "Hearty Tibetan-style hotpot with tender yak meat, seasonal vegetables, and a rich bone broth. Perfect after a cold day at 3,400m altitude.", tip: "Look for restaurants in Dukezong Ancient Town that use traditional copper pots." },
+  { name: "Yunnan Ham (Xuanwei Huotui)", region: "Qujing area", desc: "One of China's three great hams, alongside Jinhua and Rugao. Dry-cured for months, it has a complex, savory flavor similar to prosciutto but deeper.", tip: "Often used as a flavor base in stir-fries and soups rather than eaten alone." },
+  { name: "Er Kuai (Grilled Rice Cakes)", region: "Throughout Yunnan", desc: "A beloved street food made from compressed rice cakes, grilled until crispy on the outside and chewy inside. Served with sweet bean paste, chili sauce, or rolled around a youtiao (fried dough stick).", tip: "The sweet version with brown sugar is a perfect breakfast snack." },
+  { name: "Wild Mushroom Hotpot", region: "Throughout Yunnan", desc: "Yunnan is China's mushroom kingdom with over 800 edible species. From June to September, restaurants serve hotpot with fresh wild mushrooms including matsutake, porcini, and the prized jizong.", tip: "Go with a local guide - some wild mushrooms are toxic if improperly prepared." },
+  { name: "Naxi Grilled Fish", region: "Lijiang", desc: "Whole fish seasoned with Naxi spices and grilled over an open flame. The Naxi people of Lijiang have their own distinct culinary traditions separate from mainstream Chinese cuisine.", tip: "Best enjoyed with a cold beer in Lijiang Old Town after dark." },
+  { name: "Butter Tea (Su You Cha)", region: "Shangri-La", desc: "A Tibetan staple: black tea churned with yak butter and salt. It's an acquired taste - savory, rich, and incredibly warming at high altitudes.", tip: "Drink it slowly. It's not tea as you know it - think of it as a savory, warm broth." },
+  { name: "Rubing (Yunnan Goat Cheese)", region: "Dali", desc: "One of the few traditionally made cheeses in China. This fresh goat cheese is pan-fried until golden and often served with sugar or rose petal jam. The Bai people of Dali have made it for centuries.", tip: "The fried version with rose jam is at its best in Xizhou village near Dali." },
+  { name: "Baba (Naxi Flatbread)", region: "Lijiang", desc: "A crispy, layered flatbread available in both sweet (brown sugar and sesame) and savory (scallion and minced meat) versions. A Lijiang street food staple since the Ming Dynasty.", tip: "Get one fresh from a street vendor in Shuhe Ancient Town." },
+];
+
+const schema = {
+  "@type": "Article",
+  "headline": "Yunnan Food Guide: 12 Must-Try Dishes Across the Province",
+  "description": "From Crossing Bridge Noodles to yak butter tea, explore Yunnan's incredible regional cuisines - Dai, Bai, Naxi, Tibetan, and Hani cooking traditions.",
+  "author": { "@type": "Person", "name": "Yunnan Guide Team" },
+  "datePublished": "2026-04-01",
+  "dateModified": "2026-08-07",
+};
+---
+
+<BaseLayout
+  title="Yunnan Food Guide: 12 Must-Try Dishes from Kunming to Shangri-La"
+  description="Explore Yunnan's 12 must-try dishes: From Crossing Bridge Noodles in Kunming to Dai grilled fish in Xishuangbanna and yak hotpot in Shangri-La."
+  ogType="article"
+  ogImage="/images/og-food.webp"
+>
+  <slot name="head">
+    <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
+  </slot>
+
+  <Nav />
+
+  <main class="min-h-screen">
+    <section class="pt-32 pb-16 bg-gradient-to-b from-brand-50 to-white">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">Yunnan Food Guide</h1>
+        <p class="text-lg text-gray-600">From tropical Dai flavors to Tibetan highland cuisine — 12 dishes you must try in Yunnan.</p>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 prose prose-lg">
+        <p>Yunnan's cuisine is as diverse as its landscape. With 25 ethnic groups, each with distinct cooking traditions, eating your way through the province is an adventure in itself. Here is what you should be hunting down.</p>
+      </div>
+    </section>
+
+    <section class="pb-20">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+        {dishes.map(d => (
+          <div class="bg-white rounded-xl border border-gray-200 p-6 hover:shadow-md transition-shadow">
+            <div class="flex items-start justify-between mb-2">
+              <h3 class="font-bold text-gray-900 text-lg">{d.name}</h3>
+              <span class="text-xs font-semibold text-brand-600 bg-brand-50 px-3 py-1 rounded-full whitespace-nowrap ml-3">{d.region}</span>
+            </div>
+            <p class="text-gray-600 leading-relaxed mb-2">{d.desc}</p>
+            <p class="text-sm text-brand-600 italic">{d.tip}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

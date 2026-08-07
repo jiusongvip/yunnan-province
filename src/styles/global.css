@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+
+  /* Brand green */
+  --color-brand-50: #f0f7f1;
+  --color-brand-100: #dbefde;
+  --color-brand-200: #b8dfbf;
+  --color-brand-300: #86c895;
+  --color-brand-400: #56ad6b;
+  --color-brand-500: #369150;
+  --color-brand-600: #26753d;
+  --color-brand-700: #1f5e33;
+  --color-brand-800: #1b4b2b;
+  --color-brand-900: #173e25;
+  --color-brand-950: #0c2215;
+
+  /* Warm stone neutrals */
+  --color-warm-50: #fafaf8;
+  --color-warm-100: #f5f4f0;
+  --color-warm-200: #e8e5dc;
+  --color-warm-300: #d4d0c2;
+  --color-warm-400: #bab3a0;
+  --color-warm-500: #a69b85;
+  --color-warm-600: #92846e;
+  --color-warm-700: #7a6d5c;
+  --color-warm-800: #655a4c;
+  --color-warm-900: #544b40;
+  --color-warm-950: #2d2721;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply font-sans text-gray-900 bg-white antialiased;
+  }
+  h1, h2, h3 {
+    @apply tracking-tight;
+  }
+  ::selection {
+    @apply bg-brand-200 text-brand-900;
+  }
+}
+
+/* Scroll reveal animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+.reveal-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hero Ken Burns zoom */
+@keyframes heroZoom {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.12); }
+}
+.hero-zoom {
+  animation: heroZoom 8s ease-out forwards;
+}
+
+/* FAQ accordion */
+.faq-item button { cursor: pointer; width: 100%; text-align: left; }
+.faq-item .faq-answer { overflow: hidden; max-height: 0; transition: max-height 0.35s ease; }
+.faq-item.open .faq-answer { max-height: 600px; }
+.faq-item.open > button > svg { transform: rotate(180deg); }
+
+/* Destination card hover */
+.dest-card img { transition: transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1); }
+.dest-card:hover img { transform: scale(1.06); }
+
+/* Gallery lightbox */
+.gallery-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9997;
+  background: rgba(0,0,0,0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.gallery-lightbox.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+.gallery-lightbox img {
+  max-width: 90vw;
+  max-height: 85vh;
+  border-radius: 8px;
+  object-fit: contain;
+}
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-zoom { animation: none; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .dest-card img { transition: none; }
+}

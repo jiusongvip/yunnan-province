@@ -1,0 +1,92 @@
+---
+---
+<section id="budget" class="py-20 md:py-28 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-gray-900 pb-1">What Yunnan actually costs</h2>
+      <p class="text-gray-500 text-lg mt-4 leading-relaxed">Per person, per day. Yunnan is cheaper than Beijing or Shanghai, on par with Southeast Asia.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {[
+        {
+          level: "Backpacker",
+          price: "CNY 150-250",
+          color: "border-green-300 bg-green-50",
+          badge: "bg-green-500",
+          items: [
+            { label: "Guesthouse dorm / budget inn", cost: "CNY 40-80" },
+            { label: "Street food & local noodle shops", cost: "CNY 40-60" },
+            { label: "Public bus / shared taxi", cost: "CNY 30-50" },
+            { label: "Free attractions & student tickets", cost: "CNY 0-40" },
+            { label: "Misc (water, snacks, SIM)", cost: "CNY 20-30" },
+          ]
+        },
+        {
+          level: "Mid-Range",
+          price: "CNY 400-700",
+          color: "border-brand-300 bg-brand-50",
+          badge: "bg-brand-600",
+          items: [
+            { label: "Boutique guesthouse / 3-star hotel", cost: "CNY 150-300" },
+            { label: "Local restaurants, 1 nice meal", cost: "CNY 80-150" },
+            { label: "High-speed train, occasional Didi", cost: "CNY 80-150" },
+            { label: "Major attractions & cable cars", cost: "CNY 50-100" },
+            { label: "Misc (coffee, laundry, tips)", cost: "CNY 40-60" },
+          ]
+        },
+        {
+          level: "Comfort",
+          price: "CNY 800-1500+",
+          color: "border-amber-300 bg-amber-50",
+          badge: "bg-amber-600",
+          items: [
+            { label: "4-5 star hotel / luxury guesthouse", cost: "CNY 400-800" },
+            { label: "Best local restaurants, wine", cost: "CNY 200-400" },
+            { label: "Private driver / domestic flights", cost: "CNY 200-500" },
+            { label: "All attractions, guided tours", cost: "CNY 100-200" },
+            { label: "Misc (spa, souvenirs, tips)", cost: "CNY 100-200" },
+          ]
+        },
+      ].map((level) => (
+        <div class={`rounded-2xl border-2 ${level.color} p-6`}>
+          <div class={`inline-block px-3 py-1 rounded-full text-white text-xs font-semibold mb-4 ${level.badge}`}>{level.level}</div>
+          <div class="text-3xl font-bold text-gray-900 mb-1">{level.price}</div>
+          <div class="text-sm text-gray-400 mb-6">per person / day</div>
+          <div class="space-y-3">
+            {level.items.map((item) => (
+              <div class="flex justify-between text-sm">
+                <span class="text-gray-500">{item.label}</span>
+                <span class="font-medium text-gray-900">{item.cost}</span>
+              </div>
+            ))}
+          </div>
+          <div class="mt-4 pt-4 border-t border-gray-200/50 text-xs text-gray-400">
+            Not including international flights.
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-12 rounded-2xl bg-white border border-gray-200 p-6 max-w-3xl">
+      <h3 class="font-bold text-gray-900 mb-4">Sample 7-Day Northwest Yunnan Trip Budget (Mid-Range)</h3>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+        {[
+          { what: "7 nights guesthouse", cost: "CNY 1,400" },
+          { what: "Trains Kunming-Dali-Lijiang", cost: "CNY 440" },
+          { what: "Attractions (Jade Dragon, etc)", cost: "CNY 500" },
+          { what: "Food & drinks 7 days", cost: "CNY 700" },
+          { what: "Local transport, Didi, buses", cost: "CNY 350" },
+          { what: "SIM card, VPN, laundry", cost: "CNY 160" },
+          { what: "Souvenirs, coffee, misc", cost: "CNY 250" },
+          { what: "TOTAL (excl. flights)", cost: "CNY 3,800", bold: true },
+        ].map((item) => (
+          <div class="flex justify-between py-2 border-b border-gray-100">
+            <span class={`${item.bold ? "font-bold" : ""} text-gray-${item.bold ? "900" : "500"}`}>{item.what}</span>
+            <span class={`font-semibold ${item.bold ? "text-brand-600" : "text-gray-900"}`}>{item.cost}</span>
+          </div>
+        ))}
+      </div>
+      <p class="text-xs text-gray-400 mt-4">~USD $530 at current exchange rates. Roughly half the cost of an equivalent trip in Western Europe.</p>
+    </div>
+  </div>
+</section>

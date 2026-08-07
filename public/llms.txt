@@ -1,0 +1,25 @@
+# yunnan-province.com
+> Independent travel guide to Yunnan Province, China — destinations, itineraries, food, culture, and practical advice for English-speaking visitors.
+
+## Main Page
+- [Complete Guide](https://yunnan-province.com/): Everything you need to plan a trip to Yunnan.
+  - #destinations — 6 major destinations: Kunming, Lijiang, Dali, Shangri-La, Yuanyang, Xishuangbanna
+  - #itineraries — 3/5/8/14-day suggested routes
+  - #transport — How to get around Yunnan
+  - #best-time — Seasonal guide to visiting Yunnan
+  - #food — Must-try regional dishes
+  - #culture — 25 ethnic cultures overview
+  - #faq — Frequently asked questions
+
+## Destination Pages
+- [Kunming](https://yunnan-province.com/kunming/) — The Spring City, gateway to Yunnan
+- [Lijiang](https://yunnan-province.com/lijiang/) — UNESCO old town with Jade Dragon Snow Mountain
+- [Dali](https://yunnan-province.com/dali/) — Between Cangshan and Erhai Lake
+- [Shangri-La](https://yunnan-province.com/shangri-la/) — Tibetan highland town
+- [Yuanyang](https://yunnan-province.com/yuanyang/) — Hani rice terraces
+- [Xishuangbanna](https://yunnan-province.com/xishuangbanna/) — Tropical Yunnan
+
+## Pages
+- [About](https://yunnan-province.com/about/) — Who we are
+- [Contact](https://yunnan-province.com/contact/) — Get in touch
+- [Privacy](https://yunnan-province.com/privacy/) — Privacy policy

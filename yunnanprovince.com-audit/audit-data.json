@@ -1,0 +1,319 @@
+ {
+   "summary": {
+     "health_score": 62,
+     "business_type": "Publisher — Travel Guide",
+     "top_findings": [
+       "Live deployment not serving built content — Google sees an empty JS redirect page",
+       "GA4 tracking not installed — no organic traffic data being collected",
+       "robots.txt mismatch between live and dist deployment",
+       "No HSTS or CSP security headers",
+       "Gallery images have useless alt text across all pages"
+     ],
+     "quick_wins": [
+       "Deploy static build from dist/ to live server",
+       "Add GA4 gtag.js snippet to base layout",
+       "Add HSTS+CSP headers to public/_headers",
+       "Replace gallery alt text with descriptive content",
+       "Fix month-page OG images to use og-best-time.webp"
+     ]
+   },
+   "categories": [
+     {
+       "name": "Technical SEO",
+       "score": 52,
+       "what_works": [
+         "Static HTML, fully server-rendered (Astro) — no JS dependency for content",
+         "Self-referencing canonical tags on every page",
+         "Clean, descriptive hyphenated URLs with consistent trailingSlash: never",
+         "robots.txt (dist) correctly allows AI crawlers and references sitemap",
+         "llms.txt present and well-structured",
+         "404 page uses noindex, follow with functional navigation"
+       ],
+       "findings": [
+         {
+           "title": "Live deployment not serving built content",
+           "severity": "Critical",
+           "description": "yunnanprovince.com returns a 114-byte JS redirect page to /lander — the 33-page travel guide from dist/ is invisible to Googlebot and all crawlers.",
+           "recommendation": "Deploy dist/ contents to live web server or CDN, replacing the lander redirect."
+         },
+         {
+           "title": "robots.txt mismatch between live and dist",
+           "severity": "Critical",
+           "description": "Live robots.txt references /sitemap.xml (does not exist); dist references /sitemap-index.xml (correct). The live deployment is out of sync with the build.",
+           "recommendation": "Deploy the dist version of robots.txt to the live server."
+         },
+         {
+           "title": "GA4 tracking not installed",
+           "severity": "Critical",
+           "description": "Every page has an HTML comment <!-- Google Analytics 4 --> but no actual gtag.js script or G- measurement ID exists. Zero organic traffic data is being collected.",
+           "recommendation": "Add Google Tag snippet to src/layouts/BaseLayout.astro with an actual G- measurement ID."
+         },
+         {
+           "title": "Missing HSTS and CSP security headers",
+           "severity": "High",
+           "description": "public/_headers provides X-Content-Type-Options, X-Frame-Options, and Referrer-Policy, but lacks Strict-Transport-Security and Content-Security-Policy.",
+           "recommendation": "Add HSTS (max-age=31536000; includeSubDomains) and CSP headers."
+         },
+         {
+           "title": "Sitemap lastmod dates are all identical",
+           "severity": "Medium",
+           "description": "All 33 URLs in sitemap-0.xml share the same lastmod of 2026-08-07. Google uses lastmod to prioritize re-crawling; identical dates remove that signal.",
+           "recommendation": "Configure Astro sitemap integration to use actual file modification timestamps."
+         },
+         {
+           "title": "No IndexNow support",
+           "severity": "Low",
+           "description": "IndexNow protocol is not implemented, meaning slower indexing on Bing, Yandex, Naver, and Seznam.",
+           "recommendation": "Add an IndexNow key file and ping endpoint for fast non-Google indexing."
+         }
+       ]
+     },
+     {
+       "name": "Content Quality",
+       "score": 78,
+       "what_works": [
+         "Excellent prose quality with firsthand travel knowledge",
+         "Comprehensive destination coverage (8-10 sections per destination)",
+         "Consistent content structure across all destination pages",
+         "Rich internal linking network between destinations, itineraries, and guides",
+         "Clear H1→H2→H3 heading hierarchy with question-based H2s",
+         "FAQ section covers high-value travel queries with specific answers"
+       ],
+       "findings": [
+         {
+           "title": "No individual author attribution",
+           "severity": "High",
+           "description": "All Article schema uses 'Yunnan Guide Team' — a generic collective byline. Individual author names with credentials strengthen E-E-A-T.",
+           "recommendation": "Add real author bylines with bio pages and Person schema."
+         },
+         {
+           "title": "No original research or first-party data",
+           "severity": "Medium",
+           "description": "Content is well-written travel journalism but lacks unique datasets, surveys, or proprietary data — the strongest AI citation signal.",
+           "recommendation": "Create at least one original data piece such as a travel cost survey."
+         },
+         {
+           "title": "Month pages may have duplicate content risk",
+           "severity": "Medium",
+           "description": "12 pages under /best-time-to-visit/[month] share a common template. If content is largely identical with only month names swapped, they risk thin content penalties.",
+           "recommendation": "Audit month pages for unique value — each should include month-specific festivals, weather data, and itinerary tips."
+         },
+         {
+           "title": "RSS feed contains invalid fragment URLs",
+           "severity": "Medium",
+           "description": "Two RSS items link to /#itineraries/ and /#best-time/ — fragment URLs with trailing slashes that won't resolve in RSS readers. Also conflicts with trailingSlash: never policy.",
+           "recommendation": "Fix to proper page URLs: /itineraries and /best-time-to-visit."
+         }
+       ]
+     },
+     {
+       "name": "On-Page SEO",
+       "score": 68,
+       "what_works": [
+         "All pages have unique, descriptive meta descriptions",
+         "Self-referencing canonical tags on every page",
+         "Proper heading hierarchy (H1→H2→H3) across all pages",
+         "Strong internal linking between related content",
+         "Descriptive anchor text in navigation and content links"
+       ],
+       "findings": [
+         {
+           "title": "Title tags exceed SERP display limit on inner pages",
+           "severity": "Medium",
+           "description": "Destination page titles follow pattern 'CityName Travel Guide 2026: Best Attractions, Food, Hotels & Insider Tips | Yunnan Province Travel Guide' — ~118 chars vs 60 char SERP limit. The suffix pushes titles well past the display cutoff.",
+           "recommendation": "Shorten to 'CityName Travel Guide 2026' or drop the Yunnan Province Travel Guide suffix."
+         },
+         {
+           "title": "OG image inconsistency across pages",
+           "severity": "High",
+           "description": "Mix of relative (/images/...) and absolute (https://yunnanprovince.com/images/...) URLs for og:image. 12 month pages use generic hero instead of dedicated og-best-time.webp.",
+           "recommendation": "Standardize to absolute URLs. Point month pages to og-best-time.webp."
+         }
+       ]
+     },
+     {
+       "name": "Schema / Structured Data",
+       "score": 70,
+       "what_works": [
+         "JSON-LD format used throughout (Google's preferred format)",
+         "Homepage has Organization + @graph with Article, TouristDestination, BreadcrumbList, FAQPage",
+         "Destination pages have complete schema with Article, TouristDestination, and BreadcrumbList",
+         "TouristDestination schema includes touristType array and containedInPlace",
+         "Structurally valid JSON-LD across all pages"
+       ],
+       "findings": [
+         {
+           "title": "Logo field uses favicon.svg",
+           "severity": "Medium",
+           "description": "Organization schema uses favicon.svg as logo — Google requires minimum 112×112px for logo rich results.",
+           "recommendation": "Create a proper logo image (PNG/WebP, 112×112px+) and reference it."
+         },
+         {
+           "title": "FAQPage rich results retired",
+           "severity": "Info",
+           "description": "Google retired FAQ rich results for all sites on May 7, 2026. Markup still aids AI parsing but won't produce SERP features. No action needed.",
+           "recommendation": "Keep markup for AI citation purposes. No change required."
+         },
+         {
+           "title": "Missing WebSite schema with SearchAction",
+           "severity": "Medium",
+           "description": "No WebSite schema present, which enables the Sitelinks Search Box in SERPs.",
+           "recommendation": "Add WebSite schema with SearchAction to base layout."
+         },
+         {
+           "title": "Missing Person schema for authors",
+           "severity": "Medium",
+           "description": "Article schema uses 'Yunnan Guide Team' — a generic byline. Individual Person schema with url, sameAs, and jobTitle would strengthen E-E-A-T.",
+           "recommendation": "Add Person schema for individual authors when bylines are implemented."
+         }
+       ]
+     },
+     {
+       "name": "Performance (CWV)",
+       "score": 55,
+       "what_works": [
+         "CSS and JS properly bundled (single CSS file, single JS file)",
+         "Hero images use loading='eager', gallery images use loading='lazy'",
+         "Google Fonts use preconnect for faster loading",
+         "No heavy third-party scripts (no GA4, no chat widget — ironically helps perf)"
+       ],
+       "findings": [
+         {
+           "title": "Multiple images exceed 300 KB",
+           "severity": "High",
+           "description": "7 images exceed 300 KB (xishuangbanna-rainforest.webp at 492 KB is worst). For hero-dimension WebP images, 150-200 KB should be the target.",
+           "recommendation": "Run all images through compression targeting 80-85% quality WebP at <200 KB."
+         },
+         {
+           "title": "No fetchpriority='high' on hero LCP image",
+           "severity": "Medium",
+           "description": "Hero images (the LCP element) don't use fetchpriority='high' to signal priority loading to the browser.",
+           "recommendation": "Add fetchpriority='high' to hero img tags."
+         },
+         {
+           "title": "Google Fonts loaded externally",
+           "severity": "Low",
+           "description": "Geist and Fraunces fonts loaded from fonts.googleapis.com — adds ~50 KB transfer and external DNS dependency.",
+           "recommendation": "Consider self-hosting fonts for faster LCP and reduced external dependencies."
+         }
+       ]
+     },
+     {
+       "name": "AI Search Readiness",
+       "score": 72,
+       "what_works": [
+         "llms.txt present with well-structured page hierarchy",
+         "AI crawlers allowed (GPTBot, anthropic-ai, CCBot, PerplexityBot)",
+         "Fully server-rendered content — AI crawlers can read everything",
+         "Question-based H2s for extractable answer passages",
+         "FAQ section with clean Q&A format",
+         "Content updated August 2026 — within 3-month AI citation recency window"
+       ],
+       "findings": [
+         {
+           "title": "No first-party data or unique statistics",
+           "severity": "High",
+           "description": "The strongest GEO signal is unique, proprietary data. Zero original research exists — all content is curated/compiled.",
+           "recommendation": "Create at least one original data piece (cost survey, altitude guide, transport comparison)."
+         },
+         {
+           "title": "Missing ClaudeBot and OAI-SearchBot in robots.txt",
+           "severity": "Medium",
+           "description": "PerplexityBot is explicitly allowed but OAI-SearchBot (OpenAI search) and ClaudeBot (Anthropic web) are not — missing the two most important AI search crawlers.",
+           "recommendation": "Add explicit Allow directives for OAI-SearchBot and ClaudeBot."
+         },
+         {
+           "title": "No multi-modal content",
+           "severity": "Low",
+           "description": "Content with video, interactive tools, or calculators sees 156% higher AI citation rates. Site is text + images only.",
+           "recommendation": "Add at least one interactive element — destination quiz or budget calculator."
+         }
+       ]
+     },
+     {
+       "name": "Images",
+       "score": 48,
+       "what_works": [
+         "All images in WebP format",
+         "Proper lazy loading on below-fold images",
+         "Custom OG images for main content categories",
+         "Responsive styling with object-cover"
+       ],
+       "findings": [
+         {
+           "title": "Gallery alt text is non-descriptive across all pages",
+           "severity": "High",
+           "description": "Every gallery image on every page has alt text like 'Kunming - photo 1', 'Dali - photo 2' — completely useless for accessibility and SEO. This pattern repeats across all 6 destination pages.",
+           "recommendation": "Replace with descriptive alt text naming what each image actually shows."
+         },
+         {
+           "title": "Hero image alt text too generic",
+           "severity": "Medium",
+           "description": "Hero images only show city name ('Kunming, Yunnan Province') instead of describing the scene.",
+           "recommendation": "Add scene descriptions to hero alt text."
+         },
+         {
+           "title": "OG images inconsistent",
+           "severity": "High",
+           "description": "Mix of relative and absolute URLs. 12 month pages use generic hero-yunnan.webp instead of dedicated og-best-time.webp.",
+           "recommendation": "Standardize to absolute URLs. Fix month page OG images."
+         }
+       ]
+     }
+   ],
+   "action_plan": {
+     "phases": [
+       {
+         "name": "Phase 1: Critical Fixes",
+         "timeframe": "Week 1",
+         "items": [
+           "Deploy static build from dist/ to live server",
+           "Install GA4 tracking with actual gtag.js snippet",
+           "Sync robots.txt (deploy dist version)",
+           "Add HSTS and CSP security headers",
+           "Fix gallery alt text across all destination pages"
+         ]
+       },
+       {
+         "name": "Phase 2: High-Impact Improvements",
+         "timeframe": "Weeks 2-3",
+         "items": [
+           "Standardize OG images to absolute URLs, fix month pages",
+           "Add fetchpriority='high' to hero LCP images",
+           "Fix RSS feed fragment URLs and trailing slashes",
+           "Compress oversize images to <200 KB",
+           "Shorten destination page titles",
+           "Add OAI-SearchBot and ClaudeBot to robots.txt"
+         ]
+       },
+       {
+         "name": "Phase 3: Content & Authority",
+         "timeframe": "Month 2",
+         "items": [
+           "Add individual author bylines with Person schema",
+           "Create at least one original research/data piece",
+           "Add WebSite + SearchAction schema",
+           "Add ImageObject schema to hero images",
+           "Build Wikipedia/Wikidata or social presence",
+           "Add sameAs links to Organization schema"
+         ]
+       },
+       {
+         "name": "Phase 4: Monitoring & Iteration",
+         "timeframe": "Ongoing",
+         "items": [
+           "Implement IndexNow protocol",
+           "Set up Google Search Console, submit sitemap",
+           "Monitor GA4 organic traffic and search performance",
+           "Audit month page uniqueness",
+           "Consider self-hosting Google Fonts",
+           "Add unique sitemap lastmod dates"
+         ]
+       }
+     ]
+   },
+   "artifacts": {
+     "findings_dir": "findings/",
+     "screenshots_dir": null
+   }
+ }

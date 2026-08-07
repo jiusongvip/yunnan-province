@@ -1,0 +1,42 @@
+---
+---
+<section id="culture" class="py-20 md:py-28 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-gray-900 pb-1">People, culture, and festivals</h2>
+      <p class="text-gray-500 text-lg mt-4 leading-relaxed">Twenty-five ethnic minorities live in Yunnan. Here are the ones you will encounter and the festivals worth planning around.</p>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+      <div class="space-y-6">
+        {[
+          { group: "Bai", where: "Dali", what: "Known for tie-dye textiles, three-course tea ceremonies, and whitewashed courtyard homes with elaborate paintings. Yunnan's second-largest minority." },
+          { group: "Naxi", where: "Lijiang", what: "The only culture in the world still using pictographic writing (Dongba script). Their ancient music tradition survived the Cultural Revolution." },
+          { group: "Tibetan", where: "Shangri-La", what: "Prayer flags, butter lamps, and the magnificent Songzanlin Monastery. Share deep cultural ties with Tibet but have distinct local traditions." },
+          { group: "Dai", where: "Xishuangbanna", what: "Related to Thai and Lao cultures. Celebrate the Water Splashing Festival, live in bamboo stilt houses, and practice Theravada Buddhism." },
+          { group: "Hani", where: "Yuanyang", what: "The architects behind the 1,300-year-old rice terraces. Hani villages built from mud bricks with distinctive mushroom-shaped roofs." },
+        ].map((eth) => (
+          <div class="flex gap-4 items-start p-4 rounded-xl bg-white border border-gray-100">
+            <div class="w-2 h-2 rounded-full bg-brand-500 mt-2 shrink-0"></div>
+            <div><div class="font-semibold text-sm text-gray-900">{eth.group} <span class="font-normal text-gray-400">in {eth.where}</span></div><p class="text-sm text-gray-500 mt-1">{eth.what}</p></div>
+          </div>
+        ))}
+      </div>
+      <div>
+        <h3 class="font-bold text-gray-900 mb-4">Festivals worth planning around</h3>
+        <div class="space-y-4">
+          {[
+            { name: "Water Splashing Festival", when: "April 13-15", where: "Xishuangbanna", what: "Dai New Year. The entire city turns into a three-day water fight. Everyone participates: locals, tourists, monks, toddlers. Bring a waterproof phone pouch." },
+            { name: "Torch Festival", when: "Late July / August", where: "Across Yunnan", what: "Celebrated by the Yi, Bai, and Naxi. Massive bonfires, torch parades, and traditional wrestling. The biggest celebration is in the Stone Forest area." },
+            { name: "Horse Racing Festival", when: "May / June", where: "Shangri-La", what: "Tibetan horseback competitions on the high grasslands. Yak racing, archery, and traditional dance. A window into Tibetan nomadic culture." },
+          ].map((fest) => (
+            <div class="rounded-xl bg-white border border-gray-100 p-5">
+              <div class="flex items-center gap-2 mb-1"><div class="font-bold text-sm text-gray-900">{fest.name}</div><span class="text-xs text-gray-400">{fest.when}</span></div>
+              <div class="text-xs text-brand-600 font-medium mb-2">{fest.where}</div>
+              <p class="text-sm text-gray-500 leading-relaxed">{fest.what}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

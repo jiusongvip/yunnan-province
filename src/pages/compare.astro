@@ -1,0 +1,160 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import { articleSchema, breadcrumbList } from "../utils/schema";
+import type { BreadcrumbItem } from "../utils/schema";
+
+const breadcrumbs: BreadcrumbItem[] = [
+  { name: "Home", url: "https://yunnan-province.com/" },
+  { name: "Compare", url: "https://yunnan-province.com/compare/" },
+];
+
+const pageSchema = {
+  "@graph": [
+    articleSchema({
+      headline: "Yunnan vs Guilin vs Sichuan vs Tibet: Which China Destination Should You Visit?",
+      description: "Honest side-by-side comparison of China's top travel regions: Yunnan Province vs Guilin/Yangshuo vs Sichuan/Chengdu vs Tibet/Lhasa. Compare landscapes, costs, accessibility, food, and best seasons.",
+    }),
+    breadcrumbList(breadcrumbs),
+  ],
+};
+
+const comparison = [
+  { feature: "Landscape", yunnan: "Dramatic diversity in one province: snow-capped Himalayan peaks (5,500m), terraced rice fields, tropical rainforests, and ancient cobblestone towns. Jade Dragon Snow Mountain towers above Lijiang Old Town at 5,596m.", guilin: "Classic Chinese karst scenery: rounded limestone peaks reflected in calm rivers. The Li River winding through Yangshuo is the iconic postcard. Single-note but breathtakingly beautiful.", sichuan: "Cloud-shrouded mountains, bamboo forests, and pandas. Jiuzhaigou's turquoise lakes are world-class. Mount Emei is one of China's four sacred Buddhist mountains. Less diversity than Yunnan but stunning peaks.", tibet: "The rooftop of the world. The Himalayas, Everest Base Camp, turquoise alpine lakes, and vast empty plateaus. The scale is humbling. The Potala Palace dominates Lhasa at 3,650m." },
+  { feature: "Cultural Experience", yunnan: "25 ethnic minority groups (Bai, Naxi, Dai, Tibetan, Hani, Yi). Active living traditions: tie-dye workshops, Dongba pictographic script, Tibetan monasteries, Water Splashing Festival. Feels like living anthropology.", guilin: "Zhuang and Yao minority villages near the Longji Rice Terraces. Authentic but more as curated cultural stops. Yangshuo is Westernized with pizza and craft beer alongside local cuisine.", sichuan: "Famous for laid-back teahouse culture in Chengdu, Sichuan opera face-changing, and the world's spiciest cuisine. Pandas are the main cultural draw. Tibetan culture in western Sichuan but less accessible.", tibet: "Deeply spiritual Tibetan Buddhist culture. Prayer flags, kora circuits around temples, yak butter tea, and monasteries that have stood for 600+ years. The most culturally distinct region in China but permits required." },
+  { feature: "Food Scene", yunnan: "Incredible diversity: Dai sour-spicy grilled fish, Naxi hotpot, Bai three-course tea, Tibetan yak momos, and legendary Across the Bridge Noodles. Wild mushroom hotpot season (June-Sept) is a foodie pilgrimage. Underrated globally.", guilin: "Guilin rice noodles (mifen) are the local claim to fame. Yangshuo has surprisingly good Western food. Overall less culinary depth than Yunnan or Sichuan.", sichuan: "The heavyweight champion of Chinese cuisine. Mapo tofu, kung pao chicken, dan dan noodles, mala hotpot. Chengdu is a UNESCO City of Gastronomy. The spiciest, most addictive food in China.", tibet: "Simple, hearty mountain fare: yak meat, tsampa (barley flour), momos (dumplings), and butter tea. It's survival food for 4,000m living, not cuisine for pleasure. Limited variety compared to other regions." },
+  { feature: "Entry Cost (2026)", yunnan: "No single park ticket. Major attractions CNY 85-175. Jade Dragon Snow Mountain cable car CNY 180-200. Budget CNY 150-800 per person/day depending on style. Cheaper than Beijing/Shanghai.", guilin: "Li River cruise CNY 300-400. Yangshuo countryside is free to explore by bike/scooter. Longji Rice Terraces CNY 80. Budget CNY 200-500 per person/day.", sichuan: "Chengdu Panda Base CNY 58. Leshan Giant Buddha CNY 80. Jiuzhaigou CNY 169-269. Budget CNY 200-700 per person/day. Chengdu is surprisingly affordable.", tibet: "Must book through a tour operator for permits. Group tours from CNY 3,000-8,000 for 5-8 days. Independent travel is restricted. Most expensive option due to mandatory guided tours." },
+  { feature: "Best Time", yunnan: "March-May and September-November are ideal everywhere. Xishuangbanna is best November-April (dry season). Avoid Chinese holidays. The most year-round-friendly destination.", guilin: "April-October. Summer is hot but the river is refreshing. Avoid the June-August monsoon if you want the Li River cruise. Autumn has the best light for photography.", sichuan: "March-June and September-November. July-August is hot and rainy. Chengdu is famously cloudy year-round. Jiuzhaigou autumn (October) is world-class.", tibet: "May-October only. Roads to Everest Base Camp close November-April. Summer (Jul-Aug) is peak with clearest views. Hard seasonal constraint unlike Yunnan." },
+  { feature: "Accessibility", yunnan: "Kunming is a major international hub. High-speed trains connect the northwest corridor (Kunming-Dali-Lijiang-Shangri-La). China-Laos Railway opens a direct train route to Southeast Asia. No permits needed anywhere.", guilin: "Easy. Fly into Guilin or take the high-speed train from Guangzhou (2.5h) or Shenzhen. Yangshuo is a 1.5h bus from Guilin. No permits. The most straightforward China destination for first-timers.", sichuan: "Chengdu has a major international airport. High-speed trains from Xi'an (3-4h) and Chongqing (1-1.5h). Jiuzhaigou requires a flight or 8-hour bus. Generally easy access.", tibet: "Foreign travelers need a Tibet Travel Permit + guided tour. Fly or take the world's highest train from Xining (21h). Not accessible for independent travel. By far the most restricted region." },
+  { feature: "Physical Demand", yunnan: "Varies by destination. Kunming and Dali are flat and easy. Tiger Leaping Gorge trek is strenuous (2,200m descent). Lijiang at 2,400m requires mild adjustment. Shangri-La at 3,400m demands acclimatization. Altitude is the main challenge.", guilin: "Low. Yangshuo is easily explored by bike or scooter on flat terrain. The karst hill climbs are optional short hikes (30-60 min up). The most accessible option.", sichuan: "Moderate. Chengdu is flat. Mount Emei involves thousands of steps. Jiuzhaigou is at 3,000m with boardwalks. Western Sichuan (Kangding, Tagong) is high-altitude.", tibet: "High. Lhasa sits at 3,650m. Everest Base Camp is 5,200m. Altitude sickness is a real risk. Requires 2-3 days acclimatization before climbing higher. Not suitable for those with heart or respiratory conditions." },
+  { feature: "Infrastructure", yunnan: "Well-developed in the tourist corridor. High-speed trains, good roads, English signage in major towns. Guesthouses from CNY 80 luxury boutique hotels to CNY 1,200. WeChat/ Alipay widely accepted.", guilin: "Good. Yangshuo has Western restaurants, bike rentals everywhere, English-speaking staff at most guesthouses. The most tourist-adapted destination on this list.", sichuan: "Excellent in Chengdu (subway, Didi everywhere). Jiuzhaigou is well-developed. Western Sichuan gets rougher. Generally very good infrastructure.", tibet: "Basic but functional. Lhasa has modern hotels and restaurants. Outside Lhasa, accommodation is simple guesthouses. Road conditions can be rough. ATM access is limited." },
+];
+
+const verdicts = [
+  { who: "Choose Yunnan if...", color: "bg-brand-50 border-brand-300", points: ["You want the most diverse landscapes in one trip (snow peaks to tropics)", "You are interested in ethnic minority cultures and living traditions", "You want year-round travel flexibility without seasonal or permit constraints", "You are a photographer chasing dramatic variety in one province", "You want a soft introduction to China that is less intense than Beijing", "You are a backpacker entering from Southeast Asia via the China-Laos Railway"] },
+  { who: "Choose Guilin/Yangshuo if...", color: "bg-green-50 border-green-300", points: ["You are a first-time China visitor wanting the easiest, most straightforward experience", "You want the classic Chinese ink-painting scenery (karst peaks + river)", "You have only 3-4 days and want a single base to explore from (Yangshuo)", "You want to bike through rice paddies and bamboo groves with zero altitude concerns", "Western amenities and English-speaking staff matter to you"] },
+  { who: "Choose Sichuan if...", color: "bg-red-50 border-red-300", points: ["Sichuan cuisine is a primary reason you travel (it is worth the trip alone)", "Pandas are at the top of your bucket list", "You enjoy big city energy (Chengdu) as a base with day trips to nature", "You want to see Jiuzhaigou's turquoise lakes before anywhere else", "You want a taste of Tibetan culture without the permit hassles of Tibet proper"] },
+  { who: "Choose Tibet if...", color: "bg-amber-50 border-amber-300", points: ["You have always dreamed of the Himalayas and Everest", "You are willing to book through a tour operator and follow a structured itinerary", "You are physically fit and have no altitude-related health concerns", "Deep Buddhist culture and spiritual landscapes are your primary motivation", "You have done your other China travel and want the ultimate step-change experience"] },
+];
+---
+
+<BaseLayout
+  title="Yunnan vs Guilin vs Sichuan vs Tibet (2026)"
+  description="Compare Yunnan, Guilin, Sichuan and Tibet: landscapes, food, costs, accessibility and best seasons to help you choose the right China destination."
+  ogImage="/images/og-compare.webp"
+  ogType="article"
+>
+  <slot name="head">
+    <script type="application/ld+json" set:html={JSON.stringify(pageSchema)}></script>
+  </slot>
+
+  <Nav />
+
+  <main class="min-h-screen">
+    <!-- Hero -->
+    <section class="pt-32 pb-16 bg-gradient-to-b from-brand-950 to-brand-900">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <nav class="mb-4 flex items-center justify-center gap-2 text-sm text-white/50" aria-label="Breadcrumb">
+          <a href="/" class="hover:text-white transition-colors">Home</a>
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg>
+          <span class="text-white/70">Compare</span>
+        </nav>
+        <h1 class="text-3xl md:text-5xl font-bold tracking-tight text-white leading-tight">Yunnan vs Guilin vs Sichuan vs Tibet: Which One Should You Visit?</h1>
+        <p class="text-lg text-white/60 mt-6 max-w-2xl mx-auto leading-relaxed">Four radically different regions, each capable of being the highlight of a China trip. This side-by-side comparison helps you pick the right one for your travel style.</p>
+      </div>
+    </section>
+
+    <!-- Summary Cards -->
+    <section class="py-16 bg-white">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-8 text-center">Quick Summary: Who Should Go Where</h2>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div class="rounded-xl bg-brand-50 border border-brand-200 p-6 text-center">
+            <div class="text-3xl font-bold text-brand-700">Yunnan</div>
+            <p class="text-sm text-gray-600 mt-2">Most diverse landscapes & cultures. Best year-round option. Backpacker-friendly.</p>
+          </div>
+          <div class="rounded-xl bg-green-50 border border-green-200 p-6 text-center">
+            <div class="text-3xl font-bold text-green-700">Guilin</div>
+            <p class="text-sm text-gray-600 mt-2">Easiest first-time China trip. Classic karst scenery. Most tourist-adapted.</p>
+          </div>
+          <div class="rounded-xl bg-red-50 border border-red-200 p-6 text-center">
+            <div class="text-3xl font-bold text-red-700">Sichuan</div>
+            <p class="text-sm text-gray-600 mt-2">Best food in China. Pandas. Big city base with nature day trips.</p>
+          </div>
+          <div class="rounded-xl bg-amber-50 border border-amber-200 p-6 text-center">
+            <div class="text-3xl font-bold text-amber-700">Tibet</div>
+            <p class="text-sm text-gray-600 mt-2">Ultimate bucket-list destination. Deep spirituality. Permits required.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Side-by-Side Comparison Table -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-8 text-center">Side-by-Side Comparison: 8 Key Dimensions</h2>
+        <div class="overflow-x-auto rounded-xl border border-gray-200 bg-white">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-gray-200 bg-gray-50">
+                <th class="text-left py-4 px-5 font-semibold text-gray-700 w-32">Dimension</th>
+                <th class="text-left py-4 px-5 font-semibold text-brand-700">Yunnan</th>
+                <th class="text-left py-4 px-5 font-semibold text-green-700">Guilin</th>
+                <th class="text-left py-4 px-5 font-semibold text-red-700">Sichuan</th>
+                <th class="text-left py-4 px-5 font-semibold text-amber-700">Tibet</th>
+              </tr>
+            </thead>
+            <tbody>
+              {comparison.map((row, i) => (
+                <tr class={"border-b border-gray-100 " + (i % 2 === 0 ? "bg-white" : "bg-gray-50/50")}>
+                  <td class="py-4 px-5 font-semibold text-gray-900 align-top">{row.feature}</td>
+                  <td class="py-4 px-5 text-gray-600 leading-relaxed align-top">{row.yunnan}</td>
+                  <td class="py-4 px-5 text-gray-600 leading-relaxed align-top">{row.guilin}</td>
+                  <td class="py-4 px-5 text-gray-600 leading-relaxed align-top">{row.sichuan}</td>
+                  <td class="py-4 px-5 text-gray-600 leading-relaxed align-top">{row.tibet}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Verdicts -->
+    <section class="py-16 bg-white">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-8 text-center">The Verdict</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {verdicts.map((v) => (
+            <div class={"rounded-xl border-2 p-8 " + v.color}>
+              <h3 class="font-bold text-gray-900 text-lg mb-4">{v.who}</h3>
+              <ul class="space-y-2">
+                {v.points.map((p) => (
+                  <li class="flex items-start gap-2 text-sm text-gray-700 leading-relaxed">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#26753d" stroke-width="2.5" stroke-linecap="round" class="shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    {p}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Bottom CTA -->
+    <section class="py-20 bg-brand-950 text-center">
+      <div class="max-w-2xl mx-auto px-4">
+        <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">Still deciding? Start with Yunnan.</h2>
+        <p class="text-white/70 mb-8 leading-relaxed">Yunnan is the safest bet for any traveler. It is the most diverse, the most forgiving climate, and the best value. Explore our guides and see for yourself.</p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="/#destinations" class="px-6 py-3 bg-white text-gray-900 rounded-full font-semibold text-sm hover:bg-brand-50 transition-colors">Explore Yunnan Destinations</a>
+          <a href="/#plan" class="px-6 py-3 bg-brand-600 text-white rounded-full font-semibold text-sm hover:bg-brand-500 transition-colors">Plan Your Trip</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

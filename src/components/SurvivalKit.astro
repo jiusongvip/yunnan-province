@@ -1,0 +1,44 @@
+---
+---
+<section id="survival" class="py-20 md:py-28 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-gray-900 pb-1">Surviving without Chinese in Yunnan</h2>
+      <p class="text-gray-500 text-lg mt-4 leading-relaxed">You will not learn Mandarin in a week. Here is what actually works.</p>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+      <div>
+        <h3 class="font-bold text-gray-900 mb-4">3 apps that save you</h3>
+        <div class="space-y-4">
+          {[
+            { name: "Google Translate", desc: "Download the Chinese offline pack before your trip. The camera translation feature reads menus in real time." },
+            { name: "Pleco", desc: "The best Chinese-English dictionary. Supports handwriting input: draw the character, get the meaning." },
+            { name: "Alipay", desc: "Bind your Visa/Mastercard. Scan QR codes to pay everywhere. Also has a built-in translation tool." },
+          ].map((app) => (
+            <div class="flex gap-4 items-start p-4 rounded-xl bg-gray-50">
+              <div class="w-10 h-10 rounded-lg bg-brand-100 text-brand-600 flex items-center justify-center font-bold text-sm shrink-0">{app.name[0]}</div>
+              <div><div class="font-semibold text-sm text-gray-900">{app.name}</div><p class="text-sm text-gray-500">{app.desc}</p></div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div>
+        <h3 class="font-bold text-gray-900 mb-4">5 phrases that actually help</h3>
+        <div class="space-y-3">
+          {[
+            { cn: "Zhege", en: "This one", use: "Point at a menu photo or item. The most useful word in China." },
+            { cn: "Duoshao qian?", en: "How much?", use: "Markets, taxis, street food stalls." },
+            { cn: "Xiexie", en: "Thank you", use: "Universal. Use it constantly." },
+            { cn: "Wo bu hui shuo zhongwen", en: "I don't speak Chinese", use: "Saying this in Chinese proves you really don't. Breaks the ice." },
+            { cn: "Cesuo zai nali?", en: "Where is the bathroom?", use: "The most important phrase in any language." },
+          ].map((phrase) => (
+            <div class="flex items-center gap-3 p-3 rounded-xl bg-gray-50 hover:bg-brand-50 transition-colors">
+              <div class="w-10 h-10 rounded-lg bg-brand-100 text-brand-700 flex items-center justify-center text-xs font-semibold shrink-0">CN</div>
+              <div><div class="text-sm font-semibold text-gray-900">{phrase.cn}</div><div class="text-xs text-gray-400">{phrase.en} | {phrase.use}</div></div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

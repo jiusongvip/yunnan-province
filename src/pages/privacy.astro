@@ -1,0 +1,72 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+
+const lastUpdated = "2026-08-07";
+---
+
+<BaseLayout
+  title="Privacy Policy & Data Practices 2026"
+  description="Privacy policy for Yunnan Province Travel Guide. Learn about our data practices: no tracking cookies, no personal data collection, no information selling."
+  ogType="article"
+  noindex={true}
+>
+  <Nav />
+
+  <main class="min-h-screen">
+    <section class="pt-32 pb-16 bg-gradient-to-b from-brand-50 to-white">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">Privacy Policy</h1>
+        <p class="text-sm text-gray-500">Last updated: {lastUpdated}</p>
+      </div>
+    </section>
+
+    <section class="py-16">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 prose prose-lg">
+        <h2>Our Approach to Privacy</h2>
+        <p>
+          We believe in minimal data collection. This website does not require accounts,
+          does not use cookies for tracking, and does not sell or share your information.
+        </p>
+
+        <h2>Information We Collect</h2>
+        <p>
+          <strong>Automatically</strong>: Like every website, our hosting provider logs basic
+          technical data (IP address, browser type, pages visited) for security and debugging.
+          These logs are not used for profiling or marketing.
+        </p>
+        <p>
+          <strong>Analytics</strong>: If enabled, we use Google Analytics to understand
+          which pages visitors find most useful. GA collects anonymized data including
+          page URLs, approximate location (city-level), and device type. You can opt out
+          via the <a href="https://tools.google.com/dlpage/gaoptout" class="text-brand-600">Google Analytics opt-out browser add-on</a>.
+        </p>
+        <p>
+          <strong>Email</strong>: If you contact us via email, we will only use your
+          email address to respond to your inquiry. We do not add you to any mailing list.
+        </p>
+
+        <h2>Third-Party Services</h2>
+        <p>
+          Our destination images are served from Unsplash. Unsplash may log image requests
+          according to their own privacy policy. We do not embed third-party trackers,
+          social media widgets, or ad networks.
+        </p>
+
+        <h2>Your Rights</h2>
+        <p>
+          You have the right to request deletion of any personal data we may hold.
+          Contact us at hello@yunnan-province.com with your request.
+        </p>
+
+        <h2>Changes to This Policy</h2>
+        <p>
+          We may update this policy occasionally. The date at the top reflects the latest revision.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

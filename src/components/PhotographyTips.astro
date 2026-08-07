@@ -1,0 +1,57 @@
+---
+---
+<section id="photo-tips" class="py-20 md:py-28 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-gray-900 pb-1">Photography guide</h2>
+      <p class="text-gray-500 text-lg mt-4 leading-relaxed">Yunnan is a photographer's paradise. Here is where to be and when.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {[
+        {
+          spot: "Yuanyang Rice Terraces",
+          best: "Nov-Feb, sunrise at Duoyishu",
+          tip: "Arrive before 6 AM to claim a spot. The terraces reflect dawn colors like mirrors. Bring a telephoto for compressed layers and a wide angle for the full panorama. Foggy mornings add atmosphere but kill the reflection shots.",
+          gear: "Wide zoom (16-35mm), telephoto (70-200mm), sturdy tripod",
+        },
+        {
+          spot: "Jade Dragon Snow Mountain",
+          best: "Oct-Dec, clear winter days",
+          tip: "Take the cable car to 4,506m. The glacier and Blue Moon Valley below are the money shots. UV filter is essential at this altitude. The turquoise lakes at the base look best when the sun is directly overhead (11 AM-2 PM).",
+          gear: "Polarizing filter, 24-70mm, UV filter, spare batteries (cold drains them)",
+        },
+        {
+          spot: "Lijiang Old Town at Night",
+          best: "Year-round, after 8 PM",
+          tip: "Red lanterns reflect in the canals. Use a tripod for long exposures (2-4 seconds) to smooth the water and blur pedestrians. The Black Dragon Pool with Jade Dragon Mountain in the background is the iconic shot.",
+          gear: "Tripod, fast prime (35mm f/1.4), remote shutter",
+        },
+        {
+          spot: "Songzanlin Monastery",
+          best: "Oct-Nov, golden hour",
+          tip: "The largest Tibetan monastery outside Tibet. Shoot from the hillside across the lake at sunset for the golden roof reflections. Inside, no flash photography. Monks are often willing to be photographed if you ask respectfully.",
+          gear: "70-200mm for compressed monastery-mountain layers",
+        },
+        {
+          spot: "Xishuangbanna Rainforest",
+          best: "Nov-Feb, dry season",
+          tip: "Morning mist through the canopy creates ethereal light shafts. Botanical Garden has the best access. Macro lens for tropical flowers and butterflies. The Dai minority villages offer vibrant cultural portraits.",
+          gear: "Macro lens, waterproof bag, insect repellent (for you, not the gear)",
+        },
+        {
+          spot: "Erhai Lake, Dali",
+          best: "Mar-Apr, cherry blossom season",
+          tip: "Rent a bicycle and ride the west shore loop. The Cangshan Mountains reflecting in the lake at sunrise is the signature shot. Traditional fishing boats with cormorants can still be found near Xizhou village in early morning.",
+          gear: "28-75mm all-rounder, circular polarizer for water reflections",
+        },
+      ].map((spot) => (
+        <div class="rounded-2xl border border-gray-200 p-6 hover:border-brand-200 transition-colors">
+          <div class="text-sm font-bold text-gray-900 mb-1">{spot.spot}</div>
+          <div class="text-xs font-medium text-brand-600 mb-4">{spot.best}</div>
+          <p class="text-sm text-gray-500 leading-relaxed mb-4">{spot.tip}</p>
+          <div class="text-xs text-gray-400 bg-gray-50 rounded-lg p-3">Gear: {spot.gear}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

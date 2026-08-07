@@ -1,0 +1,68 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Nav from "../../components/Nav.astro";
+import Footer from "../../components/Footer.astro";
+
+const areas = [
+  { city: "Kunming", budget: "CNY 100-300", mid: "CNY 300-600", luxury: "CNY 600-1200", best: "Green Lake area for walkability; Nanping Street for nightlife and shopping." },
+  { city: "Dali", budget: "CNY 80-200", mid: "CNY 200-500", luxury: "CNY 500-1500", best: "Ancient City for atmosphere; Erhai Lake west shore for sunrise views; Xizhou village for a quieter Bai culture experience." },
+  { city: "Lijiang", budget: "CNY 100-300", mid: "CNY 300-700", luxury: "CNY 700-2000", best: "Old Town Naxi courtyard inns for character; Shuhe Ancient Town for a quieter, more authentic stay; Baisha village for backpacker vibes." },
+  { city: "Shangri-La", budget: "CNY 80-200", mid: "CNY 200-600", luxury: "CNY 600-1500", best: "Dukezong Ancient Town for Tibetan ambiance; outside town for quiet and mountain views. Make sure heating works at this altitude." },
+  { city: "Yuanyang", budget: "CNY 80-150", mid: "CNY 150-400", luxury: "CNY 400-800", best: "Duoyishu area for sunrise views over the terraces; Xinjie Town for more options and lower prices." },
+  { city: "Xishuangbanna", budget: "CNY 100-250", mid: "CNY 250-600", luxury: "CNY 600-1500", best: "Gaozhuang area in Jinghong near the night market; riverside resorts along the Mekong for a tropical escape." },
+];
+
+const schema = {
+  "@type": "Article",
+  "headline": "Where to Stay in Yunnan: Accommodation Guide by City",
+  "description": "Hotel and guesthouse recommendations for every Yunnan destination, from budget hostels to luxury boutique stays in Kunming, Dali, Lijiang, Shangri-La and more.",
+  "author": { "@type": "Person", "name": "Yunnan Guide Team" },
+  "datePublished": "2026-08-07",
+  "dateModified": "2026-08-07",
+};
+---
+
+<BaseLayout
+  title="Where to Stay in Yunnan: Hotel & Guesthouse Guide 2026"
+  description="Where to stay in Yunnan: budget hostels, courtyard inns, lakeside guesthouses and luxury resorts in Kunming, Dali, Lijiang, Shangri-La and more."
+  ogType="article"
+>
+  <slot name="head">
+    <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
+  </slot>
+
+  <Nav />
+
+  <main class="min-h-screen">
+    <section class="pt-32 pb-16 bg-gradient-to-b from-brand-50 to-white">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">Where to Stay in Yunnan</h1>
+        <p class="text-lg text-gray-600">Accommodation recommendations by city, from backpacker hostels to boutique courtyard inns.</p>
+      </div>
+    </section>
+
+    <section class="pb-20">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 prose prose-lg">
+        <p>Yunnan has accommodation for every budget. What sets it apart is the character: traditional Naxi courtyard inns in Lijiang, Bai-style guesthouses in Dali, Tibetan homestays in Shangri-La, and tropical bungalows in Xishuangbanna. Here is what to expect in each destination.</p>
+      </div>
+    </section>
+
+    <section class="pb-20">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        {areas.map(a => (
+          <div class="bg-white rounded-xl border border-gray-200 p-6">
+            <h2 class="text-xl font-bold text-gray-900 mb-3">{a.city}</h2>
+            <div class="grid grid-cols-3 gap-4 mb-3">
+              <div class="text-center bg-brand-50 rounded-lg p-3"><div class="text-xs text-gray-500 mb-0.5">Budget</div><div class="font-bold text-brand-700">{a.budget}</div></div>
+              <div class="text-center bg-brand-50 rounded-lg p-3"><div class="text-xs text-gray-500 mb-0.5">Mid-range</div><div class="font-bold text-brand-700">{a.mid}</div></div>
+              <div class="text-center bg-brand-50 rounded-lg p-3"><div class="text-xs text-gray-500 mb-0.5">Luxury</div><div class="font-bold text-brand-700">{a.luxury}</div></div>
+            </div>
+            <p class="text-gray-600 text-sm"><strong>Best area:</strong> {a.best}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

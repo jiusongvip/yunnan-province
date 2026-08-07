@@ -1,0 +1,79 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Nav from "../../components/Nav.astro";
+import Footer from "../../components/Footer.astro";
+
+const itineraries = [
+  { days: "3 Days", title: "Kunming & Stone Forest", subtitle: "Perfect for a quick escape or layover", route: "Kunming", highlights: ["Day 1: Green Lake Park, Yuantong Temple, evening food street at Nanping", "Day 2: Stone Forest day trip (2h drive each way)", "Day 3: Western Hills, Dianchi Lake, flower and bird market, depart"], difficulty: "Easy", who: "First-time visitors, layover travelers" },
+  { days: "5 Days", title: "Kunming to Dali to Lijiang", subtitle: "The classic Yunnan introduction", route: "Kunming > Dali > Lijiang", highlights: ["Day 1-2: Kunming highlights + Stone Forest", "Day 3: High-speed train to Dali (2h), explore Ancient City", "Day 4: Morning cycling around Erhai Lake, afternoon Three Pagodas", "Day 5: Train to Lijiang (1.5h from Dali), Lijiang Old Town evening"], difficulty: "Easy", who: "Culture lovers, first-time China visitors" },
+  { days: "8 Days", title: "The Classic Northwest", subtitle: "The full Yunnan experience", route: "Kunming > Dali > Lijiang > Shangri-La", highlights: ["Day 1-2: Kunming", "Day 3-4: Dali (Ancient City, Erhai Lake, Xizhou village)", "Day 5-6: Lijiang (Old Town, Jade Dragon Snow Mountain, Black Dragon Pool)", "Day 7-8: Shangri-La (Songzanlin Monastery, Pudacuo, Dukezong Ancient Town)"], difficulty: "Moderate", who: "Travelers wanting the complete picture" },
+  { days: "10 Days", title: "Northwest Deep Dive + Tiger Leaping Gorge", subtitle: "Adventure meets culture", route: "Kunming > Dali > Lijiang > Tiger Leaping Gorge > Shangri-La", highlights: ["Days 1-6: Follow the Classic Northwest route through Lijiang", "Day 7: Transfer to Qiaotou, start Tiger Leaping Gorge trek", "Day 8: Complete the high trail, transfer to Shangri-La", "Day 9-10: Shangri-La exploration, fly back to Kunming"], difficulty: "Challenging", who: "Fit travelers, hikers, photographers" },
+  { days: "14 Days", title: "Grand Yunnan Loop", subtitle: "From snow peaks to tropical jungles", route: "Kunming > Dali > Lijiang > Shangri-La > (fly) > Xishuangbanna > (fly) > Yuanyang", highlights: ["Days 1-8: Classic Northwest route", "Day 9-10: Fly to Jinghong, explore Xishuangbanna (tropical gardens, Dai culture)", "Day 11-12: Fly to Kunming, bus to Yuanyang rice terraces", "Day 13: Sunrise at Duoyishu, Hani village visits", "Day 14: Return to Kunming, depart"], difficulty: "Challenging", who: "Experienced travelers, photographers, those wanting to see it all" },
+];
+
+const schema = {
+  "@type": "Article",
+  "headline": "Yunnan Itineraries: 3 to 14 Day Travel Plans",
+  "description": "Suggested Yunnan travel routes from a 3-day Kunming quick trip to a 14-day grand loop covering all six major destinations.",
+  "author": { "@type": "Person", "name": "Yunnan Guide Team" },
+  "datePublished": "2026-04-01",
+  "dateModified": "2026-08-07",
+};
+---
+
+<BaseLayout
+  title="Yunnan Itineraries: 3, 5, 8, 10 & 14 Day Plans 2026"
+  description="Suggested travel routes for every type of traveler. 3-day Kunming express, 8-day classic northwest, 14-day grand Yunnan loop covering all six destinations."
+  ogType="article"
+>
+  <slot name="head">
+    <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
+  </slot>
+
+  <Nav />
+
+  <main class="min-h-screen">
+    <section class="pt-32 pb-16 bg-gradient-to-b from-brand-50 to-white">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">Yunnan Itineraries</h1>
+        <p class="text-lg text-gray-600">Route plans for every type of traveler, from a quick 3-day visit to a 14-day Yunnan grand tour.</p>
+      </div>
+    </section>
+
+    <section class="pb-20">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        {itineraries.map((itin, i) => (
+          <div class="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
+            <div class="bg-brand-600 text-white px-6 py-4 flex items-center justify-between">
+              <div>
+                <span class="text-xs font-semibold uppercase tracking-wider opacity-75">Itinerary {i + 1}</span>
+                <h2 class="text-xl font-bold mt-0.5">{itin.title}</h2>
+              </div>
+              <div class="text-right">
+                <div class="text-2xl font-bold">{itin.days}</div>
+                <div class="text-xs opacity-75">{itin.difficulty}</div>
+              </div>
+            </div>
+            <div class="p-6">
+              <p class="text-gray-500 text-sm mb-4">{itin.subtitle}</p>
+              <div class="mb-4">
+                <span class="text-xs font-semibold text-brand-600 bg-brand-50 px-3 py-1 rounded-full">Route: {itin.route}</span>
+              </div>
+              <ul class="space-y-2">
+                {itin.highlights.map(h => (
+                  <li class="flex items-start gap-2 text-sm text-gray-600">
+                    <span class="text-brand-500 mt-0.5"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="6"/></svg></span>
+                    {h}
+                  </li>
+                ))}
+              </ul>
+              <p class="text-xs text-gray-400 mt-4">Best for: {itin.who}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

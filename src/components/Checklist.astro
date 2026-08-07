@@ -1,0 +1,32 @@
+---
+---
+<section id="checklist" class="py-20 md:py-28 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-gray-900 pb-1">Pre-trip checklist</h2>
+      <p class="text-gray-500 text-lg mt-4 leading-relaxed">Ten things to sort before you board the plane. The visa and VPN are not optional.</p>
+    </div>
+    <div class="max-w-3xl space-y-4">
+      {[
+        { step: "1", title: "Visa", detail: "Apply for a Chinese tourist visa (L) at your nearest embassy 4-6 weeks ahead. Some nationalities get 144-hour transit in Kunming -- check eligibility." },
+        { step: "2", title: "VPN", detail: "Install and test before departure. ExpressVPN and Astrill are most reliable inside China. Do not wait until you land." },
+        { step: "3", title: "Offline tools", detail: "Download Google Translate Chinese pack, Pleco dictionary, offline maps (Maps.me), and save this guide as PDF." },
+        { step: "4", title: "First 2 nights", detail: "Book Kunming accommodation in advance. After that, book 1-2 days ahead as you go. Flexibility is worth more than a discount." },
+        { step: "5", title: "RMB cash", detail: "Withdraw CNY 2,000 at Kunming airport ATM. Keep small notes (CNY 10, 20, 50) for street food and local buses. Rural vendors rarely take cards." },
+        { step: "6", title: "Chinese SIM", detail: "Buy at Kunming airport arrival hall -- China Unicom or China Mobile. CNY 100-200 for a month of data. Bring your passport." },
+        { step: "7", title: "Didi (ride-hailing)", detail: "Download Didi (Chinese Uber) and register with your phone number before departure. Works in all Yunnan cities." },
+        { step: "8", title: "Travel insurance", detail: "Make sure your policy covers high-altitude trekking (above 3,000m) and medical evacuation. Standard backpacker insurance often caps at 2,500m." },
+        { step: "9", title: "Pack layers, not bulk", detail: "One trip crosses four climate zones. See our packing guide above. The golden rule: pack for the coldest place on your route." },
+        { step: "10", title: "Save key addresses in Chinese", detail: "Save your hotel names and train stations in Chinese characters. Show your phone screen to taxi drivers. It works every time." },
+      ].map((item) => (
+        <div class="flex gap-4 items-start p-5 rounded-xl bg-white border border-gray-100 hover:border-brand-200 transition-colors">
+          <div class="w-10 h-10 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center font-bold text-sm shrink-0">{item.step}</div>
+          <div>
+            <div class="font-bold text-gray-900 text-sm">{item.title}</div>
+            <p class="text-sm text-gray-500 mt-1 leading-relaxed">{item.detail}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

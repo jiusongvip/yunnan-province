@@ -1,0 +1,28 @@
+---
+import { itineraries } from "../data/destinations";
+---
+<section id="itineraries" class="py-20 md:py-28 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-gray-900 pb-1">Plan your itinerary</h2>
+      <p class="text-gray-500 text-lg mt-4 leading-relaxed">From a 3-day layover escape to a full 14-day loop, we have mapped the routes so you do not have to.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {itineraries.map((iti) => (
+        <div class="bg-white rounded-2xl p-6 border border-gray-100 hover:border-brand-200 hover:shadow-md transition-all flex flex-col">
+          <div class="text-3xl font-bold text-brand-600 mb-1">{iti.days}<span class="text-sm font-normal text-gray-400 ml-1">days</span></div>
+          <h3 class="font-bold text-gray-900 mb-1">{iti.title}</h3>
+          <p class="text-sm text-gray-500 mb-4">{iti.subtitle}</p>
+          <div class="flex-1">
+            <div class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Day-by-day</div>
+            <ul class="space-y-1.5 mb-4">{iti.summary.map((day) => (<li class="text-sm text-gray-600">{day}</li>))}</ul>
+          </div>
+          <div class="flex items-center gap-2 text-xs text-gray-400 mt-auto pt-4 border-t border-gray-100">
+            <span class="px-2 py-1 rounded-full bg-gray-100 text-gray-600">{iti.difficulty}</span>
+            <span>{iti.bestFor}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

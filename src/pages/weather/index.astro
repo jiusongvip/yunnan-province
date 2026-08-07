@@ -1,0 +1,67 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Nav from "../../components/Nav.astro";
+import Footer from "../../components/Footer.astro";
+
+const cities = [
+  { city: "Kunming", altitude: "1,890m", jan: "8-17C", apr: "13-24C", jul: "17-25C", oct: "13-21C", desc: "The 'Spring City' lives up to its name. Temperatures stay pleasant year-round, rarely dropping below 5C or exceeding 28C. Rainy season is June-August." },
+  { city: "Dali", altitude: "2,000m", jan: "5-16C", apr: "11-23C", jul: "16-25C", oct: "11-21C", desc: "Mild and comfortable. Strong UV at this altitude — wear sunscreen. Afternoon winds are common by Erhai Lake (known locally as 'Xiaguan Wind'). Rain peaks in July-August." },
+  { city: "Lijiang", altitude: "2,400m", jan: "2-14C", apr: "9-22C", jul: "14-24C", oct: "8-20C", desc: "Cooler than Dali due to higher altitude. Nights are chilly even in summer — pack layers. The rainy season (June-September) can obscure mountain views." },
+  { city: "Shangri-La", altitude: "3,400m", jan: "-8-7C", apr: "2-14C", jul: "9-19C", oct: "3-15C", desc: "High-altitude climate with dramatic temperature swings. Days can be warm in the sun, nights are cold year-round. Winter brings snow. UV is intense." },
+  { city: "Yuanyang", altitude: "1,600-1,900m", jan: "8-16C", apr: "14-25C", jul: "18-27C", oct: "13-22C", desc: "Subtropical highland. Winter mornings can be foggy (perfect for terrace photography). November-March is the water-filled terrace season." },
+  { city: "Xishuangbanna", altitude: "500m", jan: "12-25C", apr: "20-35C", jul: "23-33C", oct: "18-29C", desc: "Tropical monsoon climate — feels more like Thailand than China. Hot and humid March-October. Dry season November-February is the best time to visit." },
+];
+
+const schema = {
+  "@type": "Article",
+  "headline": "Yunnan Weather Guide: Monthly Climate for Every Destination",
+  "description": "Weather and climate data for Kunming, Dali, Lijiang, Shangri-La, Yuanyang, and Xishuangbanna. Monthly temperatures, rainy seasons, and what to pack.",
+  "author": { "@type": "Person", "name": "Yunnan Guide Team" },
+  "datePublished": "2026-08-07",
+  "dateModified": "2026-08-07",
+};
+---
+
+<BaseLayout
+  title="Yunnan Weather by Destination: Monthly Climate Guide"
+  description="Monthly weather data for Yunnan destinations: temperatures in Kunming, Dali, Lijiang, Shangri-La, Yuanyang and Xishuangbanna by season."
+  ogType="article"
+>
+  <slot name="head">
+    <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
+  </slot>
+
+  <Nav />
+
+  <main class="min-h-screen">
+    <section class="pt-32 pb-16 bg-gradient-to-b from-brand-50 to-white">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">Yunnan Weather</h1>
+        <p class="text-lg text-gray-600">Climate varies dramatically across Yunnan — from tropical rainforests to alpine highlands.</p>
+      </div>
+    </section>
+
+    <section class="pb-20">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+        <p class="text-gray-600 leading-relaxed">Yunnan spans a 3,000m altitude range, so there is no single 'Yunnan weather.' Kunming is mild year-round. Shangri-La freezes in winter. Xishuangbanna is tropical. Pack accordingly, and always bring layers.</p>
+        {cities.map(c => (
+          <div class="bg-white rounded-xl border border-gray-200 p-6">
+            <div class="flex items-center justify-between mb-3">
+              <h2 class="font-bold text-gray-900 text-lg">{c.city}</h2>
+              <span class="text-xs font-semibold text-brand-600 bg-brand-50 px-3 py-1 rounded-full">{c.altitude}</span>
+            </div>
+            <div class="grid grid-cols-4 gap-2 mb-3">
+              <div class="text-center bg-gray-50 rounded-lg p-2"><div class="text-xs text-gray-400">Jan</div><div class="text-sm font-semibold text-gray-900">{c.jan}</div></div>
+              <div class="text-center bg-gray-50 rounded-lg p-2"><div class="text-xs text-gray-400">Apr</div><div class="text-sm font-semibold text-gray-900">{c.apr}</div></div>
+              <div class="text-center bg-gray-50 rounded-lg p-2"><div class="text-xs text-gray-400">Jul</div><div class="text-sm font-semibold text-gray-900">{c.jul}</div></div>
+              <div class="text-center bg-gray-50 rounded-lg p-2"><div class="text-xs text-gray-400">Oct</div><div class="text-sm font-semibold text-gray-900">{c.oct}</div></div>
+            </div>
+            <p class="text-gray-600 text-sm leading-relaxed">{c.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,22 @@
+---
+---
+<section id="safety" class="py-20 md:py-28 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-gray-900 pb-1">Is Yunnan safe?</h2>
+      <p class="text-gray-500 text-lg mt-4 leading-relaxed">The short answer: yes. The honest answer: here is what you should know.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {[
+        { title: "General Safety", text: "Yunnan is one of China's safest provinces for tourists. Violent crime against foreigners is extremely rare. Tourist police stations exist in Kunming, Dali, and Lijiang with English-speaking officers. Standard travel awareness applies: watch your belongings in crowded bus stations and night markets." },
+        { title: "Solo Female Travel", text: "Many women travel Yunnan solo and report feeling safe throughout. Guesthouse owners are protective of their guests. During the day, you will feel at ease in tourist areas. At night, Lijiang and Dali old towns are well-lit and busy. Use Didi (Chinese Uber) rather than wandering empty streets late at night." },
+        { title: "Altitude Safety", text: "Altitude sickness (AMS) is the main health risk in Shangri-La (3,400m+). Symptoms include headache, nausea, and fatigue. Prevent it by ascending gradually (Kunming > Dali > Lijiang > Shangri-La), avoiding alcohol for 48 hours, and drinking plenty of water. If symptoms worsen, descend immediately." },
+      ].map((item) => (
+        <div class="rounded-2xl bg-white border border-gray-100 p-6">
+          <h3 class="font-bold text-gray-900 mb-3">{item.title}</h3>
+          <p class="text-sm text-gray-500 leading-relaxed">{item.text}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

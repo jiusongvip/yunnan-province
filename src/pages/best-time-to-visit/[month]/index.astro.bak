@@ -1,0 +1,77 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Nav from "../../../components/Nav.astro";
+import Footer from "../../../components/Footer.astro";
+import { articleSchema, breadcrumbList } from "../../../utils/schema";
+import type { BreadcrumbItem } from "../../../utils/schema";
+
+export function getStaticPaths() {
+  const months = ["january","february","march","april","may","june","july","august","september","october","november","december"];
+  return months.map((m) => ({ params: { month: m } }));
+}
+
+const { month } = Astro.params;
+const monthName = month.charAt(0).toUpperCase() + month.slice(1);
+
+const breadcrumbs: BreadcrumbItem[] = [
+  { name: "Home", url: "https://yunnan-province.com/" },
+  { name: "Best Time to Visit", url: "https://yunnan-province.com/best-time-to-visit/" },
+  { name: monthName, url: "https://yunnan-province.com/best-time-to-visit/" + month },
+];
+
+const schema = articleSchema({
+  headline: "Yunnan in " + monthName + ": Weather, Best Places and Travel Tips 2026",
+  description: "Visiting Yunnan Province in " + monthName + "? Complete guide with weather, best destinations, festivals, packing tips, and what to expect.",
+  datePublished: "2026-08-07",
+  dateModified: "2026-08-07",
+});
+
+const pageSchema = {
+  "@graph": [schema, breadcrumbList(breadcrumbs)],
+};
+---
+
+<BaseLayout
+  title={"Yunnan in " + monthName + ": Weather, Best Places and Travel Tips 2026"}
+  description={"Visiting Yunnan Province in " + monthName + "? Complete guide with weather, best destinations, festivals, packing tips, and what to expect."}
+  ogType="article"
+>
+  <slot name="head"><script type="application/ld+json" set:html={JSON.stringify(pageSchema)}></script></slot>
+  <Nav />
+  <main class="min-h-screen">
+    <section class="pt-32 pb-16 bg-gradient-to-b from-brand-50 to-white">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <nav class="mb-4 flex items-center gap-2 text-sm text-gray-400" aria-label="Breadcrumb">
+          <a href="/" class="hover:text-brand-600 transition-colors">Home</a>
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg>
+          <a href="/best-time-to-visit" class="hover:text-brand-600 transition-colors">Best Time</a>
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg>
+          <span class="text-gray-600">{monthName}</span>
+        </nav>
+        <h1 class="text-3xl md:text-5xl font-bold tracking-tight text-gray-900 mb-4">Yunnan in {monthName}</h1>
+        <p class="text-lg text-gray-600 max-w-2xl leading-relaxed">Yunnan province offers dramatically different experiences depending on the month. See our detailed month-by-month comparison below, or check individual destinations for the best timing.</p>
+      </div>
+    </section>
+    <section class="py-16 bg-white">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 prose prose-lg">
+        <h2>Month-by-Month Guide</h2>
+        <p>Every month in Yunnan has its strengths. The key is matching the month to your destination and travel style. Our <a href="/best-time-to-visit" class="text-brand-600 hover:text-brand-700 underline">complete month guide</a> covers all 12 months with temperature data, crowd levels, festivals, and destination recommendations.</p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          {["january","february","march","april","may","june","july","august","september","october","november","december"].map((mn) => (
+            <a href={"/best-time-to-visit/" + mn} class={"px-3 py-1.5 rounded-full text-xs font-medium transition-colors " + (mn === month ? "bg-brand-600 text-white" : "bg-white border border-gray-200 text-gray-600 hover:border-brand-300 hover:text-brand-700")}>
+              {mn.charAt(0).toUpperCase() + mn.slice(1, 3)}
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+    <section class="py-16 bg-brand-950 text-center">
+      <div class="max-w-2xl mx-auto px-4">
+        <h2 class="text-2xl font-bold text-white mb-4">Find the best month for your trip</h2>
+        <p class="text-white/70 mb-6">Our complete guide compares all 12 months side by side with temperature, rain, crowd levels, and destination recommendations.</p>
+        <a href="/best-time-to-visit" class="inline-flex px-6 py-3 bg-white text-gray-900 rounded-full font-semibold text-sm hover:bg-brand-50 transition-colors">View Full Month Guide</a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>

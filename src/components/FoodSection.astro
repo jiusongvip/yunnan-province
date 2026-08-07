@@ -1,0 +1,60 @@
+---
+---
+<section id="food" class="py-20 md:py-28 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-gray-900 pb-1">Yunnan food survival kit</h2>
+      <p class="text-gray-500 text-lg mt-4 leading-relaxed">Five dishes you can order anywhere. Save these to your phone. Point at them when you need to.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+      {[
+        { name: "Across the Bridge Noodles", cn: "Guo Qiao Mixian", desc: "Iconic Yunnan rice noodle soup. Raw ingredients arrive at your table and you cook them in the steaming broth." },
+        { name: "Steam Pot Chicken", cn: "Qi Guo Ji", desc: "Chicken steamed in a clay pot with a chimney. No water added: the steam condenses into the purest broth." },
+        { name: "Wild Mushroom Hotpot", cn: "Yesheng Jun Huoguo", desc: "Summer brings dozens of wild mushroom species to markets. Go to a proper restaurant: some are toxic if undercooked." },
+        { name: "Grilled Rice Cake", cn: "Kao Er Kuai", desc: "Yunnan street food staple. A grilled rice patty brushed with spicy sauce, folded around a fried dough stick. CNY 5." },
+        { name: "Yak Butter Tea", cn: "Su You Cha", desc: "Salty tea churned with yak butter. A Tibetan staple in Shangri-La. An acquired taste that grows on you." },
+      ].map((dish) => (
+        <div class="rounded-2xl border border-gray-200 p-5 hover:border-brand-200 transition-colors">
+          <div class="text-xs font-semibold text-brand-600 uppercase tracking-wider mb-2">{dish.cn}</div>
+          <h3 class="font-bold text-gray-900 text-sm mb-2">{dish.name}</h3>
+          <p class="text-xs text-gray-500 leading-relaxed">{dish.desc}</p>
+        </div>
+      ))}
+    </div>
+    <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+      {[
+        { type: "Vegetarian", text: "Temple restaurants and Buddhist vegetarian buffets are everywhere in Yunnan. Say 'wo chi su' (I eat vegetarian). Incredible tofu and wild vegetable dishes." },
+        { type: "Halal", text: "Yunnan has a large Hui Muslim population. Kunming and Dali have halal streets with beef noodle shops and lamb skewers. Look for the halal label." },
+        { type: "Gluten-Free", text: "Rice noodles (mixian) are naturally gluten-free and the staple food across Yunnan. Most dishes are rice-based, not wheat-based. One of the easiest places in China for GF travelers." },
+      ].map((diet) => (
+        <div class="rounded-xl bg-brand-50 p-5">
+          <div class="font-bold text-brand-700 text-sm mb-2">{diet.type}</div>
+          <p class="text-xs text-brand-800 leading-relaxed">{diet.text}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+<section class="py-16 md:py-24 bg-brand-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-12">
+        <div class="text-xs font-semibold text-brand-600 uppercase tracking-wider mb-2">Yunnan Tea Culture</div>
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-gray-900 pb-1">Pu'er Tea: The Oldest Tea Mountains on Earth</h2>
+        <p class="text-gray-500 text-lg mt-4 leading-relaxed">Yunnan is the birthplace of tea. The world's oldest cultivated tea trees, some over 1,700 years old, grow in the mountains of Xishuangbanna and Pu'er. This is not just a beverage. It is Yunnan's gift to the world.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {[
+          { title: "What is Pu'er Tea?", body: "Pu'er (pu-erh) is a fermented tea produced exclusively in Yunnan. Unlike green or black tea, pu'er improves with age, like wine. Raw pu'er (sheng) is grassy and bright when young, deepening over decades. Ripe pu'er (shou) is artificially fermented for immediate earthy richness. A well-aged pu'er cake can cost more than a bottle of fine Bordeaux." },
+          { title: "Where to Experience It", body: "Kunming: Xiongda Tea City (one of Asia's largest tea markets). Dali: tea houses along Foreigner Street offer tastings. Xishuangbanna: visit the ancient tea mountains (Nanuo, Jingmai) where trees are centuries old. The Tea Horse Road Museum in Pu'er city traces the ancient trade route." },
+          { title: "How to Buy Tea", body: "Start at a tea market where you can taste before buying. A decent daily pu'er cake (357g) costs CNY 80-200. Serious aged cakes run CNY 500-5,000. Avoid tourist shops; go where locals buy. The vendor will brew multiple infusions for you to taste. Buying tea in Yunnan is a social experience, not a transaction." },
+        ].map((item) => (
+          <div class="bg-white rounded-2xl p-6 border border-brand-100">
+            <div class="font-bold text-gray-900 mb-3">{item.title}</div>
+            <p class="text-sm text-gray-500 leading-relaxed">{item.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

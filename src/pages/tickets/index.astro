@@ -1,0 +1,98 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Nav from "../../components/Nav.astro";
+import Footer from "../../components/Footer.astro";
+
+const prices = [
+  { site: "Stone Forest (Kunming)", fee: "CNY 175", note: "Includes Naigu Stone Forest. Electric cart CNY 25 extra." },
+  { site: "Jade Dragon Snow Mountain (Lijiang)", fee: "CNY 130", note: "Entry only. Cable car CNY 180 (Spruce Meadow) or CNY 200 (Glacier Park). Impression Lijiang show CNY 248." },
+  { site: "Lijiang Old Town", fee: "Free (maintenance fee)", note: "CNY 80 'Ancient Town Maintenance Fee' collected at most guesthouses and some attractions." },
+  { site: "Dali Three Pagodas", fee: "CNY 121", note: "Includes Chongsheng Temple complex." },
+  { site: "Erhai Lake Cruise", fee: "CNY 142", note: "Large boat cruise. Small private boats are negotiable (~CNY 80-120)." },
+  { site: "Songzanlin Monastery (Shangri-La)", fee: "CNY 115", note: "Includes shuttle bus inside the complex." },
+  { site: "Pudacuo National Park (Shangri-La)", fee: "CNY 138", note: "Includes shuttle bus. The park spans 1,300 sq km." },
+  { site: "Yuanyang Rice Terraces", fee: "CNY 100", note: "Multi-day pass covering multiple viewpoints." },
+  { site: "Tropical Botanical Garden (Xishuangbanna)", fee: "CNY 104", note: "One of China's largest botanical gardens." },
+  { site: "Wild Elephant Valley (Xishuangbanna)", fee: "CNY 85", note: "Best visited in the morning when elephants are most active." },
+];
+
+const tips = [
+  { title: "Student Discounts", text: "Most attractions offer 50% off for full-time students with a valid ISIC card or Chinese student ID. Always carry your student card." },
+  { title: "Senior Discounts", text: "Visitors over 60 or 65 (varies by site) often receive free or discounted entry. Carry your passport as proof of age." },
+  { title: "Where to Buy", text: "Tickets are available at each attraction's ticket office. Some sites (Jade Dragon Snow Mountain cable cars, Lijiang shows) sell out during peak season - book 1-2 days ahead through your guesthouse or on Chinese travel platforms." },
+  { title: "Combination Tickets", text: "Some destinations offer combo tickets. For example, the Kunming Expo Garden + Golden Temple combo saves ~CNY 30 versus buying separately. Ask at your guesthouse about current deals." },
+  { title: "Payment Methods", text: "WeChat Pay and Alipay are accepted at ticket offices. Cash is always accepted. International credit cards are rarely usable for ticket purchases." },
+  { title: "Peak Season Surcharges", text: "Some attractions charge higher prices during national holidays (Chinese New Year, Labor Day, National Day). Budget 10-20% extra during these periods." },
+];
+
+const schema = {
+  "@type": "Article",
+  "headline": "Yunnan Attraction Ticket Prices 2026: Complete Guide",
+  "description": "Up-to-date ticket prices for all major Yunnan attractions including Jade Dragon Snow Mountain, Stone Forest, Three Pagodas, and more. Student and senior discounts explained.",
+  "author": { "@type": "Person", "name": "Yunnan Guide Team" },
+  "datePublished": "2026-08-07",
+  "dateModified": "2026-08-07",
+};
+---
+
+<BaseLayout
+  title="Yunnan Attraction Ticket Prices 2026: Complete Guide"
+  description="Yunnan attraction ticket prices 2026: Stone Forest, Jade Dragon Snow Mountain, Three Pagodas, rice terraces and more. Student and senior discounts."
+  ogType="article"
+>
+  <slot name="head">
+    <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
+  </slot>
+
+  <Nav />
+
+  <main class="min-h-screen">
+    <section class="pt-32 pb-16 bg-gradient-to-b from-brand-50 to-white">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">Yunnan Ticket Prices</h1>
+        <p class="text-lg text-gray-600">Current entrance fees for major attractions across Yunnan Province (2026).</p>
+      </div>
+    </section>
+
+    <section class="pb-20">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="overflow-x-auto bg-white rounded-xl border border-gray-200">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b-2 border-gray-200 bg-gray-50">
+                <th class="text-left py-3 px-4 font-semibold text-gray-900">Attraction</th>
+                <th class="text-right py-3 px-4 font-semibold text-gray-900">Price</th>
+                <th class="text-left py-3 px-4 font-semibold text-gray-900">Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              {prices.map(p => (
+                <tr class="border-b border-gray-100 hover:bg-brand-50/30">
+                  <td class="py-3 px-4 font-medium text-gray-900">{p.site}</td>
+                  <td class="py-3 px-4 text-right text-brand-700 font-semibold whitespace-nowrap">{p.fee}</td>
+                  <td class="py-3 px-4 text-gray-600 text-xs leading-relaxed">{p.note}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">Tips for Saving on Tickets</h2>
+        <div class="space-y-4">
+          {tips.map(t => (
+            <div class="bg-white rounded-xl p-5 border border-gray-200">
+              <h3 class="font-bold text-gray-900 mb-1">{t.title}</h3>
+              <p class="text-gray-600 text-sm leading-relaxed">{t.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

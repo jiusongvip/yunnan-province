@@ -1,0 +1,55 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Nav from "../../components/Nav.astro";
+import Footer from "../../components/Footer.astro";
+
+const spots = [
+  { name: "Duoyishu, Yuanyang", desc: "The sunrise viewpoint for the rice terraces. Arrive by 6am to claim a spot. The terraces fill with water November-March, reflecting the sky in thousands of mirrors. Use a telephoto lens (70-200mm) to compress the terraced layers.", time: "Sunrise, November-March", tips: "Tripod essential. Bring warm clothes — it is cold before dawn at 1,800m." },
+  { name: "Jade Dragon Snow Mountain", desc: "The glacier-topped peak towering over Lijiang. Shoot from Black Dragon Pool at sunrise for the classic reflection shot. The cable car takes you to 4,506m for close-up glacier views.", time: "Sunrise for reflections", tips: "Polarizing filter reduces glare on the pool. Check weather — the peak is often in clouds." },
+  { name: "Songzanlin Monastery, Shangri-La", desc: "Tibet's largest monastery outside Lhasa. Shoot from the lake in front of the monastery for reflections of golden roofs against the sky. Morning light illuminates the eastern facade.", time: "Early morning", tips: "Respect worshippers. Do not photograph inside prayer halls without permission." },
+  { name: "Erhai Lake, Dali", desc: "Shoot the sunrise over the lake with the Cangshan Mountains as backdrop. The west shore near Caicun village offers the best angles. In winter, migratory black-headed gulls add life to compositions.", time: "Sunrise, winter", tips: "Rent a bicycle and ride the west shore — endless photo opportunities." },
+  { name: "Tiger Leaping Gorge", desc: "One of the world's deepest gorges. Shoot from the high trail (Halfway Guesthouse) for dramatic canyon views. The narrowest point where the Jinsha River roars between cliffs is at Tiger Leaping Rock.", time: "Midday for canyon light", tips: "Wide-angle lens for the canyon. Telephoto for detail shots of the river." },
+  { name: "Dai Temples, Xishuangbanna", desc: "Golden Theravada Buddhist temples with Southeast Asian architecture. The Zongfo Temple in Jinghong is the most photogenic. Shoot in late afternoon when golden light matches golden temple roofs.", time: "Late afternoon", tips: "Dress respectfully. Remove shoes before entering temple buildings." },
+];
+
+const schema = {
+  "@type": "Article",
+  "headline": "Yunnan Photography Guide: Best Spots, Times & Tips",
+  "description": "Where and when to photograph Yunnan's most iconic landscapes: rice terraces at sunrise, snow-capped peaks, Tibetan monasteries, and tropical temples.",
+  "author": { "@type": "Person", "name": "Yunnan Guide Team" },
+  "datePublished": "2026-08-07",
+  "dateModified": "2026-08-07",
+};
+---
+
+<BaseLayout
+  title="Yunnan Photography Guide: Best Spots, Times & Tips"
+  description="Best photography spots in Yunnan: Yuanyang rice terraces at sunrise, Jade Dragon Snow Mountain, Tibetan monasteries and Tiger Leaping Gorge."
+  ogType="article"
+>
+  <slot name="head">
+    <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
+  </slot>
+  <Nav />
+  <main class="min-h-screen">
+    <section class="pt-32 pb-16 bg-gradient-to-b from-brand-50 to-white">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">Yunnan Photography Guide</h1>
+        <p class="text-lg text-gray-600">The best photo spots, ideal times, and gear tips for capturing Yunnan's landscapes and culture.</p>
+      </div>
+    </section>
+    <section class="pb-20">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+        {spots.map(s => (
+          <div class="bg-white rounded-xl border border-gray-200 p-6">
+            <h2 class="font-bold text-gray-900 text-lg mb-1">{s.name}</h2>
+            <p class="text-xs text-brand-600 font-semibold mb-2">{s.time}</p>
+            <p class="text-gray-600 text-sm leading-relaxed mb-2">{s.desc}</p>
+            <p class="text-xs text-gray-400 italic">{s.tips}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>

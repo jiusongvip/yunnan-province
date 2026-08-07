@@ -1,0 +1,47 @@
+---
+---
+<section id="map" class="py-20 md:py-28 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-gray-900 pb-1">Interactive Yunnan Map</h2>
+      <p class="text-gray-500 text-lg mt-4 leading-relaxed">Click markers to explore destinations. Each opens a detailed guide page.</p>
+    </div>
+    <div class="rounded-2xl overflow-hidden border border-gray-200 shadow-sm">
+      <div id="yunnan-map" class="w-full h-[500px] md:h-[600px] bg-gray-100"></div>
+    </div>
+    <div class="flex flex-wrap gap-4 mt-6 justify-center text-xs text-gray-400">
+      <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-green-500"></span> Kunming</span>
+      <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span> Dali</span>
+      <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-purple-500"></span> Lijiang</span>
+      <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-red-500"></span> Shangri-La</span>
+      <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-yellow-500"></span> Yuanyang</span>
+      <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-orange-500"></span> Xishuangbanna</span>
+    </div>
+  </div>
+</section>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+<script is:inline src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script is:inline>
+  (function(){
+    var el = document.getElementById("yunnan-map");
+    if (!el) return;
+    function initMapWhenReady(){
+      if (typeof L === "undefined") { setTimeout(initMapWhenReady, 200); return; }
+    var map = L.map(el).setView([25.2,102],7);
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:18,attribution:"&copy; OSM"}).addTo(map);
+    [
+      {n:"Kunming",lat:25.04,lng:102.68,s:"/kunming",c:"#22c55e",d:"Spring City, Yunnan gateway"},
+      {n:"Dali",lat:25.61,lng:100.27,s:"/dali",c:"#3b82f6",d:"Ancient town, Erhai Lake"},
+      {n:"Lijiang",lat:26.86,lng:100.23,s:"/lijiang",c:"#8b5cf6",d:"UNESCO old town, snow mountain"},
+      {n:"Shangri-La",lat:27.83,lng:99.70,s:"/shangri-la",c:"#ef4444",d:"Tibetan monastery, 3400m"},
+      {n:"Yuanyang",lat:23.12,lng:102.75,s:"/yuanyang",c:"#eab308",d:"1300-yr rice terraces"},
+      {n:"Xishuangbanna",lat:22.01,lng:100.80,s:"/xishuangbanna",c:"#f97316",d:"Tropical rainforest, Mekong"}
+    ].forEach(function(p){
+      var m = L.circleMarker([p.lat,p.lng],{radius:10,fillColor:p.c,color:"#fff",weight:2,fillOpacity:0.9}).addTo(map);
+      m.bindPopup('<b>'+p.n+'</b><br>'+p.d+'<br><a href="'+p.s+'" style="color:#369150;font-weight:600">View full guide</a>');
+    });
+    }
+    initMapWhenReady();
+  })();
+</script>

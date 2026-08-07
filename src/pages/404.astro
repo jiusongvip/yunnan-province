@@ -1,0 +1,28 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Page Not Found - Yunnan Province Travel Guide"
+  description="The page you're looking for doesn't exist. Browse our Yunnan travel guide instead."
+  noindex={true}
+>
+  <main class="min-h-screen flex items-center justify-center bg-gray-50 px-4">
+    <div class="text-center max-w-lg">
+      <p class="text-8xl font-bold text-brand-200 mb-4">404</p>
+      <h1 class="text-2xl font-bold text-gray-900 mb-3">Page Not Found</h1>
+      <p class="text-gray-600 mb-8">
+        The page you're looking for doesn't exist or has moved.
+        But Yunnan is still waiting to be explored.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="/" class="inline-flex items-center justify-center px-6 py-3 bg-brand-600 text-white font-semibold rounded-full hover:bg-brand-700 transition-colors">
+          Back to Guide
+        </a>
+        <a href="/#destinations" class="inline-flex items-center justify-center px-6 py-3 border border-gray-300 text-gray-700 font-semibold rounded-full hover:bg-gray-50 transition-colors">
+          Explore Destinations
+        </a>
+      </div>
+    </div>
+  </main>
+</BaseLayout>

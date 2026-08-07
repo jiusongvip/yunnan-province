@@ -1,0 +1,64 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<BaseLayout
+  title="About Us 2026 - Yunnan Province Travel Guide"
+  description="Learn about the Yunnan Province Travel Guide — an independent resource built by travelers, for travelers. No booking commissions, no sponsored content."
+  ogType="article"
+>
+  <Nav />
+
+  <main class="min-h-screen">
+    <section class="pt-32 pb-16 bg-gradient-to-b from-brand-50 to-white">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">About This Guide</h1>
+        <p class="text-lg text-gray-600">An independent resource for English-speaking travelers exploring Yunnan.</p>
+      </div>
+    </section>
+
+    <section class="py-16">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 prose prose-lg">
+        <h2>Why We Built This</h2>
+        <p>
+          Yunnan is one of China's most extraordinary provinces, yet reliable English-language travel information
+          is surprisingly hard to find. Most resources are either outdated, overly commercial, or written by people
+          who have never actually been here.
+        </p>
+        <p>
+          We built this guide to fill that gap — a practical, honest, and comprehensive resource that helps
+          independent travelers plan their Yunnan adventure with confidence.
+        </p>
+
+        <h2>What Makes This Guide Different</h2>
+        <ul>
+          <li><strong>No booking commissions.</strong> We don't take a cut on anything we recommend.</li>
+          <li><strong>Written by travelers.</strong> Every recommendation comes from firsthand experience.</li>
+          <li><strong>Updated regularly.</strong> Prices, schedules, and conditions change — we keep up.</li>
+          <li><strong>English-first.</strong> Designed specifically for international visitors navigating China.</li>
+        </ul>
+
+        <h2>What We Cover</h2>
+        <ul>
+          <li>6 major destinations across Yunnan's diverse regions</li>
+          <li>Detailed itineraries from 3-day quick trips to 14-day grand tours</li>
+          <li>Transport logistics (trains, buses, flights, private drivers)</li>
+          <li>Altitude advice (critical for highland destinations)</li>
+          <li>Food guides, packing lists, budget breakdowns</li>
+          <li>Cultural context for Yunnan's 25 ethnic groups</li>
+        </ul>
+
+        <h2>Disclaimer</h2>
+        <p>
+          We are not affiliated with any government tourism bureau, travel agency, or hotel chain.
+          This is an independent travel resource. While we strive for accuracy, always double-check
+          prices, schedules, and entry requirements before your trip.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

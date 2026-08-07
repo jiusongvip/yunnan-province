@@ -1,0 +1,156 @@
+---
+---
+<section id="matcher" class="py-20 md:py-28 bg-brand-50">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-gray-900 pb-1">Which Yunnan destination is right for you?</h2>
+      <p class="text-gray-500 text-lg mt-4 leading-relaxed">Answer three quick questions and we will match you to your ideal Yunnan destination.</p>
+    </div>
+
+    <div id="matcher-app" class="bg-white rounded-2xl border border-gray-200 p-8 shadow-sm">
+      <!-- Question 1 -->
+      <div id="q1" class="matcher-step">
+        <p class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-2">Question 1 of 3</p>
+        <h3 class="text-xl font-bold text-gray-900 mb-6">What kind of scenery excites you most?</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <button class="matcher-btn text-left p-4 rounded-xl border-2 border-gray-200 hover:border-brand-300 hover:bg-brand-50 transition-all" data-value="mountains">
+            <div class="font-semibold text-gray-900">Snow Mountains & Gorges</div>
+            <div class="text-sm text-gray-500 mt-1">Himalayan peaks, deep canyons, alpine lakes</div>
+          </button>
+          <button class="matcher-btn text-left p-4 rounded-xl border-2 border-gray-200 hover:border-brand-300 hover:bg-brand-50 transition-all" data-value="ancient">
+            <div class="font-semibold text-gray-900">Ancient Towns & Culture</div>
+            <div class="text-sm text-gray-500 mt-1">Cobblestone streets, wooden bridges, old tea houses</div>
+          </button>
+          <button class="matcher-btn text-left p-4 rounded-xl border-2 border-gray-200 hover:border-brand-300 hover:bg-brand-50 transition-all" data-value="tropical">
+            <div class="font-semibold text-gray-900">Tropical Rainforest</div>
+            <div class="text-sm text-gray-500 mt-1">Jungle, elephants, Southeast Asian vibes</div>
+          </button>
+          <button class="matcher-btn text-left p-4 rounded-xl border-2 border-gray-200 hover:border-brand-300 hover:bg-brand-50 transition-all" data-value="terraces">
+            <div class="font-semibold text-gray-900">Epic Landscapes</div>
+            <div class="text-sm text-gray-500 mt-1">Rice terraces, mirror reflections, dramatic sunrise views</div>
+          </button>
+        </div>
+      </div>
+
+      <!-- Question 2 -->
+      <div id="q2" class="matcher-step hidden">
+        <p class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-2">Question 2 of 3</p>
+        <h3 class="text-xl font-bold text-gray-900 mb-6">What is your travel style?</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <button class="matcher-btn text-left p-4 rounded-xl border-2 border-gray-200 hover:border-brand-300 hover:bg-brand-50 transition-all" data-value="chill">
+            <div class="font-semibold text-gray-900">Relaxed Explorer</div>
+            <div class="text-sm text-gray-500 mt-1">Cafes, cycling, wandering without a plan</div>
+          </button>
+          <button class="matcher-btn text-left p-4 rounded-xl border-2 border-gray-200 hover:border-brand-300 hover:bg-brand-50 transition-all" data-value="adventure">
+            <div class="font-semibold text-gray-900">Adventure Seeker</div>
+            <div class="text-sm text-gray-500 mt-1">Trekking, high altitudes, physical challenges</div>
+          </button>
+          <button class="matcher-btn text-left p-4 rounded-xl border-2 border-gray-200 hover:border-brand-300 hover:bg-brand-50 transition-all" data-value="culture">
+            <div class="font-semibold text-gray-900">Culture Immersion</div>
+            <div class="text-sm text-gray-500 mt-1">Ethnic villages, festivals, food experiences</div>
+          </button>
+          <button class="matcher-btn text-left p-4 rounded-xl border-2 border-gray-200 hover:border-brand-300 hover:bg-brand-50 transition-all" data-value="photo">
+            <div class="font-semibold text-gray-900">Photography First</div>
+            <div class="text-sm text-gray-500 mt-1">Epic light, composition, the perfect shot</div>
+          </button>
+        </div>
+      </div>
+
+      <!-- Question 3 -->
+      <div id="q3" class="matcher-step hidden">
+        <p class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-2">Question 3 of 3</p>
+        <h3 class="text-xl font-bold text-gray-900 mb-6">How comfortable are you with altitude?</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <button class="matcher-btn text-center p-4 rounded-xl border-2 border-gray-200 hover:border-brand-300 hover:bg-brand-50 transition-all" data-value="low">
+            <div class="font-semibold text-gray-900">Keep me low</div>
+            <div class="text-sm text-gray-500 mt-1">Under 2,000m is fine</div>
+          </button>
+          <button class="matcher-btn text-center p-4 rounded-xl border-2 border-gray-200 hover:border-brand-300 hover:bg-brand-50 transition-all" data-value="mid">
+            <div class="font-semibold text-gray-900">Moderate is OK</div>
+            <div class="text-sm text-gray-500 mt-1">Up to 3,000m, gradual ascent</div>
+          </button>
+          <button class="matcher-btn text-center p-4 rounded-xl border-2 border-gray-200 hover:border-brand-300 hover:bg-brand-50 transition-all" data-value="high">
+            <div class="font-semibold text-gray-900">No limits</div>
+            <div class="text-sm text-gray-500 mt-1">I have done high altitude before</div>
+          </button>
+        </div>
+      </div>
+
+      <!-- Result -->
+      <div id="result" class="matcher-step hidden">
+        <div id="result-content"></div>
+        <button id="restart" class="mt-6 px-5 py-2.5 bg-gray-100 text-gray-700 rounded-full text-sm font-medium hover:bg-gray-200 transition-colors">Try Again</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var answers = {};
+  var results = {
+    "mountains_chill_mid": { name: "Dali", slug: "dali", why: "Nestled between Cangshan Mountain and Erhai Lake, Dali is the perfect balance: mountain backdrops, lake views, and the most relaxed vibe in Yunnan. Cycle around the lake, drink tea in a courtyard, and let the days drift.", img: "/images/dali-erhai.webp" },
+    "mountains_adventure_high": { name: "Shangri-La", slug: "shangri-la", why: "At 3,400m on the Tibetan Plateau, Shangri-La delivers the high-altitude adventure you crave. Snow-capped peaks, Tibetan monasteries, yak-dotted grasslands, and the gateway to some of Yunnan's wildest trekking.", img: "/images/shangri-la-monastery.webp" },
+    "mountains_adventure_mid": { name: "Lijiang", slug: "lijiang", why: "Jade Dragon Snow Mountain towers above an 800-year-old cobblestone maze. Hike Tiger Leaping Gorge (one of the world's deepest canyons) by day, return to ancient streets and Naxi music by night.", img: "/images/lijiang-old-town.webp" },
+    "ancient_culture_mid": { name: "Lijiang", slug: "lijiang", why: "A UNESCO World Heritage maze of cobblestone streets, wooden bridges, flowing canals, and Naxi musicians playing 1,000-year-old instruments. There is nowhere quite like Lijiang after dark.", img: "/images/lijiang-old-town.webp" },
+    "ancient_chill_low": { name: "Kunming", slug: "kunming", why: "The Spring City is the easiest entry point to Yunnan. Pleasant year-round, with Green Lake Park for people-watching, flower markets, and the surreal Stone Forest a day trip away. A soft landing that rewards the relaxed explorer.", img: "/images/kunming-city.webp" },
+    "ancient_culture_low": { name: "Dali", slug: "dali", why: "Bai culture lives in Dali's three-tiered courtyard homes, tie-dye workshops, and the Three Pagodas that have stood for 1,200 years. Ride a bike through lakeside villages and watch artisans at work.", img: "/images/dali-erhai.webp" },
+    "tropical_chill_low": { name: "Xishuangbanna", slug: "xishuangbanna", why: "China's slice of Southeast Asia. Tropical rainforest, Dai temples, Mekong night markets, and wild elephants. It feels more like Thailand than China. Warm year-round and impossible to rush.", img: "/images/xishuangbanna-rainforest.webp" },
+    "tropical_culture_low": { name: "Xishuangbanna", slug: "xishuangbanna", why: "Dai minority culture, Theravada Buddhist temples, the Water Splashing Festival, and spicy-sour cuisine that will reset everything you thought you knew about Chinese food. A cultural immersion in China's deep south.", img: "/images/xishuangbanna-rainforest.webp" },
+    "terraces_photo_mid": { name: "Yuanyang", slug: "yuanyang", why: "The Hani people carved these terraces into mountainsides over 1,300 years. At sunrise, water-filled terraces reflect the sky like a thousand mirrors stacked across the horizon. The most photogenic landscape in China.", img: "/images/yuanyang-terraces.webp" },
+    "terraces_culture_mid": { name: "Yuanyang", slug: "yuanyang", why: "Stay in a Hani mushroom-shaped house, wake at 5 AM for the sunrise over the terraces, visit the Jingkou market where Hani and Yi villagers trade in traditional dress. The terraces are the backdrop to a living culture.", img: "/images/yuanyang-terraces.webp" },
+  };
+
+  function showResult(match) {
+    var r = results[match] || results["ancient_chill_low"]; // fallback
+    document.querySelectorAll(".matcher-step").forEach(function(el){ el.classList.add("hidden"); });
+    var rc = document.getElementById("result-content");
+    rc.innerHTML = '<div class="rounded-xl overflow-hidden mb-6"><img src="' + r.img + '" alt="' + r.name + '" class="w-full aspect-[16/9] object-cover" /></div>' +
+      '<div class="text-center"><div class="text-sm text-brand-600 font-semibold mb-1">Your match</div>' +
+      '<h3 class="text-2xl font-bold text-gray-900 mb-1">' + r.name + '</h3>' +
+      '<p class="text-gray-500 leading-relaxed mb-6 max-w-lg mx-auto">' + r.why + '</p>' +
+      '<a href="/' + r.slug + '" class="inline-flex px-6 py-3 bg-brand-600 text-white rounded-full font-semibold text-sm hover:bg-brand-700 transition-colors">Explore ' + r.name + ' Guide</a></div>';
+    document.getElementById("result").classList.remove("hidden");
+  }
+
+  function findMatch() {
+    var key = answers.q1 + "_" + answers.q2 + "_" + answers.q3;
+    if (results[key]) return key;
+    var partial = answers.q1 + "_" + answers.q2;
+    var found = Object.keys(results).find(function(k){ return k.startsWith(partial); });
+    return found || "ancient_chill_low";
+  }
+
+  function selectBtn(el, qId) {
+    el.parentElement.querySelectorAll(".matcher-btn").forEach(function(b){ b.classList.remove("border-brand-500","bg-brand-50"); });
+    el.classList.add("border-brand-500","bg-brand-50");
+    answers[qId] = el.getAttribute("data-value");
+    setTimeout(function(){
+      document.getElementById(qId).classList.add("hidden");
+      if (qId === "q1") document.getElementById("q2").classList.remove("hidden");
+      else if (qId === "q2") document.getElementById("q3").classList.remove("hidden");
+      else if (qId === "q3") showResult(findMatch());
+    }, 200);
+  }
+
+  document.querySelectorAll(".matcher-btn").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      if (btn.closest("#q1")) selectBtn(btn, "q1");
+      else if (btn.closest("#q2")) selectBtn(btn, "q2");
+      else if (btn.closest("#q3")) selectBtn(btn, "q3");
+    });
+  });
+
+  document.getElementById("restart").addEventListener("click", function(){
+    answers = {};
+    document.querySelectorAll(".matcher-btn").forEach(function(b){ b.classList.remove("border-brand-500","bg-brand-50"); });
+    document.querySelectorAll(".matcher-step").forEach(function(el){ el.classList.add("hidden"); });
+    document.getElementById("q1").classList.remove("hidden");
+  });
+})();
+</script>
+<style>
+  .matcher-btn { cursor: pointer; }
+  .matcher-btn.border-brand-500 { border-color: #26753d !important; }
+  .matcher-btn.bg-brand-50 { background-color: #f0f7f1 !important; }
+</style>

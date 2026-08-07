@@ -1,0 +1,122 @@
+---
+import "../styles/global.css";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import HeroSection from "../components/HeroSection.astro";
+import QuickFacts from "../components/QuickFacts.astro";
+import WhyYunnan from "../components/WhyYunnan.astro";
+import WhoIsThisFor from "../components/WhoIsThisFor.astro";
+import GettingStarted from "../components/GettingStarted.astro";
+import DestinationMatcher from "../components/DestinationMatcher.astro";
+import DestinationsSection from "../components/DestinationsSection.astro";
+import ItinerariesSection from "../components/ItinerariesSection.astro";
+import TransportSection from "../components/TransportSection.astro";
+import MapSection from "../components/MapSection.astro";
+import BestTimeSection from "../components/BestTimeSection.astro";
+import AltitudeSection from "../components/AltitudeSection.astro";
+import PackingGuide from "../components/PackingGuide.astro";
+import TravelEssentials from "../components/TravelEssentials.astro";
+import SurvivalKit from "../components/SurvivalKit.astro";
+import AccommodationSection from "../components/AccommodationSection.astro";
+import FoodSection from "../components/FoodSection.astro";
+import BudgetGuide from "../components/BudgetGuide.astro";
+import CultureSection from "../components/CultureSection.astro";
+import GallerySection from "../components/GallerySection.astro";
+import PhotographyTips from "../components/PhotographyTips.astro";
+import SafetySection from "../components/SafetySection.astro";
+import TravelerStories from "../components/TravelerStories.astro";
+import FAQSection from "../components/FAQSection.astro";
+import CTASection from "../components/CTASection.astro";
+import Checklist from "../components/Checklist.astro";
+
+const faqItems = [
+  { q: "What is Yunnan province famous for?", a: "Yunnan is famous for its dramatic landscapes (from Himalayan foothills to tropical rainforests), ancient towns like Lijiang and Dali, 25 ethnic minority cultures, legendary cuisine including Across the Bridge Noodles and wild mushroom hotpot, and year-round spring-like climate." },
+  { q: "Is Yunnan province safe for tourists?", a: "Yes, Yunnan is one of China's safest regions for travelers. Major tourist areas like Kunming, Dali, and Lijiang are well-policed and tourist-friendly. Standard travel precautions apply in remote areas." },
+  { q: "What is the best time to visit Yunnan?", a: "The best time depends on your destination. For Kunming, Dali, and Lijiang, March to May and September to November offer pleasant weather. Yuanyang terraces are best November to March. Xishuangbanna is best November to April during the dry season." },
+  { q: "How many days do you need in Yunnan?", a: "A minimum of 5 days covers Kunming, Dali, and Lijiang. For a more comprehensive trip including Shangri-La and Tiger Leaping Gorge, plan 8-10 days. A full loop including Xishuangbanna and Yuanyang requires 14+ days." },
+  { q: "Can you visit Yunnan without speaking Chinese?", a: "Yes. In major cities like Kunming, Dali, and Lijiang, guesthouse owners often speak some English. Translation apps (Google Translate with offline download, Pleco) are effective. In remote areas, patience and gestures go a long way." },
+  { q: "How to get from Kunming to Lijiang?", a: "High-speed trains run from Kunming to Lijiang, taking approximately 3.5 hours and costing CNY 220. Flights take about 1 hour and cost CNY 500-900. Many travelers prefer to break the journey in Dali (2h from Kunming by train)." },
+  { q: "Is Yunnan expensive to travel?", a: "Yunnan is affordable compared to major Chinese cities. Budget travelers can manage on CNY 150-300 per day including guesthouse, local food, and bus transport. Mid-range travelers should budget CNY 400-800 per day." },
+];
+
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Yunnan Province Travel Guide 2026: Best Places, Itineraries and Insider Tips",
+      "description": "Plan your trip to Yunnan Province, China. From Lijiang's ancient streets to Shangri-La's monasteries, discover destinations, itineraries, food, packing tips, and practical travel advice for English-speaking visitors.",
+      "author": { "@type": "Person", "name": "Yunnan Guide Team" },
+      "datePublished": "2026-04-01",
+      "dateModified": "2026-08-07",
+      "image": "/images/hero-yunnan.webp",
+    },
+    {
+      "@type": "TouristDestination",
+      "name": "Yunnan Province",
+      "description": "Comprehensive travel guide to Yunnan Province, China. Discover ancient towns, snow mountains, rice terraces, tropical rainforests and 25 ethnic cultures.",
+      "touristType": ["Nature Lovers", "Cultural Travelers", "Adventure Seekers", "Photographers"],
+      "containedInPlace": { "@type": "Country", "name": "China" },
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://yunnan-province.com/" },
+      ],
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": faqItems.map((f) => ({
+        "@type": "Question",
+        "name": f.q,
+        "acceptedAnswer": { "@type": "Answer", "text": f.a },
+      })),
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="Yunnan Province Travel Guide 2026 | Plan Your Trip"
+  description="Plan your Yunnan trip: destinations, itineraries, food, weather and practical tips for Kunming, Dali, Lijiang, Shangri-La and more."
+  ogImage="/images/hero-yunnan.webp"
+  ogType="website"
+>
+  <slot name="head">
+    <script type="application/ld+json" set:html={JSON.stringify(pageSchema)}></script>
+  </slot>
+
+  <Nav />
+  <HeroSection />
+  <QuickFacts />
+  <WhyYunnan />
+  <WhoIsThisFor />
+  <DestinationMatcher />
+  <GettingStarted />
+  <DestinationsSection />
+  <ItinerariesSection />
+  <TransportSection />
+  <MapSection />
+  <BestTimeSection />
+  <AltitudeSection />
+  <PackingGuide />
+  <TravelEssentials />
+  <SurvivalKit />
+  <AccommodationSection />
+  <FoodSection />
+  <BudgetGuide />
+  <CultureSection />
+  <GallerySection />
+  <PhotographyTips />
+  <SafetySection />
+  <TravelerStories />
+  <FAQSection />
+  <CTASection />
+  <Checklist />
+  <Footer />
+
+  <div class="gallery-lightbox">
+    <img src="" alt="Gallery full view" />
+  </div>
+</BaseLayout>

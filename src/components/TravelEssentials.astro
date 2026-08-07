@@ -1,0 +1,23 @@
+---
+---
+<section id="essentials" class="py-20 md:py-28 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-gray-900 pb-1">Travel essentials</h2>
+      <p class="text-gray-500 text-lg mt-4 leading-relaxed">The practical information you actually need, not the tourist board fluff.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {[
+        { title: "Visas & Entry", body: "Most visitors need a Chinese tourist visa (L visa) before arrival. 144-hour transit visas are available in Kunming for eligible nationalities. The China-Laos Railway now allows overland entry from Luang Prabang and Vientiane." },
+        { title: "Money & Payment", body: "Alipay and WeChat Pay now accept foreign Visa/Mastercard. Still, bring RMB cash for rural areas and small vendors. ATMs at ICBC accept foreign cards in Kunming, Dali, and Lijiang." },
+        { title: "Internet & VPN", body: "Install a VPN before arriving. Get a Chinese SIM card at Kunming airport. Google, Instagram, WhatsApp, and Gmail are blocked without VPN. Download offline maps and translation packs before your trip." },
+        { title: "Health & Insurance", body: "Travel insurance covering high-altitude activities is recommended. Pharmacies in cities are well-stocked. In Shangri-La, altitude sickness medication is available. Tap water is not drinkable anywhere in Yunnan." },
+      ].map((item) => (
+        <div class="rounded-2xl border border-gray-200 bg-white p-6 hover:border-gray-300 transition-colors">
+          <h3 class="font-bold text-gray-900 mb-3">{item.title}</h3>
+          <p class="text-sm text-gray-500 leading-relaxed">{item.body}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

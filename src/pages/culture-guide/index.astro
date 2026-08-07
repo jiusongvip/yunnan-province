@@ -1,0 +1,95 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Nav from "../../components/Nav.astro";
+import Footer from "../../components/Footer.astro";
+
+const ethnicGroups = [
+  { group: "Bai", population: "1.9 million", region: "Dali", desc: "Known for their white clothing and elegant architecture. The Bai people built Dali's iconic three-tiered courtyard homes (sanfang yizhaobi) and created the famous Three-Course Tea ceremony. Their tie-dye textiles are prized souvenirs." },
+  { group: "Dai", population: "1.2 million", region: "Xishuangbanna", desc: "Related to Thai and Lao peoples, the Dai are Theravada Buddhists who celebrate the Water Splashing Festival each April. Their stilted bamboo houses, temple architecture, and spicy-sour cuisine give Xishuangbanna its Southeast Asian character." },
+  { group: "Naxi", population: "320,000", region: "Lijiang", desc: "Custodians of the last living pictographic writing system (Dongba script). Naxi music, performed on traditional instruments, has been recognized by UNESCO. Their matriarchal traditions and shamanistic Dongba religion make them one of China's most studied minorities." },
+  { group: "Tibetan", population: "140,000", region: "Shangri-La (Diqing)", desc: "Yunnan's Tibetan population lives in the high-altitude northwest. Songzanlin Monastery is the largest Tibetan Buddhist monastery in Yunnan. Yak herding, butter tea, and prayer flags define daily life against a backdrop of snow-capped peaks." },
+  { group: "Hani", population: "1.6 million", region: "Yuanyang, Honghe", desc: "Over 1,300 years, the Hani people carved the Yuanyang rice terraces into mountainsides — now a UNESCO World Heritage site. Their mushroom-shaped houses, terraced farming techniques, and the Kuzhazha festival are central to their identity." },
+  { group: "Yi", population: "5 million", region: "Throughout Yunnan", desc: "Yunnan's largest ethnic minority. The Yi are known for their Torch Festival (held in the 6th lunar month), intricate silver jewelry, and the Axi Dance Under the Moon — a UNESCO Intangible Cultural Heritage." },
+];
+
+const festivals = [
+  { name: "Water Splashing Festival", date: "April 13-15", group: "Dai", desc: "The Dai New Year. Three days of water fights, dragon boat races, and releasing lanterns on the Mekong River. The most famous celebration is in Jinghong, Xishuangbanna." },
+  { name: "Torch Festival", date: "6th lunar month (usually July/August)", group: "Yi, Bai, Naxi", desc: "Huge bonfires, torch parades, and traditional dancing. Celebrated across Yunnan, the biggest events are in Dali Old Town and the Yi communities of Chuxiong." },
+  { name: "Three-Course Tea Ceremony", date: "Year-round", group: "Bai", desc: "A Bai tradition: the first cup is bitter (life's struggles), the second sweet (rewards), the third has an aftertaste (reflection). Performed at guesthouses and cultural centers in Dali." },
+  { name: "Sanduo Festival", date: "8th day of 2nd lunar month (usually March)", group: "Naxi", desc: "The Naxi people's biggest festival, honoring their protector god Sanduo. Ceremonies at Beiyue Temple near Jade Dragon Snow Mountain." },
+  { name: "Kuzhazha Festival", date: "June (lunar calendar)", group: "Hani", desc: "A Hani harvest festival with swing ceremonies (giant wooden swings used in rituals), buffalo fights, and feasting in Yuanyang villages." },
+];
+
+const schema = {
+  "@type": "Article",
+  "headline": "Yunnan Culture Guide: 25 Ethnic Groups, Festivals, and Traditions",
+  "description": "Yunnan is home to 25 of China's 56 recognized ethnic groups. Learn about the Bai, Dai, Naxi, Tibetan, Hani, and Yi peoples, their festivals, and cultural traditions.",
+  "author": { "@type": "Person", "name": "Yunnan Guide Team" },
+  "datePublished": "2026-04-01",
+  "dateModified": "2026-08-07",
+};
+---
+
+<BaseLayout
+  title="Yunnan Culture Guide: Ethnic Groups, Festivals & Traditions"
+  description="Guide to Yunnan's 25 ethnic cultures: Bai, Dai, Naxi, Tibetan, Hani and Yi peoples, their festivals, traditions and cuisine."
+  ogType="article"
+  ogImage="/images/og-culture.webp"
+>
+  <slot name="head">
+    <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
+  </slot>
+
+  <Nav />
+
+  <main class="min-h-screen">
+    <section class="pt-32 pb-16 bg-gradient-to-b from-brand-50 to-white">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">Yunnan Culture & Ethnic Groups</h1>
+        <p class="text-lg text-gray-600">Home to 25 of China's 56 recognized ethnic groups — each with its own language, dress, festivals, and cuisine.</p>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 prose prose-lg">
+        <p>Yunnan is China's most ethnically diverse province. While Han Chinese make up the majority, 25 official ethnic minority groups call Yunnan home — more than any other province. Many have lived here for thousands of years, preserving traditions that have vanished elsewhere.</p>
+        <p>This cultural richness is one of Yunnan's greatest draws. You will hear Naxi music in Lijiang's old town, see Tibetan prayer flags over Shangri-La, taste Dai cuisine in Xishuangbanna's night markets, and watch Bai tie-dye artisans at work in Dali's villages.</p>
+      </div>
+    </section>
+
+    <section class="pb-16">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-8">Major Ethnic Groups</h2>
+        <div class="space-y-6">
+          {ethnicGroups.map(g => (
+            <div class="bg-white rounded-xl border border-gray-200 p-6 hover:shadow-md transition-shadow">
+              <div class="flex items-start justify-between mb-2">
+                <h3 class="font-bold text-gray-900 text-lg">{g.group}</h3>
+                <span class="text-xs font-semibold text-brand-600 bg-brand-50 px-3 py-1 rounded-full whitespace-nowrap ml-3">{g.region}</span>
+              </div>
+              <p class="text-xs text-gray-400 mb-2">Population: {g.population} in Yunnan</p>
+              <p class="text-gray-600 text-sm leading-relaxed">{g.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-8">Festivals & Events</h2>
+        <div class="space-y-4">
+          {festivals.map(f => (
+            <div class="bg-white rounded-xl border border-gray-200 p-5">
+              <h3 class="font-bold text-gray-900">{f.name}</h3>
+              <p class="text-xs text-brand-600 font-medium mt-0.5">{f.date} · {f.group}</p>
+              <p class="text-gray-600 text-sm mt-2 leading-relaxed">{f.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

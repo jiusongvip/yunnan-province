@@ -1,0 +1,25 @@
+---
+---
+<section id="packing" class="py-20 md:py-28 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-gray-900 pb-1">What to pack for Yunnan</h2>
+      <p class="text-gray-500 text-lg mt-4 leading-relaxed">You will cross four climate zones in one trip. The altitude, not the latitude, decides what you wear.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {[
+        { zone: "Spring City", where: "Kunming", alt: "1,890m", items: "Light jacket, long pants, comfortable walking shoes, umbrella for afternoon showers", temp: "15-24 C year-round", color: "bg-green-50 text-green-700 border-green-200" },
+        { zone: "Highland Comfort", where: "Dali, Lijiang", alt: "2,000-2,400m", items: "Layers, fleece, scarf, sunscreen, sunglasses (UV is strong at altitude)", temp: "Day 18 C / Night 5 C", color: "bg-blue-50 text-blue-700 border-blue-200" },
+        { zone: "Alpine Zone", where: "Shangri-La", alt: "3,400m+", items: "Down jacket, thermal base layer, waterproof shell, gloves, SPF50+ sunscreen", temp: "Day 15 C / Night -5 C", color: "bg-purple-50 text-purple-700 border-purple-200" },
+        { zone: "Tropical South", where: "Xishuangbanna", alt: "500m", items: "Shorts, t-shirts, sandals, mosquito repellent, rain jacket", temp: "18-35 C, humid", color: "bg-orange-50 text-orange-700 border-orange-200" },
+      ].map((zone) => (
+        <div class={`rounded-2xl border p-6 ${zone.color}`}>
+          <div class="text-xs font-semibold uppercase tracking-wider mb-1">{zone.zone}</div>
+          <div class="font-bold text-lg mb-1">{zone.where}</div>
+          <div class="text-sm opacity-70 mb-4">{zone.alt} | {zone.temp}</div>
+          <p class="text-sm leading-relaxed opacity-90">{zone.items}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

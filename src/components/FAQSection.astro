@@ -1,0 +1,40 @@
+---
+const faqs = [
+  { q: "What is Yunnan province famous for?", a: "Yunnan is famous for its dramatic landscapes (from Himalayan foothills to tropical rainforests), ancient towns like Lijiang and Dali, 25 ethnic minority cultures, legendary cuisine including Across the Bridge Noodles and wild mushroom hotpot, and year-round spring-like climate." },
+  { q: "Is Yunnan province safe for tourists?", a: "Yes, Yunnan is one of China's safest regions for travelers, including solo female travelers. Major tourist areas like Kunming, Dali, and Lijiang are well-policed and tourist-friendly. Standard travel precautions apply in remote rural areas." },
+  { q: "What is the best time to visit Yunnan?", a: "The best time depends on your destination. For Kunming, Dali, and Lijiang, March to May and September to November offer pleasant weather. For Yuanyang rice terraces, November to March is best. Xishuangbanna is best visited November to April during the dry season." },
+  { q: "How many days do you need in Yunnan?", a: "A minimum of 5 days covers Kunming, Dali, and Lijiang. For a more comprehensive trip including Shangri-La and Tiger Leaping Gorge, plan 8-10 days. A full loop including Xishuangbanna and Yuanyang requires 14+ days." },
+  { q: "Can you visit Yunnan without speaking Chinese?", a: "Yes, it is possible. In major cities like Kunming, Dali, and Lijiang, guesthouse owners often speak some English, and translation apps (Google Translate with offline download, Pleco) are effective. In remote areas, patience and gestures go a long way." },
+  { q: "What is the altitude in Yunnan?", a: "Altitude varies dramatically. Kunming sits at 1,890m (6,200ft), Dali at 2,000m, Lijiang at 2,400m, and Shangri-La at 3,400m (11,150ft) where altitude sickness is possible. Xishuangbanna is only 500m. Plan a gradual ascent." },
+  { q: "How to get from Kunming to Lijiang?", a: "High-speed trains run from Kunming to Lijiang, taking approximately 3.5 hours and costing CNY 220. Alternatively, flights take about 1 hour and cost CNY 500-900. Many travelers prefer to break the journey in Dali (2h from Kunming by train)." },
+  { q: "Is Yunnan expensive to travel?", a: "Yunnan is relatively affordable compared to major Chinese cities. Budget travelers can manage on CNY 150-300 per day including guesthouse, local food, and bus transport. Mid-range travelers should budget CNY 400-800 per day." },
+  { q: "How to get from Kunming to Dali?", a: "High-speed trains from Kunming to Dali take 2 hours and cost CNY 128-230. Trains depart from Kunming South Station. Check your ticket carefully. Buses take 4.5 hours and cost CNY 110 from Kunming West Bus Station." },
+  { q: "Can I use credit cards in Yunnan?", a: "Major hotels and upscale restaurants in Kunming accept Visa and Mastercard. In Lijiang, Dali, and smaller cities, cash and mobile payment dominate. Rural areas and street vendors are cash-only. Always carry RMB as backup." },
+  { q: "Do I need to tip in Yunnan?", a: "No. Tipping is not expected anywhere in China, including Yunnan. Restaurants, taxis, tour guides, and hotel staff do not expect tips. The exception is private guides on multi-day trips where CNY 50-100 per day is appreciated but not required." },
+  { q: "What is the water situation in Yunnan?", a: "Tap water is not drinkable anywhere in Yunnan. Bottled water is widely available and cheap (CNY 2-5). Most hotels provide complimentary bottles or a kettle. In remote areas, buy water before arriving. Avoid ice at street stalls unless you see it is from purified water." },
+  { q: "Can I rent a car and drive in Yunnan?", a: "Foreigners cannot legally drive in China without a Chinese driver's license, which requires passing a test. International driving permits are not recognized. The alternative is hiring a car with a driver (CNY 500-800 per day, arranged through your guesthouse)." },
+  { q: "What are the best souvenirs from Yunnan?", a: "Pu'er tea (from a tea market, not a tourist shop), Bai tie-dye textiles (from Zhoucheng village near Dali), Naxi Dongba script calligraphy, jade and silver jewelry, Yunnan coffee, wild dried mushrooms, and wood carvings from Dali." },
+  { q: "Is the food in Yunnan spicy?", a: "It depends on the region. Dai food (Xishuangbanna) is sour-spicy. Sichuan-influenced dishes in Kunming can be hot. Bai food (Dali) is mild. Tibetan food (Shangri-La) is not spicy. Say 'bu yao la' (no spicy) and it will be respected." },
+];
+---
+<section id="faq" class="py-20 md:py-28 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-gray-900 pb-1">Frequently asked questions</h2>
+    </div>
+    <div class="max-w-3xl divide-y divide-gray-200">
+      {faqs.map((item) => (
+        <div class="faq-item">
+          <button class="py-5 flex items-center justify-between w-full text-left">
+            <span class="text-base font-medium text-gray-900 pr-8">{item.q}</span>
+            <svg class="w-5 h-5 text-gray-400 flex-shrink-0 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer"><p class="pb-5 text-gray-500 leading-relaxed">{item.a}</p></div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+<style>
+  .faq-item.open svg { transform: rotate(180deg); }
+</style>

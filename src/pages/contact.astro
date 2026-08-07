@@ -1,0 +1,52 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<BaseLayout
+  title="Contact Us - Questions & Feedback"
+  description="Get in touch about your Yunnan trip. Ask questions, report outdated info, or share travel suggestions with the Yunnan Province Travel Guide team."
+  ogType="article"
+>
+  <Nav />
+
+  <main class="min-h-screen">
+    <section class="pt-32 pb-16 bg-gradient-to-b from-brand-50 to-white">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">Contact Us</h1>
+        <p class="text-lg text-gray-600">Questions, corrections, or suggestions — we'd love to hear from you.</p>
+      </div>
+    </section>
+
+    <section class="py-16">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 prose prose-lg">
+        <p>
+          Have a question about your upcoming Yunnan trip? Found something out of date?
+          Just want to share your experience? Drop us a message.
+        </p>
+
+        <h2>Email Us</h2>
+        <p>
+          <a href="mailto:hello@yunnan-province.com" class="text-brand-600 font-semibold">hello@yunnan-province.com</a>
+        </p>
+        <p class="text-gray-500 text-sm">We typically respond within 48 hours.</p>
+
+        <h2>What to Include</h2>
+        <ul>
+          <li>If reporting an error, include the specific page URL and section.</li>
+          <li>If asking a travel question, tell us your planned route and time frame.</li>
+          <li>If suggesting a destination or topic, we'd love to hear why.</li>
+        </ul>
+
+        <h2>Press & Partnerships</h2>
+        <p>
+          For media inquiries, collaboration proposals, or licensing requests,
+          please email us with "Press" in the subject line.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

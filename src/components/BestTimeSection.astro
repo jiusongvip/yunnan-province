@@ -1,0 +1,35 @@
+---
+const months = [
+  { name: "Jan", temp: "8-16C", tip: "Sunny & dry, good for Yuanyang terraces", rating: "good" },
+  { name: "Feb", temp: "9-18C", tip: "Spring Festival crowds, book ahead", rating: "peak" },
+  { name: "Mar", temp: "12-22C", tip: "Blooming season, ideal for Dali", rating: "best" },
+  { name: "Apr", temp: "15-25C", tip: "Perfect weather, avoid Qingming holiday", rating: "best" },
+  { name: "May", temp: "17-27C", tip: "Pre-rainy season, excellent hiking", rating: "best" },
+  { name: "Jun", temp: "18-28C", tip: "Rainy season begins, fewer tourists", rating: "good" },
+  { name: "Jul", temp: "18-28C", tip: "Peak rain, lush landscapes, mushroom season", rating: "ok" },
+  { name: "Aug", temp: "18-28C", tip: "Still rainy, wild mushroom markets peak", rating: "ok" },
+  { name: "Sep", temp: "16-26C", tip: "Rain tapers, golden rice terraces", rating: "best" },
+  { name: "Oct", temp: "13-22C", tip: "Golden month for photography", rating: "best" },
+  { name: "Nov", temp: "9-18C", tip: "Clear skies, Yuanyang terraces fill with water", rating: "best" },
+  { name: "Dec", temp: "6-16C", tip: "Cold in highlands, snow on Jade Dragon Mountain", rating: "good" },
+];
+---
+<section id="best-time" class="py-20 md:py-28 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-gray-900 pb-1">When to visit Yunnan</h2>
+      <p class="text-gray-500 text-lg mt-4 leading-relaxed">There is no single best time. Different destinations peak in different months. Here is the breakdown.</p>
+    </div>
+    <div class="overflow-x-auto pb-4">
+      <div class="flex gap-3 no-scrollbar min-w-max">
+        {months.map((m) => (
+          <div class={`flex-shrink-0 w-36 rounded-2xl p-4 border ${m.rating === "best" ? "border-brand-300 bg-brand-50" : m.rating === "peak" ? "border-amber-300 bg-amber-50" : m.rating === "good" ? "border-green-200 bg-green-50" : "border-gray-200 bg-white"}`}>
+            <div class="text-xs font-semibold uppercase tracking-wider text-gray-400">{m.name}</div>
+            <div class="text-lg font-bold text-gray-900 mt-1">{m.temp}</div>
+            <p class="text-xs text-gray-500 mt-2 leading-relaxed">{m.tip}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

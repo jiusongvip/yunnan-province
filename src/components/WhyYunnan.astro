@@ -1,0 +1,27 @@
+---
+---
+<section class="py-20 md:py-28 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-gray-900 pb-1">Why Yunnan should be your next trip to China</h2>
+      <p class="text-gray-500 text-lg mt-4 leading-relaxed">Most first-time visitors to China book Beijing, Shanghai, and Xi'an. Those who venture to Yunnan come back saying it was the highlight of their entire trip.</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+      {[
+        { title: "Dramatic Landscapes", desc: "From Himalayan foothills at 5,500m to tropical jungles at 500m, all within a single province." },
+        { title: "Ancient Towns", desc: "Lijiang, Dali, and Shaxi preserve centuries-old cobblestone streets, wooden bridges, and Naxi culture." },
+        { title: "25 Ethnic Cultures", desc: "Bai, Naxi, Tibetan, Dai, Hani, Yi and more. Each with distinct language, clothing, and cuisine." },
+        { title: "Legendary Cuisine", desc: "Across the Bridge Noodles, wild mushroom hotpot, steam pot chicken, and Pu'er tea from the oldest tea mountains on Earth." },
+        { title: "Spring-Like Climate", desc: "Kunming is the 'Spring City'. Year-round mild temperatures across the province." },
+      ].map((item) => (
+        <div class="group">
+          <div class="w-12 h-12 rounded-xl bg-brand-50 text-brand-600 flex items-center justify-center mb-4 group-hover:bg-brand-100 transition-colors">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-2">{item.title}</h3>
+          <p class="text-sm text-gray-500 leading-relaxed">{item.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

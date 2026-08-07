@@ -1,0 +1,40 @@
+---
+---
+<section class="py-20 md:py-28 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mx-auto text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-gray-900 pb-1">Who this guide is for</h2>
+      <p class="text-gray-500 text-lg mt-4 leading-relaxed">Three types of travelers. One province. Every practical detail you need.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+      {[
+        {
+          title: "The First-Time China Visitor",
+          scenario: "You have been to Southeast Asia but never China. You heard Yunnan is the soft landing you need — less intense than Beijing, more real than Shanghai.",
+          weHelp: "We walk you through the visa, the VPN, the language barrier, and how to get from Kunming airport to your first guesthouse without a panic attack."
+        },
+        {
+          title: "The Southeast Asia Backpacker",
+          scenario: "You are in Chiang Mai or Luang Prabang and wondering if you can just take a train into China. The answer is yes, and we show you exactly how.",
+          weHelp: "Border crossings, the China-Laos Railway, SIM cards, and how to keep using your backpacker budget in Chinese territory."
+        },
+        {
+          title: "The China Regular, Going Deeper",
+          scenario: "You have done Beijing, Shanghai, and Xi'an. Now you want the China that most tourists never see. The one with snow mountains, tropical jungles, and 25 cultures in a single province.",
+          weHelp: "We skip the basics you already know. Straight to the best routes, the photo spots, the altitude planning, and the seasonal secrets."
+        },
+      ].map((persona) => (
+        <div class="rounded-2xl border border-gray-200 p-8 hover:border-brand-200 hover:shadow-sm transition-all">
+          <div class="w-12 h-12 rounded-xl bg-brand-50 text-brand-600 flex items-center justify-center mb-5 text-2xl font-bold">
+            {persona.title === "The First-Time China Visitor" ? "1" : persona.title === "The Southeast Asia Backpacker" ? "2" : "3"}
+          </div>
+          <div class="font-bold text-gray-900 mb-3">{persona.title}</div>
+          <p class="text-sm text-gray-500 leading-relaxed mb-4">{persona.scenario}</p>
+          <div class="text-xs text-brand-700 bg-brand-50 rounded-lg p-3 leading-relaxed">
+            How we help: {persona.weHelp}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,68 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+
+const faqs = [
+  { q: "Is Yunnan safe for solo travelers?", a: "Yes. Yunnan is one of China's safest provinces for travelers. Violent crime is extremely rare. The main challenges are practical: language barriers, altitude sickness at higher elevations, and occasional stomach issues from unfamiliar food. Solo female travelers report feeling comfortable throughout the province." },
+  { q: "Do I need a visa to visit Yunnan?", a: "Most visitors to China need a tourist (L) visa. Check with your local Chinese embassy or consulate. Citizens of certain countries can use the 144-hour transit visa for Kunming. Yunnan is not part of any special visa-free zone — you need a full China visa." },
+  { q: "What's the best time to visit Yunnan?", a: "Spring (March-May) and autumn (September-November) offer the best weather across most of the province. Winter is ideal for Xishuangbanna (tropical, dry season) and Yuanyang (water-filled terraces). Summer can be rainy in the northwest but is the greenest season for hiking." },
+  { q: "How do I get around Yunnan?", a: "The high-speed train network connects Kunming, Dali, and Lijiang efficiently. For Shangri-La, Xishuangbanna, and remote areas, flights from Kunming are quick and affordable. Long-distance buses serve smaller destinations. Private drivers are widely available and reasonably priced." },
+  { q: "Will I experience altitude sickness?", a: "Possibly. Kunming (1,890m) is generally fine. Lijiang (2,400m) causes mild symptoms for some. Shangri-La (3,400m) requires 1-2 days of acclimatization. Drink plenty of water, avoid alcohol on arrival, and ascend gradually. Descend immediately if symptoms worsen." },
+  { q: "Can I use credit cards in Yunnan?", a: "Rarely. China is dominated by mobile payment (WeChat Pay, Alipay). Foreign visitors are advised to set up Alipay Tour Pass or WeChat Pay before arrival. Cash (CNY) is accepted everywhere. Major hotels and international chains may accept international cards." },
+  { q: "Do I need a VPN in Yunnan?", a: "Yes. Google, WhatsApp, Instagram, Facebook, and most Western platforms are blocked in China. Install and test a reliable VPN before arriving. Some hotel Wi-Fi networks interfere with VPN connections, so have a backup." },
+  { q: "What languages are spoken in Yunnan?", a: "Mandarin Chinese is the official language. English is spoken at major hotels and some tourist sites, but is rare elsewhere. Yunnan has 25 ethnic minorities, each with their own language. Download a translation app (Baidu Translate or Pleco) before you go." },
+  { q: "Is the food spicy?", a: "Moderately. Yunnan cuisine is less aggressively spicy than Sichuan but more varied. Staples include Across the Bridge Noodles (mild), steamed pot chicken, grilled fish, and wild mushroom hotpot. Dai cuisine in Xishuangbanna leans sour and spicy. Tibetan food in Shangri-La is hearty and mild." },
+  { q: "How much should I budget per day?", a: "Budget travelers can manage CNY 200-400/day (hostels, street food, buses). Mid-range: CNY 500-800/day (comfortable hotels, restaurant meals, train travel). Comfort: CNY 1,000+/day (boutique hotels, private drivers, guided experiences)." },
+  { q: "What should I pack for Yunnan?", a: "Layers are essential. Even in summer, highland destinations can be cool. Pack: comfortable walking shoes, rain jacket, sun protection (UV is strong at altitude), power bank, VPN, passport copies, and any prescription medications. Dress conservatively for monastery visits." },
+  { q: "Are there ATMs in Yunnan?", a: "Yes. ATMs are widely available in cities and tourist towns. Bank of China and ICBC ATMs generally accept international cards. Notify your bank before traveling. Carry backup cash for remote areas." },
+];
+
+const faqSchema = {
+  "@type": "FAQPage",
+  "mainEntity": faqs.map((f, _i) => ({
+    "@type": "Question",
+    "name": f.q,
+    "acceptedAnswer": { "@type": "Answer", "text": f.a },
+  })),
+};
+---
+
+<BaseLayout
+  title="FAQ: Yunnan Travel Questions Answered 2026"
+  description="Frequently asked questions about traveling in Yunnan Province, China. Visas, safety, money, altitude, transport, and practical tips for your trip."
+  ogType="article"
+>
+  <slot name="head">
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)}></script>
+  </slot>
+
+  <Nav />
+
+  <main class="min-h-screen">
+    <section class="pt-32 pb-16 bg-gradient-to-b from-brand-50 to-white">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h1>
+        <p class="text-lg text-gray-600">Everything you need to know before traveling to Yunnan.</p>
+      </div>
+    </section>
+
+    <section class="py-16">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+        {faqs.map((faq, _i) => (
+          <div class="faq-item border border-gray-200 rounded-xl overflow-hidden">
+            <button class="w-full text-left px-6 py-4 flex items-center justify-between bg-white hover:bg-gray-50 transition-colors">
+              <span class="font-semibold text-gray-900 pr-4">{faq.q}</span>
+              <svg class="w-5 h-5 text-gray-400 flex-shrink-0 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer">
+              <div class="px-6 pb-4 text-gray-600 leading-relaxed">{faq.a}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
