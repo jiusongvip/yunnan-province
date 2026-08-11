@@ -5,6 +5,9 @@ dist/
 # dependencies
 node_modules/
 
+# raw source images (keep only processed WebP in public/)
+images-raw/
+
 # environment
 .env
 .env.local

@@ -14,8 +14,10 @@
       <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span> Dali</span>
       <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-purple-500"></span> Lijiang</span>
       <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-red-500"></span> Shangri-La</span>
+      <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-cyan-500"></span> Tiger Leaping Gorge</span>
       <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-yellow-500"></span> Yuanyang</span>
       <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-orange-500"></span> Xishuangbanna</span>
+      <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-teal-500"></span> Stone Forest</span>
     </div>
   </div>
 </section>
@@ -35,8 +37,10 @@
       {n:"Dali",lat:25.61,lng:100.27,s:"/dali",c:"#3b82f6",d:"Ancient town, Erhai Lake"},
       {n:"Lijiang",lat:26.86,lng:100.23,s:"/lijiang",c:"#8b5cf6",d:"UNESCO old town, snow mountain"},
       {n:"Shangri-La",lat:27.83,lng:99.70,s:"/shangri-la",c:"#ef4444",d:"Tibetan monastery, 3400m"},
+      {n:"Tiger Leaping Gorge",lat:27.19,lng:100.11,s:"/tiger-leaping-gorge",c:"#06b6d4",d:"China's best 2-day trek"},
       {n:"Yuanyang",lat:23.12,lng:102.75,s:"/yuanyang",c:"#eab308",d:"1300-yr rice terraces"},
-      {n:"Xishuangbanna",lat:22.01,lng:100.80,s:"/xishuangbanna",c:"#f97316",d:"Tropical rainforest, Mekong"}
+      {n:"Xishuangbanna",lat:22.01,lng:100.80,s:"/xishuangbanna",c:"#f97316",d:"Tropical rainforest, Mekong"},
+      {n:"Stone Forest",lat:24.82,lng:103.33,s:"/stone-forest",c:"#14b8a6",d:"270M-yr karst pillars, Kunming day trip"}
     ].forEach(function(p){
       var m = L.circleMarker([p.lat,p.lng],{radius:10,fillColor:p.c,color:"#fff",weight:2,fillOpacity:0.9}).addTo(map);
       m.bindPopup('<b>'+p.n+'</b><br>'+p.d+'<br><a href="'+p.s+'" style="color:#369150;font-weight:600">View full guide</a>');

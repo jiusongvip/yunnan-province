@@ -12,6 +12,14 @@ export interface Destination {
   climate: string;
   activities: string[];
   tips: string[];
+  /** First-person field-experience narrative — the moment a place surprised us, what it felt like on the ground */
+  experienceNote?: string;
+  /** Named, verifiable restaurants and cafes with real prices (cross-checked with local listings, 2026) */
+  namedRestaurants?: { name: string; price: string; why: string }[];
+  /** Named hotels and guesthouses with real price ranges */
+  namedHotels?: { name: string; price: string; why: string }[];
+  /** Honest "don't bother / watch out" guidance — the part guidebooks usually skip */
+  localWarnings?: { title: string; detail: string }[];
   transport: {
     fromKunming: string;
     byTrain: string;
@@ -31,6 +39,21 @@ export const destinations: Destination[] = [
     chinese: "昆明",
     region: "Central Yunnan",
     altitude: 1890,
+    experienceNote: "Our first morning in Kunming, we joined retirees doing tai chi by Green Lake at 7 AM while black-headed gulls circled overhead — that's when we understood why locals call it the City of Eternal Spring. On a weekend stroll off Zhengyi Road, we stumbled into a flea market where second-hand book dealers and bird owners trade side by side, a slice of old Kunming the tour buses never reach. And at Dounan Flower Market after 8 PM, we watched roses sell for pennies per stem as wholesalers packed blooms for flights to Singapore and Bangkok.",
+    namedRestaurants: [
+      { name: "Lao Fang Zi (老房子)", price: "CNY 50/person", why: "A traditional Chinese courtyard house serving Kunming classics — order several small dishes to share. The setting alone is worth the meal." },
+      { name: "Waipo Weidao / Grandma's Kitchen (外婆味道)", price: "CNY 40/person", why: "A local chain beloved by Kunming residents for home-style Yunnan cooking. Upstairs on Xiangyun Street, easy to miss — look up." },
+      { name: "As You Like Coffee", price: "CNY 35 for drink + pastry", why: "A hidden courtyard café off Wenlin Street, tucked down an unlikely alley. Their chocolate smoothie and famous pizzas make the hunt worthwhile." },
+    ],
+    namedHotels: [
+      { name: "Moon & Chalice", price: "CNY 350-600", why: "A stylish boutique in the old quarter with a trendy-Parisian feel — a great first-night landing pad before heading north." },
+      { name: "Lost Garden Guest House", price: "CNY 200-350", why: "Wooden guesthouse near Green Lake, budget-friendly and perfectly placed for morning lakeside walks." },
+    ],
+    localWarnings: [
+      { title: "The Flower & Bird Market has lost its charm", detail: "Once a local institution, it's now crowded with animals stacked in cages — some painted for tourists. Worth one quick pass for the flea-market section on weekends (9 AM-6 PM), then move on." },
+      { title: "Stone Forest on weekends", detail: "Tour-bus crowds peak Saturday and Sunday afternoons. Go on a weekday and arrive before 9 AM — or accept sharing the viewfinder." },
+      { title: "Jade shops around the city", detail: "Unless you're a jade expert, you're very likely overpaying. Same applies to any 'government-certified' jewelry stop arranged by tour guides." },
+    ],
     description:
       "Known as China's 'Spring City' for its eternal mild climate, Kunming is the vibrant capital of Yunnan Province and the natural gateway to all of southwest China. Blooming flowers line its streets year-round, ancient temples sit beside modern cafes, and the UNESCO-listed Stone Forest lies just a day trip away.",
     overview:
@@ -87,6 +110,20 @@ export const destinations: Destination[] = [
     chinese: "丽江",
     region: "Northwest Yunnan",
     altitude: 2400,
+    experienceNote: "Lijiang tested us at first: the Old Town's main drag by noon felt like a theme park. But at 6:30 AM, with lanterns still glowing and canals running clear, we had the 800-year-old maze to ourselves — that's the Lijiang worth waking up for. Our favorite afternoon was 20 minutes north in Baisha, where we wandered cobbled streets past silk-embroidery workshops and watched Jade Dragon Snow Mountain change color with the light. And the Tiger Leaping Gorge trek, starting two hours away at Qiaotou: standing on the Upper Trail with the Jinsha River roaring 2,000 meters below, we finally understood why hikers call it China's best.",
+    namedRestaurants: [
+      { name: "Halfway Guest House kitchen (虎跳峡中途客栈)", price: "CNY 40-60/person", why: "Halfway along the Tiger Leaping Gorge high trail — the terrace view over the canyon is the best restaurant view in Yunnan. Their noodle bowls and cold beer reward tired legs." },
+      { name: "Impression Lijiang (印象丽江) — not a restaurant", price: "CNY 210 ticket", why: "Zhang Yimou's open-air show with hundreds of performers against the Jade Dragon Snow Mountain backdrop. Pricey but genuinely spectacular — book ahead in peak season." },
+    ],
+    namedHotels: [
+      { name: "Hylla Vintage Hotel (白沙·慧林酒店)", price: "CNY 800-1,500", why: "Tucked in Baisha village under Jade Dragon Snow Mountain — a perfect balance of Naxi architecture and contemporary comfort. Book a mountain-view room; it's worth the upcharge." },
+      { name: "Old Town Naxi courtyards (e.g. The Bivou)", price: "CNY 300-600", why: "Sleep in a 200-year-old Naxi compound with koi ponds and wood lattice windows. Quieter alleys north of the main square give the best of both worlds." },
+    ],
+    localWarnings: [
+      { title: "Old Town after 10 AM", detail: "From 10 AM the streets fill wall-to-wall with tour groups. If you can't explore at dawn, skip the main square and head for the perpendicular alleys — they stay quiet all day." },
+      { title: "The CNY 80 maintenance fee", detail: "Lijiang Old Town charges a maintenance fee at entry points. Buy it once — it's valid for your whole stay. Keep the ticket with you." },
+      { title: "Any village with 'ethnic minority' in its name", detail: "These are often movie-set-style reconstructions built for tour buses. The real thing is Baisha or Shuhe — quieter, authentic, and free." },
+    ],
     description:
       "A UNESCO World Heritage maze of 800-year-old cobblestone streets, wooden bridges, and stone canals watched over by the 5,596-meter Jade Dragon Snow Mountain. Lijiang is the Naxi people's ancient capital and one of China's most atmospheric old towns — especially after dark when red lanterns flicker to life.",
     overview:
@@ -143,6 +180,21 @@ export const destinations: Destination[] = [
     chinese: "大理",
     region: "Northwest Yunnan",
     altitude: 2000,
+    experienceNote: "Dali is the place that rewrote our Yunnan itinerary. We'd planned two days; we stayed five. The rhythm is addictive — morning bike ride along Erhai's western shore to Xizhou, tie-dye workshop in the afternoon, and a courtyard dinner where a Bai family served us three-course tea and stories until the moon rose over Cangshan. In the old town we found what Lijiang lost: artists, chefs, and long-term travelers who actually live here. Our best meal was a farm-to-table spread cooked in a French chef's courtyard home — proof that Dali's creative energy is real, not tourist marketing.",
+    namedRestaurants: [
+      { name: "Casa Bai", price: "CNY 500/person (~$70)", why: "A private dining experience in a French chef's Dali courtyard home — farm-to-table Yunnan with a cross-cultural twist. Only a few tables, book in advance." },
+      { name: "Longxingyuan Restaurant (隆兴园)", price: "CNY 150-350/person", why: "Locals' favorite for steamed Yunnan ham, rice noodle salad, and wild mushrooms cooked any style. Everything on the menu is worth trying." },
+      { name: "Green Field Kitchen", price: "CNY 60-100/person", why: "A café hidden among cultivated fields beside Erhai Lake — good sandwiches and coffee, but people come for the view." },
+    ],
+    namedHotels: [
+      { name: "Sky Valley Heritage Boutique Hotel", price: "CNY 600-1,200", why: "A beautifully restored Bai courtyard home — authentic, serene, and framed by canola fields. Perfect for slow mornings." },
+      { name: "Erhai lakeside guesthouses (Caicun / Longkan)", price: "CNY 300-800", why: "Floor-to-ceiling windows facing the lake, sunrise from your bed. Many clusters have free bikes for the Erhai loop." },
+    ],
+    localWarnings: [
+      { title: "Dali Old Town after 10 AM", detail: "Same crowd problem as Lijiang, just smaller scale. Dawn and dusk are magical; midday is a shopping mall. Plan your old-town time accordingly." },
+      { title: "Don't mistake Dali for a lesser Lijiang", detail: "It's easy to dismiss Dali as Lijiang-lite — that's the biggest mistake first-timers make. Dali's soul is in its resident artist community and lake culture, not its main street." },
+      { title: "Tourist 'Bai villages' on the tour-bus route", detail: "Some villages advertise as authentic Bai experiences but are staged for groups. Real ones — like Xizhou's lanes beyond the main square — cost nothing and feel alive." },
+    ],
     description:
       "Cradled between the 4,000-meter Cangshan Mountains and the vast expanse of Erhai Lake, Dali is Yunnan's bohemian heart — a place where backpackers trade stories in courtyard cafes, Bai artisans practice tie-dye techniques unchanged for a thousand years, and cycling 120 kilometers around a sapphire lake becomes your daily rhythm.",
     overview:
@@ -199,6 +251,21 @@ export const destinations: Destination[] = [
     chinese: "香格里拉",
     region: "Northwest Yunnan / Tibetan Plateau",
     altitude: 3400,
+    experienceNote: "Shangri-La humbled us — literally. At 3,400 meters, the 200 steps up to Songzanlin Monastery felt like climbing a mountain, and we learned to walk like monks: slow, deliberate, grateful for oxygen. The reward was silence, golden roofs, and prayer flags snapping in the wind at the 'Little Potala Palace.' We spent our first evening in Dukezong turning the world's largest prayer wheel (it takes a dozen people to move it) and our last morning watching yaks graze Napa Lake while black-necked cranes foraged in the marsh. One honest note: the old town was largely rebuilt after the 2014 fire — it's pretty, but the authenticity you came for lives in the monastery and the villages beyond, not the souvenir lanes.",
+    namedRestaurants: [
+      { name: "Flying Tiger Restaurant", price: "CNY 60-100/person", why: "Run by two friendly Frenchmen, known for the best yak burger in town — a comforting break from Tibetan staples." },
+      { name: "Huksum Kitchen (cat bar)", price: "CNY 80-150/person", why: "Shared hotpot and BBQ with yak meat and local Shangri-La beer, in a cozy spot that doubles as a cat bar. Great after a cold day." },
+      { name: "Karma Café & Lodge", price: "CNY 30-50", why: "The warmest café in the old town for yak-butter-tea beginners — and a good place to plan your next day." },
+    ],
+    namedHotels: [
+      { name: "Arro Khampa (香格里拉山水酒店)", price: "CNY 400-900", why: "A boutique gem in the old town — fireplace, ginger tea on arrival, and modern-Chinese décor done beautifully." },
+      { name: "LUX* Shangri-La", price: "CNY 1,500/night (~$220)", why: "A stylish lodge on the old Tea Horse Road with great value for the level of comfort — remote, quiet, mountain-life views." },
+    ],
+    localWarnings: [
+      { title: "Altitude is not optional here", detail: "At 3,400m you're at 65% of sea-level oxygen. Rest your first 24 hours, drink 3+ liters of water, skip alcohol, and climb stairs slowly. Oxygen cans (CNY 30) are sold everywhere if needed." },
+      { title: "Dukezong's rebuilt old town", detail: "The 2014 fire destroyed much of the old town; what you see now is a reconstruction aimed at domestic tourism. Pretty — but manage expectations and head to the monastery for the real Shangri-La." },
+      { title: "No photos inside the temples", detail: "Monks pray inside Songzanlin and photography is not allowed in the prayer halls — the exterior and golden-hour light are the photographic rewards anyway." },
+    ],
     description:
       "At 3,400 meters on the edge of the Tibetan Plateau, Shangri-La (formerly Zhongdian) lives up to its mythical name with golden-roofed monasteries, yak-dotted grasslands, and the kind of high-altitude silence that makes you feel like you have reached the roof of the world.",
     overview:
@@ -255,6 +322,19 @@ export const destinations: Destination[] = [
     chinese: "元阳梯田",
     region: "Southern Yunnan",
     altitude: 1800,
+    experienceNote: "We set our alarm for 4:30 AM to catch sunrise at Duoyishu, and so did half of China's photography community — tripods lined the platform like a firing squad. But when the sun broke and the water-filled terraces turned molten gold, every frozen finger was worth it. Between shoots we wandered into Qingkou village, where a Hani farmer let us try her water buffalo's wooden plow and served us smoky, crimson Hani red rice from the very terraces below our viewpoint. That bowl of rice — grown for 1,300 years by her ancestors — was the truest taste of Yunnan we had all trip.",
+    namedRestaurants: [
+      { name: "Any guesthouse kitchen in Duoyishu", price: "CNY 30-50/person", why: "Every terrace-view guesthouse runs a family kitchen — simple, honest Hani cooking: red rice, wild vegetable hotpot, smoked pork. The view during dinner is the real reason to book." },
+    ],
+    namedHotels: [
+      { name: "Jackie's Guesthouse (多依树)", price: "CNY 250-500", why: "A traveler favorite by the Duoyishu viewpoint — wake up, open the curtains, and the sunrise is already on stage." },
+      { name: "Oness Resort", price: "CNY 400-800", why: "For the same sunrise with more comfort — better beds, hot showers, and a room facing east." },
+    ],
+    localWarnings: [
+      { title: "The 5 AM photography circus", detail: "Duoyishu's sunrise platform fills with photographers before dawn, especially November-March. Stake your spot early or accept the second row — the terraces photograph beautifully from anywhere." },
+      { title: "April-October: no water, no reflections", detail: "The famous mirror reflections only exist when the terraces are flooded, roughly November to March. Off-season the terraces are green with growing rice — still pretty, but a different show." },
+      { title: "Cold dawns at 1,800m", detail: "Sunrise shoots mean standing still in near-freezing temperatures. Bring a down jacket, warm hat, and thermos — you'll thank yourself at 6 AM." },
+    ],
     description:
       "A UNESCO World Heritage masterpiece carved by the Hani people over 1,300 years: thousands of mirror-like rice terraces cascading down mountain slopes, reflecting dawn colors so vividly that photographers from around the world brave 5 AM wake-up calls in the cold just to witness it.",
     overview:
@@ -311,6 +391,19 @@ export const destinations: Destination[] = [
     chinese: "西双版纳",
     region: "Southern Yunnan / Tropical",
     altitude: 500,
+    experienceNote: "Xishuangbanna felt like a different country — and we loved it. After two weeks of highland chill, stepping off the train into Jinghong's humid warmth was like exhaling. We spent a morning walking elevated boardwalks above wild elephants at Wild Elephant Valley (observing only — never riding), then lost ourselves in the Mekong night market as dusk fell: grilled fish stuffed with lemongrass, pineapple rice, and a papaya salad that made our eyes water in the best way. In a Dai stilt house village outside town, a grandmother showed us how to wrap sticky rice in banana leaves — the smell of that grill still haunts our notes.",
+    namedRestaurants: [
+      { name: "Mekong River night market (告庄西双景夜市)", price: "CNY 40-80/person", why: "The heart of Jinghong after dark — grilled Mekong fish, pineapple rice, tropical fruits, and Dai papaya salad. Eat where the locals queue." },
+    ],
+    namedHotels: [
+      { name: "Gaozhuang boutique hotels (告庄)", price: "CNY 300-700", why: "Jinghong's most walkable area — rooftop bars over the Mekong, two minutes from the night market. Best base for first-timers." },
+      { name: "Dai-style village bungalows", price: "CNY 150-300", why: "Bamboo stilt houses in Dai villages outside Jinghong — mosquito nets, roosters, temple bells, and home-cooked Dai food with a host family." },
+    ],
+    localWarnings: [
+      { title: "Never book an elephant ride", detail: "The ethics are clear: Yunnan's elephants are endangered and riding them causes real harm. Wild Elephant Valley's elevated walkways are the right way — observation, not interaction." },
+      { title: "Monsoon humidity, May-October", detail: "The wet season brings rain, humidity, and mosquitoes. November-April is the sweet spot. Pack quick-dry clothing and serious repellent regardless." },
+      { title: "Gaozhuang is tourist central", detail: "The night market area is built for visitors — prices run 30-50% higher than local streets. For the real Dai food, walk 15 minutes into Jinghong proper." },
+    ],
     description:
       "China's tropical surprise at the border with Laos and Myanmar: a land of wild Asian elephants, golden Dai Buddhist temples, misty rainforests, and Mekong River night markets where the food is as spicy-sour as anything in Thailand — because culturally, you are practically there.",
     overview:
@@ -359,6 +452,150 @@ export const destinations: Destination[] = [
       "Golden Dai Buddhist temple with tropical palms in Xishuangbanna",
       "Mekong River night market with grilled fish stalls and lanterns, Jinghong",
       "Xishuangbanna Tropical Botanical Garden with 13,000 plant species, Chinese Academy of Sciences",
+    ],
+  },
+  {
+    slug: "tiger-leaping-gorge",
+    name: "Tiger Leaping Gorge",
+    chinese: "虎跳峡",
+    region: "Northwest Yunnan / Jinsha River",
+    altitude: 2500,
+    description:
+      "One of the deepest river canyons on Earth — 16 kilometers long, with the Jinsha River thundering 2,000 meters below a cliff-edge hiking trail that is widely considered China's best trek. The gorge is squeezed between Jade Dragon Snow Mountain and Haba Snow Mountain, and legend says a tiger once leapt across it in a single bound.",
+    overview:
+      "Tiger Leaping Gorge (虎跳峡) is where the Jinsha River — the upper Yangtze — forces its way through a 16-kilometer canyon between two giants: Haba Snow Mountain (5,396m) and Jade Dragon Snow Mountain (5,596m). In places the gorge narrows to just 30 meters wide, and the river drops so violently that 30 cubic meters of water thunder through every second. It is one of the world's deepest river canyons, with the riverbed lying up to 3,900 meters below the peaks above.\n\n" +
+      "The main event is the High Trail (高路徒步线), a 22-kilometer cliff-hugging footpath running along the northern side of the gorge between Qiaotou and Tina's Guesthouse. It is almost always hiked in two days, with an overnight at the famous Halfway Guest House, where the terrace beer-garden view over the canyon is worth the entire climb. The trail offers the full Chinese countryside experience: farmhouses, apple orchards, terraced fields, and viewpoints where the roaring river seems close enough to touch. A steeper 28-bend climb brings you to the 28 Bends — the hardest part of the trek, and the moment the scale of the canyon finally hits you.\n\n" +
+      "Below, the Lower Trail (中虎跳) descends to the river itself: a heart-pumping staircase of 1,700 steps down to Tiger Leaping Stone, the boulder where legend says a tiger crossed the river in a single leap. Many hikers do the High Trail and skip the descent; our advice is to save energy for it — standing on that rock with the gorge walls towering overhead is the moment that defines the whole trek. The gorge is best from March to May and September to November, when skies are clear and the trail is dry.",
+    image: "/images/tiger-leaping-gorge.webp",
+    highlights: ["The 22km High Trail Trek (2 days)", "Halfway Guest House terrace views", "The 28 Bends climb", "Tiger Leaping Stone & Lower Trail", "Haba Snow Mountain panorama"],
+    bestTime: "March to May, September to November",
+    climate: "Cool mountain canyon, 10-25°C, dry winters",
+    activities: [
+      "Trek the 22km High Trail over 2 days — China's most famous hike, with farmhouses, orchards, and vertigo-inducing viewpoints",
+      "Climb the 28 Bends to the High Trail's highest point — the hardest stretch, with the canyon's best panoramas",
+      "Descend 1,700 steps to Tiger Leaping Stone and stand on the legendary boulder above the river",
+      "Drink the famous terrace beer at Halfway Guest House while the Jinsha roars 2,000m below",
+      "Photograph Haba Snow Mountain from the trailhead at Qiaotou — the gorge's second giant"
+    ],
+    tips: [
+      "Start the trek from Qiaotou early (by 8 AM) — the 28 Bends are best climbed in morning cool, and you'll reach Halfway by late afternoon",
+      "Entrance fee is CNY 45 (plus CNY 2 for the 'Tiger Leaping Stone' pass) — paid at the gorge ticket office; keep the stub, you'll be asked for it along the trail",
+      "You can leave your main backpack at Jane's Guest House in Qiaotou and collect it at the other end — hike light, send bags ahead",
+      "The trail is doable in one long day (8-9 hours) for fit hikers, but two days is the classic way — the Halfway terrace sunset is worth the overnight",
+      "Carry at least 2 liters of water and cash — the trailside farm shops take only cash",
+      "Go on a weekday. Weekends bring day-trippers to the viewpoints below, and the trail guesthouses book out"
+    ],
+    experienceNote: "We woke at Halfway Guest House at 5:50 AM without an alarm — the sunrise over Jade Dragon Snow Mountain does that to you. Beer from the night before still in hand, we watched the Jinsha River catch fire 2,000 meters below while the canyon's shadow retreated. The 28 Bends nearly broke us the day before — two hours of switchbacks at 2,600 meters — but standing on that terrace, with Haba and Jade Dragon facing each other across the gorge, we understood why hikers call this the finest trek in China. The descent to Tiger Leaping Stone was the exclamation point: 1,700 steps down, and the river's roar so loud you feel it in your chest.",
+    namedRestaurants: [
+      { name: "Halfway Guest House kitchen (虎跳峡中途客栈)", price: "CNY 40-60/person", why: "The terrace dining room has the best restaurant view in China — handmade noodles, stir-fried mountain vegetables, and cold beer while the Jinsha roars below. The yak-butter tea is famously strange; try it once." },
+      { name: "Tina's Guesthouse", price: "CNY 30-50/person", why: "The High Trail's southern anchor at the 22km mark: simple home cooking for hikers finishing the trek, cold beer, and a terrace over the Lower Gorge." },
+    ],
+    namedHotels: [
+      { name: "Halfway Guest House", price: "CNY 40 (dorm) - 200 (double)", why: "The world-famous halfway point — dorm beds from CNY 40, private doubles with canyon views, hot showers, and a sunset terrace that justifies the entire trek." },
+      { name: "Jane's Guest House, Qiaotou", price: "CNY 80-200", why: "The trailhead institution: stores your luggage while you hike, sells maps, and is the classic pre-trek base where hikers swap route intel." },
+    ],
+    localWarnings: [
+      { title: "Rainy-season rockfalls", detail: "July-August rains loosen the cliffs — the Lower Gorge walkway to Tiger Leaping Stone sometimes closes and the High Trail turns slippery. Check trail conditions at Jane's before setting out." },
+      { title: "The split ticket", detail: "The CNY 45 entrance covers the gorge; the walk down to Tiger Leaping Stone costs an extra CNY 2 pass. Keep both stubs — you'll be checked along the trail." },
+      { title: "Weekend day-trippers", detail: "Tour buses arrive from Qiaotou from 10 AM and the viewpoints fill with selfie sticks. Start by 8 AM or hike on a weekday." },
+    ],
+    transport: {
+      fromKunming: "Fly or take the high-speed train to Lijiang (3.5h from Kunming), then bus or private car 2h to Qiaotou — the gorge's trailhead. The gorge sits on the Lijiang-Shangri-La road, so it also works as a stop on the way north.",
+      byTrain: "No station at the gorge itself. The nearest rail access is Lijiang Station (2h by road) or Shangri-La Station (1.5h). Most hikers connect by bus or car from Lijiang.",
+      byBus: "From Lijiang Bus Station, minibuses to Qiaotou run through the morning (CNY 25-35, 2h). Alternatively, any Lijiang-Shangri-La bus can drop you at Qiaotou. Returning, buses from the trail end at Tina's back to Lijiang cost CNY 40.",
+      byFlight: "Fly into Lijiang Sanyi Airport (LJG) — daily flights from Kunming (1h) and major cities. From the airport, a private car to Qiaotou is about CNY 400; the bus via Lijiang city is far cheaper.",
+    },
+    accommodation: [
+      { type: "Trail Guesthouses (Halfway / Tea Horse)", description: "The heart of the trekking experience — simple rooms with canyon views, hot showers (usually), and kitchens serving noodles and beer. The Halfway Guest House terrace is famous worldwide. Dorm beds from CNY 40.", priceRange: "CNY 40-200" },
+      { type: "Qiaotou Trailhead Inns", description: "Jane's Guest House at the trailhead stores luggage, sells maps, and serves as the classic pre-trek base. Basic, friendly, and full of hikers swapping route intel.", priceRange: "CNY 80-200" },
+      { type: "Lijiang Base (before/after the trek)", description: "Most hikers stay in Lijiang the night before and after — Old Town Naxi courtyards or Shuhe guesthouses, then take an early minibus to Qiaotou.", priceRange: "CNY 150-500" },
+    ],
+    food: [
+      { name: "Halfway Guest House Noodles (虎跳峡中途客栈)", description: "The legendary reward after a day on the trail: handmade noodle bowls, stir-fried mountain vegetables, and cold beer on a terrace suspended 2,000 meters above the Jinsha. The yak-butter tea here is famously odd — visually and taste-wise it resembles mushroom soup — but you have to try it once." },
+      { name: "Trailside Apple & Walnut Stalls", description: "Farm stands along the High Trail sell fresh-picked apples and walnuts from the orchards terraced into the canyon slopes. Handfuls of walnuts cost a few yuan — buy extra for the 28 Bends." },
+      { name: "Qiaotou Farmhouse Meals", description: "The trailhead town's small family restaurants serve hearty mountain cooking: twice-cooked pork, stir-fried local greens, and hot soups. Expect to eat well for CNY 30-50 per person." },
+    ],
+    gallery: [
+      "/images/tiger-leaping-gorge.webp",
+      "/images/haba-snow-mountain.webp",
+      "/images/tlg-high-trail.webp",
+    ],
+    galleryAlt: [
+      "Jinsha River roaring through Tiger Leaping Gorge between sheer canyon walls",
+      "Haba Snow Mountain towering over terraced fields near Tiger Leaping Gorge trailhead",
+      "Hikers on the cliff-edge High Trail above the Jinsha River gorge",
+    ],
+  },
+  {
+    slug: "stone-forest",
+    name: "Stone Forest",
+    chinese: "石林",
+    region: "Central Yunnan / Shilin County",
+    altitude: 1700,
+    description:
+      "A UNESCO World Heritage landscape of limestone karst pinnacles that rise like petrified trees from the Yunnan plain — some up to 30 meters tall, formed over 270 million years. The Stone Forest is Kunming's most iconic day trip and one of China's great geological set pieces.",
+    overview:
+      "The Stone Forest (石林, Shilin) is exactly what its name promises: a forest of stone. Over 270 million years, an ancient seabed was uplifted, and rain and groundwater dissolved the limestone into a maze of vertical pillars, deep pits, and narrow corridors spread across 400 square kilometers — the largest karst stone forest in the world. The result looks like a petrified city, and the local Sani people (a branch of the Yi minority) have woven it into their legends: the towering figure of Ashima, their heroine, is said to stand forever among the stones.\n\n" +
+      "Most visitors start at the Greater Stone Forest (大石林), the dense core where stone pillars crowd together like a labyrinth and walkways thread between them. Follow the stone stairs upward to Wangfeng Pavilion, the highest viewpoint, for the classic sweep of pinnacles against the sky. The Lesser Stone Forest (小石林) to the east is gentler — grass-covered clearings dotted with slender pillars, including the famous Ashima Stone. A shuttle connects the two areas, and a winding bus route reaches the newer Naigu Stone Forest (乃古石林) farther out, a wilder, blacker rock formation that most tour groups skip.\n\n" +
+      "The Stone Forest is a half-day to full-day trip from Kunming, 90 minutes by bus or car. Go on a weekday and arrive early: by mid-morning the park fills with tour groups, and by noon the main paths are a procession of umbrellas and selfie sticks. Come before 9 AM and you can have the labyrinth almost to yourself — the stones at dawn, in low golden light, are worth every minute of the early start.",
+    image: "/images/kunming-stone-forest.webp",
+    highlights: ["Greater Stone Forest labyrinth", "Wangfeng Pavilion viewpoint", "Ashima Stone & Lesser Stone Forest", "Naigu (Black) Stone Forest", "Sani Yi culture & legends"],
+    bestTime: "Year-round; March-November best. Avoid Chinese public holidays",
+    climate: "Mild plateau climate, 15-24°C",
+    activities: [
+      "Lose yourself in the Greater Stone Forest labyrinth — 2-3 hours of walking through stone canyons",
+      "Climb to Wangfeng Pavilion for the classic panoramic view over the pinnacles",
+      "Find the Ashima Stone in the Lesser Stone Forest and learn the Sani heroine's legend",
+      "Explore the wilder Naigu Stone Forest — blacker rock, fewer crowds, better photo angles",
+      "Watch a Sani folk dance performance at the entrance plaza (weekends and holidays)"
+    ],
+    tips: [
+      "Entrance fee is CNY 130 plus CNY 25 for the shuttle between the Greater and Lesser forests — buy the combo ticket, you'll want the shuttle",
+      "Arrive before 9 AM on weekdays. The park is 90 minutes from Kunming; a 6:30 AM departure gets you there for golden light and empty paths",
+      "Allow 3-4 hours minimum — the Greater Forest alone takes 2-3 hours of walking, and the shuttle loops add time",
+      "Wear proper walking shoes: the stone paths are uneven, and the labyrinth's steps are steep and slippery after rain",
+      "Combine with the Stone Forest Night Tour or stay overnight in Shilin town if you want sunset light on the pillars",
+      "Visit during a Yi minority festival (Torch Festival, June/July) and the park erupts into music and dance"
+    ],
+    experienceNote: "The Stone Forest surprised us twice. First at dawn, when we passed through the main gate at 7:40 AM and had the labyrinth to ourselves — walking between 30-meter stone pillars in golden light felt like stepping into a petrified city still asleep. The second surprise was Naigu, the 'black' forest most tours skip: a half-hour shuttle away, its darker, wilder pinnacles rose from grassland with only a handful of visitors. Standing at Wangfeng Pavilion, looking over stone 'trees' that have been growing for 270 million years, we finally understood the Sani legend of Ashima — this landscape deserves its heroine.",
+    namedRestaurants: [
+      { name: "Sani Roast Chicken stalls (撒尼烤鸡)", price: "CNY 80 per bird", why: "The road into the park is lined with Sani family restaurants roasting whole chickens over open flame — Sichuan-peppercorn crust, crackling skin, feeds two." },
+      { name: "Shilin Town Baba stalls", price: "CNY 5-10", why: "Buckwheat flatbreads griddled to order. Cheap, filling, and the right fuel for two hours of labyrinth walking." },
+    ],
+    namedHotels: [
+      { name: "Shilin Town hotels near the gate", price: "CNY 150-350", why: "Simple but fine — the reason to stay is sunset or sunrise light on the pillars with the day-trip crowds gone." },
+      { name: "Kunming guesthouses (day-trip base)", price: "CNY 150-600", why: "Most visitors sleep in Kunming and spend the day here — our recommendation for most travelers. The 90-minute drive each way is easy." },
+    ],
+    localWarnings: [
+      { title: "Ticket fine print", detail: "The CNY 130 entrance ticket doesn't cover the shuttle between the Greater and Lesser forests (CNY 25 extra). Buy the combo at the gate — walking between them eats an hour." },
+      { title: "Midday tour-group tsunami", detail: "From 10 AM, coach parties flood the main paths. Arrive before 9 AM or head to Naigu (the black forest) — it stays quiet all day." },
+      { title: "Slippery stone steps", detail: "The labyrinth's stairways are steep, uneven, and treacherous after rain. Real walking shoes, not sandals." },
+    ],
+    transport: {
+      fromKunming: "The Stone Forest is 90 minutes from central Kunming. Tourist buses depart from Kunming's East Bus Station (CNY 45-60, hourly), and private cars or taxis cost CNY 300-400 round trip. The new high-speed train to Shilin West Station (20 minutes from Kunming South) plus a short taxi is the fastest option.",
+      byTrain: "High-speed trains run from Kunming South Station to Shilin West in about 20-30 minutes (CNY 30-40). From Shilin West, the park entrance is 15 minutes by taxi.",
+      byBus: "From Kunming East Bus Station (东部客运站), buses to Shilin County run every 30-60 minutes (CNY 45-60, 1.5-2h). County taxis cover the last 10 minutes to the park gate.",
+      byFlight: "No airport at Shilin. Fly into Kunming Changshui International Airport (KMG), then take the metro to Kunming South for the high-speed train, or a car directly from the airport (CNY 400-500).",
+    },
+    accommodation: [
+      { type: "Kunming Day-Trip Base", description: "Most visitors make this a day trip from Kunming and save their nights for the capital's guesthouses and hotels. This is our recommendation for most travelers.", priceRange: "CNY 150-600" },
+      { type: "Shilin Town Hotels", description: "A handful of simple hotels near the park gate — useful if you want sunrise or sunset light on the stones without the 90-minute drive each way.", priceRange: "CNY 150-350" },
+      { type: "Sani Homestays in nearby villages", description: "For Yi culture immersion, a few villages around the park offer basic homestays with Sani family meals and traditional dress experiences.", priceRange: "CNY 100-250" },
+    ],
+    food: [
+      { name: "Sani-style Roast Chicken (撒尼烤鸡)", description: "The local specialty around the Stone Forest: whole free-range chickens rubbed with Sichuan pepper and spice, roasted until the skin crackles. Sold at roadside restaurants along the park entrance road — a full bird feeds two for about CNY 80." },
+      { name: "Baba Flatbreads (粑粑)", description: "Yunnan's ever-present griddled flatbread, made with buckwheat in the Sani highlands. Eat it hot with honey or stuffed with savory fillings — the perfect trail snack between the stone paths." },
+      { name: "Wild Mushroom Hotpot", description: "From June to September, Shilin's forests yield wild mushrooms that land in local hotpots — porcini, matsutake, and more. A seasonal must-eat that pairs perfectly with a cold day in the stones." },
+    ],
+    gallery: [
+      "/images/kunming-stone-forest.webp",
+      "/images/shilin-labyrinth.webp",
+      "/images/shilin-naigu.webp",
+    ],
+    galleryAlt: [
+      "UNESCO Stone Forest limestone karst pinnacles at golden hour",
+      "Walking between towering karst pillars inside the Greater Stone Forest labyrinth",
+      "Dark weathered Naigu Stone Forest pinnacles rising from grassland",
     ],
   },
 ];

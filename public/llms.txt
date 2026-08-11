@@ -3,8 +3,8 @@
 
 ## Main Page
 - [Complete Guide](https://yunnan-province.com/): Everything you need to plan a trip to Yunnan.
-  - #destinations — 6 major destinations: Kunming, Lijiang, Dali, Shangri-La, Yuanyang, Xishuangbanna
-  - #itineraries — 3/5/8/14-day suggested routes
+  - #destinations — 8 major destinations: Kunming, Lijiang, Dali, Shangri-La, Tiger Leaping Gorge, Stone Forest, Yuanyang, Xishuangbanna
+  - #itineraries — 3/5/8/10/14-day suggested routes
   - #transport — How to get around Yunnan
   - #best-time — Seasonal guide to visiting Yunnan
   - #food — Must-try regional dishes
@@ -16,6 +16,8 @@
 - [Lijiang](https://yunnan-province.com/lijiang/) — UNESCO old town with Jade Dragon Snow Mountain
 - [Dali](https://yunnan-province.com/dali/) — Between Cangshan and Erhai Lake
 - [Shangri-La](https://yunnan-province.com/shangri-la/) — Tibetan highland town
+- [Tiger Leaping Gorge](https://yunnan-province.com/tiger-leaping-gorge/) — China's finest 2-day canyon trek
+- [Stone Forest](https://yunnan-province.com/stone-forest/) — 270M-yr karst labyrinth, Kunming day trip
 - [Yuanyang](https://yunnan-province.com/yuanyang/) — Hani rice terraces
 - [Xishuangbanna](https://yunnan-province.com/xishuangbanna/) — Tropical Yunnan
 
