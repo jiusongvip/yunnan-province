@@ -4,12 +4,12 @@ import { destinations } from "../data/destinations";
 <nav id="main-nav" class="fixed top-0 left-0 right-0 z-50 bg-transparent transition-all duration-300">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16 lg:h-20">
-      <a href="/" class="text-lg font-bold tracking-tight text-white drop-shadow-sm">
+      <a href="/" class="nav-logo text-lg font-bold tracking-tight text-white drop-shadow-sm">
         Yunnan Guide
       </a>
       <div class="hidden lg:flex items-center gap-1">
         <div id="nav-destinations" class="relative group">
-          <button class="px-3 py-2 text-sm font-medium text-white/90 hover:text-white rounded-lg transition-colors">
+          <button class="nav-link px-3 py-2 text-sm font-medium text-white/90 hover:text-white rounded-lg transition-colors">
             Destinations
           </button>
           <div class="absolute top-full left-0 mt-1 w-56 bg-white rounded-xl shadow-lg border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 py-2">
@@ -20,17 +20,17 @@ import { destinations } from "../data/destinations";
             ))}
           </div>
         </div>
-        <a href="/#itineraries" class="px-3 py-2 text-sm font-medium text-white/90 hover:text-white rounded-lg transition-colors">Itineraries</a>
-        <a href="/best-time-to-visit" class="px-3 py-2 text-sm font-medium text-white/90 hover:text-white rounded-lg transition-colors">Best Time</a>
-        <a href="/food-guide" class="px-3 py-2 text-sm font-medium text-white/90 hover:text-white rounded-lg transition-colors">Food</a>
-        <a href="/culture-guide" class="px-3 py-2 text-sm font-medium text-white/90 hover:text-white rounded-lg transition-colors">Culture</a>
-        <a href="/compare" class="px-3 py-2 text-sm font-medium text-white/90 hover:text-white rounded-lg transition-colors">Compare</a>
-        <a href="/faq" class="px-3 py-2 text-sm font-medium text-white/90 hover:text-white rounded-lg transition-colors">FAQ</a>
-        <a href="/#plan" class="ml-3 px-4 py-2 text-sm font-semibold text-brand-800 bg-white rounded-full hover:bg-brand-50 transition-colors">
+        <a href="/#itineraries" class="nav-link px-3 py-2 text-sm font-medium text-white/90 hover:text-white rounded-lg transition-colors">Itineraries</a>
+        <a href="/best-time-to-visit" class="nav-link px-3 py-2 text-sm font-medium text-white/90 hover:text-white rounded-lg transition-colors">Best Time</a>
+        <a href="/food-guide" class="nav-link px-3 py-2 text-sm font-medium text-white/90 hover:text-white rounded-lg transition-colors">Food</a>
+        <a href="/culture-guide" class="nav-link px-3 py-2 text-sm font-medium text-white/90 hover:text-white rounded-lg transition-colors">Culture</a>
+        <a href="/compare" class="nav-link px-3 py-2 text-sm font-medium text-white/90 hover:text-white rounded-lg transition-colors">Compare</a>
+        <a href="/faq" class="nav-link px-3 py-2 text-sm font-medium text-white/90 hover:text-white rounded-lg transition-colors">FAQ</a>
+        <a href="/#plan" class="nav-cta ml-3 px-4 py-2 text-sm font-semibold text-brand-800 bg-white rounded-full hover:bg-brand-50 transition-colors">
           Plan Your Trip
         </a>
       </div>
-      <button id="mobile-menu-btn" class="lg:hidden text-white p-2" aria-label="Open menu">
+      <button id="mobile-menu-btn" class="nav-mobile-btn lg:hidden text-white p-2" aria-label="Open menu">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
           <line x1="4" y1="6" x2="20" y2="6"/>
           <line x1="4" y1="12" x2="20" y2="12"/>
@@ -59,3 +59,12 @@ import { destinations } from "../data/destinations";
     </div>
   </div>
 </nav>
+
+<script>
+  const nav = document.getElementById("main-nav");
+  if (nav) {
+    const onScroll = () => nav.classList.toggle("nav-solid", window.scrollY > 60);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+  }
+</script>

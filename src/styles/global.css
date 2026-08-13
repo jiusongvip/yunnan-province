@@ -46,6 +46,37 @@
   }
 }
 
+/* Fixed nav: transparent + white text over hero, solid white once scrolled.
+   Kept OUTSIDE any @layer on purpose: Tailwind v4 layers beat specificity, so
+   utilities like bg-transparent / text-white/90 / hover:text-white would
+   otherwise always override these rules no matter the selector weight. */
+#main-nav.nav-solid {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 4px 16px rgba(12, 34, 21, 0.08);
+}
+#main-nav.nav-solid .nav-logo {
+  color: #111827;
+  text-shadow: none;
+}
+#main-nav.nav-solid .nav-link {
+  color: #374151;
+}
+#main-nav.nav-solid .nav-link:hover {
+  color: #26753d;
+}
+#main-nav.nav-solid .nav-mobile-btn {
+  color: #111827;
+}
+#main-nav.nav-solid .nav-cta {
+  background: #26753d;
+  color: #ffffff;
+}
+#main-nav.nav-solid .nav-cta:hover {
+  background: #1f5e33;
+}
+
 /* Scroll reveal animation */
 .reveal {
   opacity: 0;
