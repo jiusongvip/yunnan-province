@@ -41,6 +41,40 @@ const pageSchema = {
     breadcrumbList(breadcrumbs),
   ],
 };
+
+// Packing checklist items — derived per destination from its altitude, terrain and activities
+const packingItems = (() => {
+  const items = [
+    "Passport & visa",
+    "Small amount of CNY cash — trailside shops and rural vendors take cash only",
+    "WeChat Pay or Alipay set up on your phone (most places don't accept cards)",
+    "Comfortable walking shoes with grip",
+    "Sunscreen & sunglasses",
+    "Light rain jacket",
+    "Power bank — long bus and train rides",
+    "Toilet paper & hand sanitizer (rural restrooms are basic)",
+  ];
+  if (dest.altitude >= 3000) {
+    items.push("Oxygen can (CNY 30, sold everywhere)");
+    items.push("Warm layers — nights drop below 5°C even in summer");
+  } else if (dest.altitude >= 1800) {
+    items.push("A light jacket for cool evenings at altitude");
+  }
+  if (dest.slug === "tiger-leaping-gorge") {
+    items.push("Hiking poles — or grab a sturdy stick from Qiaotou for free");
+    items.push("At least 2L of water per day");
+    items.push("Cash for trailside fruit and walnut stalls");
+  }
+  if (dest.slug === "xishuangbanna") {
+    items.push("Mosquito repellent — essential in the tropics");
+    items.push("Quick-dry clothing — it's 30°C+ and humid");
+  }
+  if (dest.slug === "yuanyang") {
+    items.push("Tripod & warm hat — 5 AM shoots at 1,800m are cold");
+    items.push("A thermos of hot tea for sunrise viewpoints");
+  }
+  return items;
+})();
 ---
 
 <BaseLayout
@@ -110,6 +144,110 @@ const pageSchema = {
         </div>
       </div>
     </section>
+
+    <!-- At a Glance: decision panel -->
+    {dest.minDays && (
+      <section class="py-16 bg-white">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2">At a Glance: Should You Go?</h2>
+          <p class="text-gray-500 mb-8">A 30-second read to decide if {dest.name} fits your trip — and how to plan it.</p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="rounded-xl border border-gray-200 p-5">
+              <p class="text-xs font-semibold uppercase tracking-widest text-brand-600 mb-2">Minimum Time</p>
+              <p class="text-sm text-gray-800 font-medium leading-relaxed">{dest.minDays}</p>
+            </div>
+            <div class="rounded-xl border border-gray-200 p-5">
+              <p class="text-xs font-semibold uppercase tracking-widest text-brand-600 mb-2">Physical Demand</p>
+              <p class="text-sm text-gray-800 font-medium leading-relaxed">{dest.difficulty}</p>
+            </div>
+            <div class="rounded-xl border border-gray-200 p-5">
+              <p class="text-xs font-semibold uppercase tracking-widest text-brand-600 mb-2">Daily Budget</p>
+              <p class="text-sm text-gray-800 font-medium leading-relaxed">{dest.budgetLevel}</p>
+            </div>
+            <div class="rounded-xl border border-emerald-200 bg-emerald-50/50 p-5">
+              <p class="text-xs font-semibold uppercase tracking-widest text-emerald-700 mb-2">Best For</p>
+              <p class="text-sm text-gray-800 font-medium leading-relaxed">{dest.bestFor}</p>
+            </div>
+            <div class="rounded-xl border border-red-200 bg-red-50/50 p-5">
+              <p class="text-xs font-semibold uppercase tracking-widest text-red-700 mb-2">Not For</p>
+              <p class="text-sm text-gray-800 font-medium leading-relaxed">{dest.notFor}</p>
+            </div>
+            <div class="rounded-xl border border-gray-200 p-5">
+              <p class="text-xs font-semibold uppercase tracking-widest text-brand-600 mb-2">Best Season</p>
+              <p class="text-sm text-gray-800 font-medium leading-relaxed">{dest.bestTime}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- Day Plans: time-option comparison -->
+    {dest.dayPlans && dest.dayPlans.length > 0 && (
+      <section class="py-16 bg-gray-50">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2">Plan Your Time in {dest.name}</h2>
+          <p class="text-gray-500 mb-8">Three ways to do it — pick the one that fits your schedule, then follow the steps.</p>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {dest.dayPlans.map((plan, pi) => (
+              <div class="rounded-2xl bg-white border border-gray-200 p-6 flex flex-col">
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-xs font-bold uppercase tracking-widest text-brand-700 bg-brand-50 px-3 py-1.5 rounded-full">{plan.label}</span>
+                  <span class="w-8 h-8 rounded-full bg-gray-900 text-white flex items-center justify-center font-bold text-sm">{pi + 1}</span>
+                </div>
+                <ol class="space-y-3 flex-1">
+                  {plan.steps.map((step, si) => (
+                    <li class="flex items-start gap-3 text-sm text-gray-700 leading-relaxed">
+                      <span class="w-5 h-5 rounded-full bg-brand-100 text-brand-700 flex items-center justify-center text-[10px] font-bold shrink-0 mt-0.5">{si + 1}</span>
+                      {step}
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- Budget Calculator -->
+    {dest.dailyBudget && (
+      <section class="py-16 bg-white">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="rounded-2xl border border-brand-100 bg-brand-50/30 p-8 md:p-10" data-budget-calculator data-tiers={JSON.stringify(dest.dailyBudget)}>
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2">Estimate Your {dest.name} Budget</h2>
+            <p class="text-gray-500 mb-8 leading-relaxed">Per-person daily costs we recorded on the ground in 2026 — accommodation, food, local transport, and one paid sight per day. Drag to plan; everything runs in your browser.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div>
+                <label class="block text-sm font-semibold text-gray-800 mb-2">Days in {dest.name}</label>
+                <input type="range" min="1" max="14" value="2" class="w-full accent-brand-600" data-bc-days />
+                <p class="mt-1 text-sm text-gray-500">Minimum recommended: {dest.minDays}</p>
+              </div>
+              <div>
+                <label class="block text-sm font-semibold text-gray-800 mb-2">Travelers</label>
+                <input type="range" min="1" max="6" value="2" class="w-full accent-brand-600" data-bc-people />
+                <p class="mt-1 text-sm text-gray-500">Everyone sharing the trip</p>
+              </div>
+              <div>
+                <p class="block text-sm font-semibold text-gray-800 mb-2">Travel Style</p>
+                <div class="flex gap-2" data-bc-tiers>
+                  <button type="button" data-tier="budget" class="flex-1 px-3 py-2 rounded-lg border border-gray-200 text-gray-700 text-sm font-semibold transition-colors">Budget</button>
+                  <button type="button" data-tier="mid" class="flex-1 px-3 py-2 rounded-lg border border-brand-600 bg-brand-600 text-white text-sm font-semibold transition-colors">Mid-range</button>
+                  <button type="button" data-tier="comfort" class="flex-1 px-3 py-2 rounded-lg border border-gray-200 text-gray-700 text-sm font-semibold transition-colors">Comfort</button>
+                </div>
+                <p class="mt-1 text-sm text-gray-500">Budget = dorms & street food · Mid = guesthouses & local restaurants · Comfort = boutique hotels & nice dinners</p>
+              </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-brand-100 flex flex-wrap items-end justify-between gap-4">
+              <div>
+                <p class="text-xs font-semibold uppercase tracking-widest text-brand-600 mb-1">Estimated trip total (accommodation + food + transport + one sight per day)</p>
+                <p class="text-3xl md:text-4xl font-bold text-gray-900" data-bc-result>—</p>
+              </div>
+              <p class="text-sm text-gray-500 max-w-sm leading-relaxed" data-bc-note></p>
+            </div>
+          </div>
+        </div>
+      </section>
+    )}
 
     <!-- Field Experience Note -->
     {dest.experienceNote && (
@@ -317,6 +455,26 @@ const pageSchema = {
       </div>
     </section>
 
+    <!-- Packing Checklist -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2">Packing Checklist for {dest.name}</h2>
+        <p class="text-gray-500 mb-8">Tap to check off — your progress saves in this browser, so you can pick up where you left off before the trip.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+          {packingItems.map((item, i) => (
+            <label class="flex items-start gap-3 p-4 rounded-xl bg-white border border-gray-200 cursor-pointer hover:border-brand-200 transition-colors" data-packing-item>
+              <input type="checkbox" value={i} class="mt-0.5 w-4 h-4 accent-brand-600" />
+              <span class="text-sm text-gray-700 leading-relaxed">{item}</span>
+            </label>
+          ))}
+        </div>
+        <div class="mt-6 flex items-center justify-between">
+          <p class="text-sm text-gray-500"><span data-packing-count>0</span> of {packingItems.length} packed</p>
+          <button type="button" data-packing-reset class="text-sm font-semibold text-brand-600 hover:text-brand-700 transition-colors">Reset checklist</button>
+        </div>
+      </div>
+    </section>
+
     <!-- Gallery -->
     <section class="py-16 bg-gray-50">
       <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -378,3 +536,82 @@ const pageSchema = {
 
   <Footer />
 </BaseLayout>
+
+<script>
+  // Budget calculator: days x travelers x daily tier, with a ±10% range
+  document.querySelectorAll("[data-budget-calculator]").forEach((el) => {
+    const tiers = JSON.parse(el.dataset.tiers || "{}");
+    const daysEl = el.querySelector("[data-bc-days]");
+    const peopleEl = el.querySelector("[data-bc-people]");
+    const resultEl = el.querySelector("[data-bc-result]");
+    const noteEl = el.querySelector("[data-bc-note]");
+    const tierButtons = el.querySelectorAll("[data-tier]");
+    let tier = "mid";
+    const fmt = (n) => "CNY " + Math.round(n).toLocaleString("en-US");
+    const update = () => {
+      const days = Number(daysEl.value);
+      const people = Number(peopleEl.value);
+      const per = tiers[tier] || 500;
+      const total = per * days * people;
+      resultEl.textContent = fmt(total * 0.9) + " – " + fmt(total * 1.1);
+      noteEl.textContent =
+        days * people + " person-days at " + fmt(per) + " per person/day, plus flights and transfers between destinations.";
+    };
+    daysEl.addEventListener("input", update);
+    peopleEl.addEventListener("input", update);
+    tierButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        tier = btn.dataset.tier;
+        tierButtons.forEach((b) => {
+          const active = b === btn;
+          b.classList.toggle("bg-brand-600", active);
+          b.classList.toggle("border-brand-600", active);
+          b.classList.toggle("text-white", active);
+        });
+        update();
+      });
+    });
+    update();
+  });
+
+  // Packing checklist with localStorage persistence per page
+  const packingItems = document.querySelectorAll("[data-packing-item]");
+  if (packingItems.length) {
+    const key = "packing-" + location.pathname;
+    const saved = new Set(JSON.parse(localStorage.getItem(key) || "[]"));
+    const countEl = document.querySelector("[data-packing-count]");
+    const updateCount = () => {
+      const checked = [...packingItems].filter((l) => l.querySelector("input").checked);
+      if (countEl) countEl.textContent = String(checked.length);
+      localStorage.setItem(key, JSON.stringify(checked.map((l) => l.querySelector("input").value)));
+    };
+    packingItems.forEach((label) => {
+      const box = label.querySelector("input");
+      const text = label.querySelector("span");
+      box.checked = saved.has(box.value);
+      if (box.checked) {
+        label.classList.add("opacity-60");
+        text.classList.add("line-through");
+      }
+      box.addEventListener("change", () => {
+        label.classList.toggle("opacity-60", box.checked);
+        text.classList.toggle("line-through", box.checked);
+        updateCount();
+      });
+    });
+    const reset = document.querySelector("[data-packing-reset]");
+    if (reset) {
+      reset.addEventListener("click", () => {
+        localStorage.removeItem(key);
+        packingItems.forEach((l) => {
+          const box = l.querySelector("input");
+          box.checked = false;
+          l.classList.remove("opacity-60");
+          l.querySelector("span").classList.remove("line-through");
+        });
+        updateCount();
+      });
+    }
+    updateCount();
+  }
+</script>

@@ -4,6 +4,7 @@ import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import { articleSchema, breadcrumbList } from "../utils/schema";
 import type { BreadcrumbItem } from "../utils/schema";
+import { destinations } from "../data/destinations";
 
 const breadcrumbs: BreadcrumbItem[] = [
   { name: "Home", url: "https://yunnan-province.com/" },
@@ -118,6 +119,45 @@ const verdicts = [
             </tbody>
           </table>
         </div>
+      </div>
+    </section>
+
+    <!-- Yunnan internal comparison: which of the 8 destinations fits you -->
+    <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-3 text-center">Decided on Yunnan? Now pick your destination</h2>
+        <p class="text-gray-500 mb-8 text-center max-w-2xl mx-auto leading-relaxed">All 8 destinations below are in Yunnan, but they reward very different travelers. Compare them on the decisions that actually matter — time, difficulty, budget, and who each one is for.</p>
+        <div class="overflow-x-auto rounded-xl border border-gray-200 bg-white">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-gray-200 bg-gray-50">
+                <th class="text-left py-4 px-5 font-semibold text-gray-700 w-40">Destination</th>
+                <th class="text-left py-4 px-5 font-semibold text-gray-700">Minimum Time</th>
+                <th class="text-left py-4 px-5 font-semibold text-gray-700">Difficulty</th>
+                <th class="text-left py-4 px-5 font-semibold text-gray-700">Daily Budget</th>
+                <th class="text-left py-4 px-5 font-semibold text-brand-700">Best For</th>
+                <th class="text-left py-4 px-5 font-semibold text-red-700">Not For</th>
+              </tr>
+            </thead>
+            <tbody>
+              {destinations.map((d, i) => (
+                <tr class={"border-b border-gray-100 " + (i % 2 === 0 ? "bg-white" : "bg-gray-50/50")}>
+                  <td class="py-4 px-5 align-top">
+                    <a href={"/" + d.slug} class="font-semibold text-brand-700 hover:text-brand-800 hover:underline">{d.name}</a>
+                  </td>
+                  <td class="py-4 px-5 text-gray-600 leading-relaxed align-top">{d.minDays}</td>
+                  <td class="py-4 px-5 text-gray-600 leading-relaxed align-top">{d.difficulty}</td>
+                  <td class="py-4 px-5 text-gray-600 leading-relaxed align-top">{d.budgetLevel}</td>
+                  <td class="py-4 px-5 text-gray-600 leading-relaxed align-top">{d.bestFor}</td>
+                  <td class="py-4 px-5 text-gray-600 leading-relaxed align-top">{d.notFor}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-6 text-center">
+          <a href="/#destinations" class="text-brand-600 hover:text-brand-700 underline font-medium">Browse all 8 destination guides</a>
+        </p>
       </div>
     </section>
 

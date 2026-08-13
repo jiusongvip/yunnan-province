@@ -20,6 +20,16 @@ export interface Destination {
   namedHotels?: { name: string; price: string; why: string }[];
   /** Honest "don't bother / watch out" guidance — the part guidebooks usually skip */
   localWarnings?: { title: string; detail: string }[];
+  /** Decision-panel data: minimum time needed, physical demand, per-day cost, who it fits */
+  minDays?: string;
+  difficulty?: string;
+  budgetLevel?: string;
+  bestFor?: string;
+  notFor?: string;
+  /** Concrete time plans (half-day / 1 day / 2 days...) with step-by-step action instructions */
+  dayPlans?: { label: string; steps: string[] }[];
+  /** Per-person daily costs in CNY recorded 2026 — three comfort tiers for the budget calculator */
+  dailyBudget?: { budget: number; mid: number; comfort: number };
   transport: {
     fromKunming: string;
     byTrain: string;
@@ -54,6 +64,17 @@ export const destinations: Destination[] = [
       { title: "Stone Forest on weekends", detail: "Tour-bus crowds peak Saturday and Sunday afternoons. Go on a weekday and arrive before 9 AM — or accept sharing the viewfinder." },
       { title: "Jade shops around the city", detail: "Unless you're a jade expert, you're very likely overpaying. Same applies to any 'government-certified' jewelry stop arranged by tour guides." },
     ],
+    minDays: "2 days (1 for the city, 1 for the Stone Forest day trip)",
+    difficulty: "Easy — flat city, no altitude concerns at 1,890m",
+    budgetLevel: "CNY 250-500 per person/day (city only)",
+    bestFor: "First-time visitors, layover travelers, food lovers, slow wanderers",
+    notFor: "Adrenaline seekers — Kunming is a base, not a destination; plan your treks elsewhere",
+    dayPlans: [
+      { label: "Half Day (Layover)", steps: ["Arrive, drop bags near Green Lake", "Walk Green Lake Park & Yuantong Temple (2h)", "Lunch: Across the Bridge Noodles at a local branch (CNY 25-40)", "If you have an evening: Dounan Flower Market after 8 PM when wholesale trading starts"] },
+      { label: "1 Day", steps: ["6:30 AM: depart for Stone Forest (90 min by bus or high-speed train)", "8-11 AM: Greater Stone Forest labyrinth before the tour groups arrive", "11:30 AM: shuttle to the Lesser Stone Forest & Ashima Stone", "1 PM: Sani roast chicken lunch on the way back", "4 PM: Green Lake Park for the gull-feeding hour", "7 PM: dinner on Xiangyun Street food street"] },
+      { label: "2 Days", steps: ["Day 1: Green Lake at dawn, Yuantong Temple, Western Hills Dragon Gate for Dianchi views, flower market in the evening", "Day 2: Stone Forest full day (see 1-day plan above)", "June-September: add a wild mushroom hotpot dinner — it's the season"] },
+    ],
+    dailyBudget: { budget: 250, mid: 450, comfort: 900 },
     description:
       "Known as China's 'Spring City' for its eternal mild climate, Kunming is the vibrant capital of Yunnan Province and the natural gateway to all of southwest China. Blooming flowers line its streets year-round, ancient temples sit beside modern cafes, and the UNESCO-listed Stone Forest lies just a day trip away.",
     overview:
@@ -124,6 +145,17 @@ export const destinations: Destination[] = [
       { title: "The CNY 80 maintenance fee", detail: "Lijiang Old Town charges a maintenance fee at entry points. Buy it once — it's valid for your whole stay. Keep the ticket with you." },
       { title: "Any village with 'ethnic minority' in its name", detail: "These are often movie-set-style reconstructions built for tour buses. The real thing is Baisha or Shuhe — quieter, authentic, and free." },
     ],
+    minDays: "2 days (3 with the Tiger Leaping Gorge trek)",
+    difficulty: "Moderate — easy old town, challenging trek option",
+    budgetLevel: "CNY 300-700 per person/day",
+    bestFor: "Photographers, couples, first-time Yunnan visitors, trek hikers",
+    notFor: "Anyone who can't handle midday crowds — the old town is a theme park from 10 AM; come at dawn instead",
+    dayPlans: [
+      { label: "1 Day", steps: ["6:30 AM: Old Town alone — canals, lanterns, dawn light (2h)", "9 AM: Black Dragon Pool for the Jade Dragon reflection", "11 AM: 20-min taxi to Baisha village — silk-embroidery workshops & quiet lanes", "Lunch: local Naxi eatery in Baisha", "3 PM: Shuhe Ancient Town (free, quiet) or the Jade Dragon cable car if pre-booked", "8 PM: Old Town lanterns & Naxi music performance"] },
+      { label: "2 Days", steps: ["Day 1: old town at dawn, Black Dragon Pool, Baisha, Shuhe", "Day 2 (option A): Tiger Leaping Gorge fast trek — 8 AM from Qiaotou, 28 Bends, lunch at the Halfway terrace, back by 6 PM", "Day 2 (option B): Jade Dragon Snow Mountain cable car to 4,506m + Blue Moon Valley"] },
+      { label: "3 Days", steps: ["Days 1-2: as above", "Day 3: the full Tiger Leaping Gorge 2-day trek — start at Qiaotou 8 AM, overnight at Halfway, finish at Tina's the next day"] },
+    ],
+    dailyBudget: { budget: 300, mid: 600, comfort: 1200 },
     description:
       "A UNESCO World Heritage maze of 800-year-old cobblestone streets, wooden bridges, and stone canals watched over by the 5,596-meter Jade Dragon Snow Mountain. Lijiang is the Naxi people's ancient capital and one of China's most atmospheric old towns — especially after dark when red lanterns flicker to life.",
     overview:
@@ -195,6 +227,17 @@ export const destinations: Destination[] = [
       { title: "Don't mistake Dali for a lesser Lijiang", detail: "It's easy to dismiss Dali as Lijiang-lite — that's the biggest mistake first-timers make. Dali's soul is in its resident artist community and lake culture, not its main street." },
       { title: "Tourist 'Bai villages' on the tour-bus route", detail: "Some villages advertise as authentic Bai experiences but are staged for groups. Real ones — like Xizhou's lanes beyond the main square — cost nothing and feel alive." },
     ],
+    minDays: "2 days (5 if you let it happen)",
+    difficulty: "Easy to moderate — flat cycling, optional cable car climb",
+    budgetLevel: "CNY 280-550 per person/day",
+    bestFor: "Slow travelers, cyclists, artists, digital nomads, honeymooners",
+    notFor: "Tight-schedule travelers — Dali's charm requires staying; don't book it as a 6-hour stop",
+    dayPlans: [
+      { label: "1 Day", steps: ["8 AM: rent an e-bike (CNY 50-80/day)", "8:30 AM: ride north along Erhai's west shore toward Xizhou (about 1h)", "10 AM: Xizhou morning market & tie-dye workshop", "1 PM: lunch in Xizhou — Bai cured ham & three-course tea", "3 PM: Three Pagodas & Chongsheng Temple (allow 3h)", "7 PM: old town dinner — courtyard kitchen or Bad Monkey pizza"] },
+      { label: "2 Days", steps: ["Day 1: Xizhou ride + Three Pagodas + old town night (see above)", "Day 2 (option A): Cangshan cable car to 3,900m + cloud-trail walk", "Day 2 (option B): Erhai east shore — Caicun, Longkan, Shuanglang, sunset on the lake"] },
+      { label: "3 Days", steps: ["Days 1-2: as above", "Day 3: choose your obsession — the full 120km Erhai loop, a photography morning on the lake, or a cooking class in the old town"] },
+    ],
+    dailyBudget: { budget: 280, mid: 550, comfort: 1000 },
     description:
       "Cradled between the 4,000-meter Cangshan Mountains and the vast expanse of Erhai Lake, Dali is Yunnan's bohemian heart — a place where backpackers trade stories in courtyard cafes, Bai artisans practice tie-dye techniques unchanged for a thousand years, and cycling 120 kilometers around a sapphire lake becomes your daily rhythm.",
     overview:
@@ -266,6 +309,17 @@ export const destinations: Destination[] = [
       { title: "Dukezong's rebuilt old town", detail: "The 2014 fire destroyed much of the old town; what you see now is a reconstruction aimed at domestic tourism. Pretty — but manage expectations and head to the monastery for the real Shangri-La." },
       { title: "No photos inside the temples", detail: "Monks pray inside Songzanlin and photography is not allowed in the prayer halls — the exterior and golden-hour light are the photographic rewards anyway." },
     ],
+    minDays: "2 days (3 to acclimatize comfortably)",
+    difficulty: "Moderate — the altitude is the challenge, not the terrain",
+    budgetLevel: "CNY 350-700 per person/day",
+    bestFor: "Culture seekers, photographers, Tibetan Buddhism enthusiasts, highland scenery lovers",
+    notFor: "Travelers with heart or respiratory conditions — 3,400m means 65% of sea-level oxygen; consult your doctor first",
+    dayPlans: [
+      { label: "1 Day (Acclimatize)", steps: ["Rest the morning — walk slowly, drink 3L of water, skip alcohol", "2 PM: Songzanlin Monastery (CNY 115 incl. guided tour) — catch golden hour at 5-6 PM", "7 PM: Dukezong old town, turn the world's largest prayer wheel"] },
+      { label: "2 Days", steps: ["Day 1: acclimatize — Songzanlin + Dukezong (see above)", "Day 2: Pudacuo National Park — Shudu Lake boardwalk (3-4h), back by late afternoon", "Evening: yak hotpot & Tibetan momos"] },
+      { label: "3 Days", steps: ["Days 1-2: as above", "Day 3 (option A): Napa Lake at dawn — black-necked cranes in winter", "Day 3 (option B): Balagezong Grand Canyon full day — suspension bridges & turquoise rivers"] },
+    ],
+    dailyBudget: { budget: 350, mid: 650, comfort: 1300 },
     description:
       "At 3,400 meters on the edge of the Tibetan Plateau, Shangri-La (formerly Zhongdian) lives up to its mythical name with golden-roofed monasteries, yak-dotted grasslands, and the kind of high-altitude silence that makes you feel like you have reached the roof of the world.",
     overview:
@@ -335,6 +389,17 @@ export const destinations: Destination[] = [
       { title: "April-October: no water, no reflections", detail: "The famous mirror reflections only exist when the terraces are flooded, roughly November to March. Off-season the terraces are green with growing rice — still pretty, but a different show." },
       { title: "Cold dawns at 1,800m", detail: "Sunrise shoots mean standing still in near-freezing temperatures. Bring a down jacket, warm hat, and thermos — you'll thank yourself at 6 AM." },
     ],
+    minDays: "2 days / 2 nights (you want both sunrises)",
+    difficulty: "Easy — viewpoints are connected by road, minimal walking",
+    budgetLevel: "CNY 250-500 per person/day",
+    bestFor: "Photographers, landscape lovers, travelers who don't mind early alarms",
+    notFor: "Sleep-in travelers — if you won't get up for a 5 AM sunrise, the terraces lose half their magic",
+    dayPlans: [
+      { label: "1 Day (Tight)", steps: ["5 AM: sunrise at Duoyishu viewpoint", "8 AM: breakfast at your guesthouse", "9:30 AM: Qingkou village — Hani mushroom houses & market", "1 PM: Bada terraces panorama", "4:30 PM: Laohuzui sunset viewpoint", "7 PM: red rice & wild-vegetable hotpot dinner"] },
+      { label: "2 Days (Classic)", steps: ["Day 1: arrive by early afternoon, 4:30 PM Laohuzui sunset", "Day 2: 5 AM Duoyishu sunrise, Qingkou village, Bada by noon, depart after lunch"] },
+      { label: "3 Days (With Jianshui)", steps: ["Days 1-2: the classic plan", "Day 3: bus to Jianshui (2h) — ancient town, Double Dragon Bridge, Confucius Temple, then high-speed train home"] },
+    ],
+    dailyBudget: { budget: 250, mid: 450, comfort: 800 },
     description:
       "A UNESCO World Heritage masterpiece carved by the Hani people over 1,300 years: thousands of mirror-like rice terraces cascading down mountain slopes, reflecting dawn colors so vividly that photographers from around the world brave 5 AM wake-up calls in the cold just to witness it.",
     overview:
@@ -404,6 +469,17 @@ export const destinations: Destination[] = [
       { title: "Monsoon humidity, May-October", detail: "The wet season brings rain, humidity, and mosquitoes. November-April is the sweet spot. Pack quick-dry clothing and serious repellent regardless." },
       { title: "Gaozhuang is tourist central", detail: "The night market area is built for visitors — prices run 30-50% higher than local streets. For the real Dai food, walk 15 minutes into Jinghong proper." },
     ],
+    minDays: "2 days (3 for the botanical garden + elephants)",
+    difficulty: "Easy — hot and humid, but no strenuous activities required",
+    budgetLevel: "CNY 280-550 per person/day",
+    bestFor: "Food lovers, families, first-timers to the tropics, Southeast Asia enthusiasts",
+    notFor: "Anyone who dislikes heat and humidity — 30°C+ year-round, with monsoon rain May-October",
+    dayPlans: [
+      { label: "1 Day", steps: ["9 AM: Manting Park & golden temples (2h)", "12 PM: lunch in Jinghong proper — walk 15 min from Gaozhuang for local prices", "3 PM: Mekong riverfront walk", "6 PM: night market opens — grilled fish, pineapple rice, papaya salad", "9 PM: rooftop bar over the Mekong in Gaozhuang"] },
+      { label: "2 Days", steps: ["Day 1: Botanical Garden (13,000 species — takes a full morning) + night market", "Day 2: Wild Elephant Valley elevated walkways in the morning + Dai village stilt-house dinner"] },
+      { label: "3 Days", steps: ["Days 1-2: as above", "Day 3: Dai Minority Park cultural performances, or a rainforest trek with a local Dai guide"] },
+    ],
+    dailyBudget: { budget: 280, mid: 550, comfort: 1100 },
     description:
       "China's tropical surprise at the border with Laos and Myanmar: a land of wild Asian elephants, golden Dai Buddhist temples, misty rainforests, and Mekong River night markets where the food is as spicy-sour as anything in Thailand — because culturally, you are practically there.",
     overview:
@@ -460,6 +536,17 @@ export const destinations: Destination[] = [
     chinese: "虎跳峡",
     region: "Northwest Yunnan / Jinsha River",
     altitude: 2500,
+    minDays: "2 days (the classic trek); 1 long day if you're fit",
+    difficulty: "Challenging — 28 Bends climb at 2,600m, steep descents, uneven trail",
+    budgetLevel: "CNY 200-400 per person/day (trail costs are low)",
+    bestFor: "Hikers, fit travelers, anyone who wants China's best trek without permits",
+    notFor: "Anyone with knee problems, vertigo, or no hiking experience — the descents punish knees and the drops are sheer",
+    dayPlans: [
+      { label: "1 Day (Fast)", steps: ["8 AM: start from Qiaotou after leaving your bag at Jane's Guest House", "10:30 AM: conquer the 28 Bends (2h — the hardest stretch)", "12 PM: lunch at a trailside farmhouse", "1:30 PM: continue to the Halfway terrace for the view and a beer", "4 PM: push to Tina's if you're fast, or turn back at a comfortable point", "6 PM: bus from Tina's back to Lijiang (CNY 40)"] },
+      { label: "2 Days (Classic)", steps: ["Day 1: 8 AM from Qiaotou — 28 Bends by 10:30, lunch on trail, reach Halfway by 4 PM, terrace sunset beer", "Day 2: 8 AM continue to Tina's (3-4h), drop bags, descend 1,700 steps to Tiger Leaping Stone, return, bus to Lijiang by 5 PM"] },
+      { label: "3 Days (Slow)", steps: ["Days 1-2: the classic trek", "Day 3: bonus — Haba Snow Mountain base hike, the Upper Gorge viewpoint, or rest in Lijiang before continuing north"] },
+    ],
+    dailyBudget: { budget: 200, mid: 350, comfort: 700 },
     description:
       "One of the deepest river canyons on Earth — 16 kilometers long, with the Jinsha River thundering 2,000 meters below a cliff-edge hiking trail that is widely considered China's best trek. The gorge is squeezed between Jade Dragon Snow Mountain and Haba Snow Mountain, and legend says a tiger once leapt across it in a single bound.",
     overview:
@@ -532,6 +619,17 @@ export const destinations: Destination[] = [
     chinese: "石林",
     region: "Central Yunnan / Shilin County",
     altitude: 1700,
+    minDays: "1 day (half day minimum) — day trip from Kunming",
+    difficulty: "Easy — 2-3 hours of walking on uneven stone paths, no climbing",
+    budgetLevel: "CNY 300-500 per person/day including transport",
+    bestFor: "Day-trippers from Kunming, families, first-timers to China",
+    notFor: "Travelers on a tight Yunnan loop — the drive is 90 minutes each way; worth it, but not on a 5-day sprint",
+    dayPlans: [
+      { label: "Half Day", steps: ["7:30 AM: bus or train from Kunming (90 min)", "9 AM: Greater Stone Forest labyrinth — 2h before the tour groups peak", "11 AM: Wangfeng Pavilion viewpoint", "12:30 PM: roast chicken lunch on the road back", "2 PM: back in Kunming"] },
+      { label: "Full Day", steps: ["6:30 AM: depart Kunming", "7:40 AM: main gate — the labyrinth alone in golden light", "10 AM: shuttle to the Lesser Stone Forest & Ashima Stone", "1 PM: Sani roast chicken lunch", "2:30 PM: Naigu Black Forest — quieter, wilder, 1.5h", "5 PM: return to Kunming"] },
+      { label: "With Overnight", steps: ["Afternoon: arrive, sunset light on the pillars with the crowds gone", "Next morning: 7:40 AM golden-hour walk before breakfast", "10 AM: Naigu forest, then lunch and return to Kunming"] },
+    ],
+    dailyBudget: { budget: 300, mid: 500, comfort: 800 },
     description:
       "A UNESCO World Heritage landscape of limestone karst pinnacles that rise like petrified trees from the Yunnan plain — some up to 30 meters tall, formed over 270 million years. The Stone Forest is Kunming's most iconic day trip and one of China's great geological set pieces.",
     overview:
