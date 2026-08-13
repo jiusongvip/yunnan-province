@@ -74,18 +74,14 @@ const orgSchema = {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet" />
 
-    <!-- Google Analytics 4 (enable by setting GA_MEASUREMENT_ID in .env) -->
-    {import.meta.env.PROD && import.meta.env.GA_MEASUREMENT_ID && (
-      <>
-        <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${import.meta.env.GA_MEASUREMENT_ID}`}></script>
-        <script is:inline>
-          {`window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', '${import.meta.env.GA_MEASUREMENT_ID}');`}
-        </script>
-      </>
-    )}
+    <!-- Google tag (gtag.js) -->
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-W17MZH5JDK"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-W17MZH5JDK');
+    </script>
 
     <slot name="head" />
   </head>
@@ -104,7 +100,7 @@ const orgSchema = {
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#26753d" stroke-width="2.5" stroke-linecap="round"><polyline points="18 15 12 9 6 15"/></svg>
 </button>
 
-<script>
+<script is:inline>
   (function(){
     var bar = document.getElementById("reading-progress");
     var btn = document.getElementById("back-to-top");
@@ -141,21 +137,21 @@ const orgSchema = {
         img.addEventListener("click", function() {
           var htmlImg = img;
           if (lightboxImg && htmlImg instanceof HTMLImageElement) lightboxImg.src = htmlImg.src;
-          lightbox.classList.add("open");
+          lightbox!.classList.add("open");
         });
       });
-      lightbox.addEventListener("click", function() { lightbox.classList.remove("open"); });
+      lightbox!.addEventListener("click", function() { lightbox!.classList.remove("open"); });
     }
 
     var nav = document.getElementById("main-nav");
     if (nav) {
       window.addEventListener("scroll", function() {
         if (window.scrollY > 100) {
-          nav.classList.add("bg-white/95", "backdrop-blur-md", "shadow-sm");
-          nav.classList.remove("bg-transparent");
+          nav!.classList.add("bg-white/95", "backdrop-blur-md", "shadow-sm");
+          nav!.classList.remove("bg-transparent");
         } else {
-          nav.classList.remove("bg-white/95", "backdrop-blur-md", "shadow-sm");
-          nav.classList.add("bg-transparent");
+          nav!.classList.remove("bg-white/95", "backdrop-blur-md", "shadow-sm");
+          nav!.classList.add("bg-transparent");
         }
       });
     }
@@ -163,7 +159,7 @@ const orgSchema = {
     var menuBtn = document.getElementById("mobile-menu-btn");
     var mobileMenu = document.getElementById("mobile-menu");
     if (menuBtn && mobileMenu) {
-      menuBtn.addEventListener("click", function() { mobileMenu.classList.toggle("hidden"); });
+      menuBtn.addEventListener("click", function() { mobileMenu!.classList.toggle("hidden"); });
     }
   })();
 </script>
