@@ -4,6 +4,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import HeroSection from "../components/HeroSection.astro";
+import PageTOC from "../components/PageTOC.astro";
 import QuickFacts from "../components/QuickFacts.astro";
 import WhyYunnan from "../components/WhyYunnan.astro";
 import WhoIsThisFor from "../components/WhoIsThisFor.astro";
@@ -37,7 +38,7 @@ const faqItems = [
   { q: "How many days do you need in Yunnan?", a: "A minimum of 5 days covers Kunming, Dali, and Lijiang. For a more comprehensive trip including Shangri-La and Tiger Leaping Gorge, plan 8-10 days. A full loop including Xishuangbanna and Yuanyang requires 14+ days." },
   { q: "Can you visit Yunnan without speaking Chinese?", a: "Yes. In major cities like Kunming, Dali, and Lijiang, guesthouse owners often speak some English. Translation apps (Google Translate with offline download, Pleco) are effective. In remote areas, patience and gestures go a long way." },
   { q: "How to get from Kunming to Lijiang?", a: "High-speed trains run from Kunming to Lijiang, taking approximately 3.5 hours and costing CNY 220. Flights take about 1 hour and cost CNY 500-900. Many travelers prefer to break the journey in Dali (2h from Kunming by train)." },
-  { q: "Is Yunnan expensive to travel?", a: "Yunnan is affordable compared to major Chinese cities. Budget travelers can manage on CNY 150-300 per day including guesthouse, local food, and bus transport. Mid-range travelers should budget CNY 400-800 per day." },
+  { q: "Is Yunnan expensive to travel?", a: "Yunnan is affordable compared to major Chinese cities. Budget travelers can manage on CNY 150-250 per day including guesthouse, local food, and bus transport. Mid-range travelers should budget CNY 400-700 per day." },
 ];
 
 const pageSchema = {
@@ -89,6 +90,7 @@ const pageSchema = {
 
   <Nav />
   <HeroSection />
+  <PageTOC />
   <QuickFacts />
   <WhyYunnan />
   <WhoIsThisFor />

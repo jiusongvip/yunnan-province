@@ -1,0 +1,28 @@
+---
+const links = [
+  { href: "#destinations", label: "Destinations" },
+  { href: "#itineraries", label: "Itineraries" },
+  { href: "#transport", label: "Transport" },
+  { href: "#best-time", label: "Best Time" },
+  { href: "#packing", label: "Packing" },
+  { href: "#budget", label: "Budget" },
+  { href: "#food", label: "Food" },
+  { href: "#culture", label: "Culture" },
+  { href: "#faq", label: "FAQ" },
+];
+---
+<!-- Sticky on-page anchor bar; sits below the fixed main nav (h-16 / lg:h-20) -->
+<div class="sticky top-16 lg:top-20 z-40 bg-white/95 backdrop-blur border-b border-gray-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-2.5">
+      {links.map((l) => (
+        <a
+          href={l.href}
+          class="whitespace-nowrap px-3 py-1.5 text-sm font-medium text-gray-600 hover:text-brand-700 hover:bg-brand-50 rounded-full border border-gray-200 transition-colors"
+        >
+          {l.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</div>

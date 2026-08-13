@@ -77,6 +77,11 @@
   background: #1f5e33;
 }
 
+/* Anchor jump offset: fixed nav (h-16/lg:h-20) + sticky PageTOC bar */
+section[id] {
+  scroll-margin-top: 8rem;
+}
+
 /* Scroll reveal animation */
 .reveal {
   opacity: 0;
