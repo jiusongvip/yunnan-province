@@ -21,7 +21,9 @@ const {
 
 const siteName = "Yunnan Province";
 const fullTitle = title.includes("Yunnan") ? title : `${title} | ${siteName}`;
-const canonicalURL = new URL(Astro.url.pathname, Astro.site).href.replace(/\/$/, "");
+const canonicalURL = Astro.url.pathname === "/"
+  ? new URL("/", Astro.site).href.replace(/\/$/, "")
+  : new URL(Astro.url.pathname, Astro.site).href;
 const robotsContent = noindex ? "noindex, follow" : "index, follow";
 
 const defaultOgImage = new URL("/images/hero-yunnan.webp", Astro.site).href;
@@ -31,9 +33,9 @@ const orgSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "Yunnan Province Travel Guide",
-  "url": "https://yunnan-province.com",
+  "url": "https://www.yunnan-province.com",
   "description": "Independent travel guide to Yunnan Province, China. Discover ancient towns, snow mountains, rice terraces, tropical rainforests and 25 ethnic cultures.",
-  "logo": "https://yunnan-province.com/favicon.svg",
+  "logo": "https://www.yunnan-province.com/favicon.svg",
   "foundingDate": "2026",
 };
 ---

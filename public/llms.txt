@@ -2,7 +2,7 @@
 > Independent travel guide to Yunnan Province, China — destinations, itineraries, food, culture, and practical advice for English-speaking visitors.
 
 ## Main Page
-- [Complete Guide](https://yunnan-province.com/): Everything you need to plan a trip to Yunnan.
+- [Complete Guide](https://www.yunnan-province.com/): Everything you need to plan a trip to Yunnan.
   - #destinations — 8 major destinations: Kunming, Lijiang, Dali, Shangri-La, Tiger Leaping Gorge, Stone Forest, Yuanyang, Xishuangbanna
   - #itineraries — 3/5/8/10/14-day suggested routes
   - #transport — How to get around Yunnan
@@ -12,16 +12,16 @@
   - #faq — Frequently asked questions
 
 ## Destination Pages
-- [Kunming](https://yunnan-province.com/kunming/) — The Spring City, gateway to Yunnan
-- [Lijiang](https://yunnan-province.com/lijiang/) — UNESCO old town with Jade Dragon Snow Mountain
-- [Dali](https://yunnan-province.com/dali/) — Between Cangshan and Erhai Lake
-- [Shangri-La](https://yunnan-province.com/shangri-la/) — Tibetan highland town
-- [Tiger Leaping Gorge](https://yunnan-province.com/tiger-leaping-gorge/) — China's finest 2-day canyon trek
-- [Stone Forest](https://yunnan-province.com/stone-forest/) — 270M-yr karst labyrinth, Kunming day trip
-- [Yuanyang](https://yunnan-province.com/yuanyang/) — Hani rice terraces
-- [Xishuangbanna](https://yunnan-province.com/xishuangbanna/) — Tropical Yunnan
+- [Kunming](https://www.yunnan-province.com/kunming/) — The Spring City, gateway to Yunnan
+- [Lijiang](https://www.yunnan-province.com/lijiang/) — UNESCO old town with Jade Dragon Snow Mountain
+- [Dali](https://www.yunnan-province.com/dali/) — Between Cangshan and Erhai Lake
+- [Shangri-La](https://www.yunnan-province.com/shangri-la/) — Tibetan highland town
+- [Tiger Leaping Gorge](https://www.yunnan-province.com/tiger-leaping-gorge/) — China's finest 2-day canyon trek
+- [Stone Forest](https://www.yunnan-province.com/stone-forest/) — 270M-yr karst labyrinth, Kunming day trip
+- [Yuanyang](https://www.yunnan-province.com/yuanyang/) — Hani rice terraces
+- [Xishuangbanna](https://www.yunnan-province.com/xishuangbanna/) — Tropical Yunnan
 
 ## Pages
-- [About](https://yunnan-province.com/about/) — Who we are
-- [Contact](https://yunnan-province.com/contact/) — Get in touch
-- [Privacy](https://yunnan-province.com/privacy/) — Privacy policy
+- [About](https://www.yunnan-province.com/about/) — Who we are
+- [Contact](https://www.yunnan-province.com/contact/) — Get in touch
+- [Privacy](https://www.yunnan-province.com/privacy/) — Privacy policy

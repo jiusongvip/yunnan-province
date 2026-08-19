@@ -18,9 +18,9 @@ import type { BreadcrumbItem } from "../../../utils/schema";
  }
  
  const breadcrumbs: BreadcrumbItem[] = [
-   { name: "Home", url: "https://yunnan-province.com/" },
-   { name: "Best Time to Visit", url: "https://yunnan-province.com/best-time-to-visit/" },
-   { name: data.name, url: "https://yunnan-province.com/best-time-to-visit/" + month },
+   { name: "Home", url: "https://www.yunnan-province.com/" },
+   { name: "Best Time to Visit", url: "https://www.yunnan-province.com/best-time-to-visit/" },
+   { name: data.name, url: "https://www.yunnan-province.com/best-time-to-visit/" + month },
  ];
  
  const pageSchema = {
@@ -76,7 +76,7 @@ import type { BreadcrumbItem } from "../../../utils/schema";
          <nav class="mb-4 flex items-center gap-2 text-sm text-gray-400" aria-label="Breadcrumb">
            <a href="/" class="hover:text-brand-600 transition-colors">Home</a>
            <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg>
-           <a href="/best-time-to-visit" class="hover:text-brand-600 transition-colors">Best Time</a>
+           <a href="/best-time-to-visit/" class="hover:text-brand-600 transition-colors">Best Time</a>
            <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg>
            <span class="text-gray-600">{data.name}</span>
          </nav>
@@ -179,7 +179,7 @@ import type { BreadcrumbItem } from "../../../utils/schema";
            ))}
          </div>
          <p class="mt-6 text-sm text-gray-500">
-           <a href="/best-time-to-visit" class="text-brand-600 hover:text-brand-700 underline">View the complete month-by-month comparison table</a>
+           <a href="/best-time-to-visit/" class="text-brand-600 hover:text-brand-700 underline">View the complete month-by-month comparison table</a>
          </p>
        </div>
      </section>
@@ -190,7 +190,7 @@ import type { BreadcrumbItem } from "../../../utils/schema";
          <p class="text-white/70 mb-6">Browse our destination guides and suggested itineraries for {data.name}.</p>
          <div class="flex flex-wrap justify-center gap-4">
            <a href="/#destinations" class="px-6 py-3 bg-white text-gray-900 rounded-full font-semibold text-sm hover:bg-brand-50 transition-colors">View Destinations</a>
-           <a href="/itineraries" class="px-6 py-3 bg-brand-600 text-white rounded-full font-semibold text-sm hover:bg-brand-500 transition-colors">View Itineraries</a>
+           <a href="/itineraries/" class="px-6 py-3 bg-brand-600 text-white rounded-full font-semibold text-sm hover:bg-brand-500 transition-colors">View Itineraries</a>
          </div>
        </div>
      </section>

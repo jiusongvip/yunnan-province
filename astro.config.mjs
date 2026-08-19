@@ -3,8 +3,8 @@ import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
-  site: "https://yunnan-province.com",
-  trailingSlash: "never",
+  site: "https://www.yunnan-province.com",
+  trailingSlash: "always",
   server: { port: 4322 },
   integrations: [sitemap({ lastmod: new Date("2026-08-07") })],
   vite: {

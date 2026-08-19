@@ -4,7 +4,7 @@ export const GET = () =>
   rss({
     title: "Yunnan Province Travel Guide",
     description: "Comprehensive travel guide to Yunnan Province, China — destinations, itineraries, food, culture, and practical advice for English-speaking visitors.",
-    site: "https://yunnan-province.com",
+    site: "https://www.yunnan-province.com",
     items: [
       { title: "Kunming Travel Guide", description: "The Spring City: gateway to Yunnan Province.", link: "/kunming/", pubDate: new Date("2026-08-07") },
       { title: "Lijiang Travel Guide", description: "UNESCO old town beneath Jade Dragon Snow Mountain.", link: "/lijiang/", pubDate: new Date("2026-08-07") },

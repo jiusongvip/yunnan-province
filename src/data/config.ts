@@ -1,6 +1,6 @@
  export const SITE = {
    name: "Yunnan Province Travel Guide",
-   url: "https://yunnan-province.com",
+   url: "https://www.yunnan-province.com",
    description: "Independent travel guide to Yunnan Province, China. Discover ancient towns, snow mountains, rice terraces, tropical rainforests and 25 ethnic cultures.",
    updated: "2026-08-07",
    author: {
