@@ -17,15 +17,20 @@ if (!dest) {
   return Astro.redirect("/404");
 }
 
+const siblings = destinations.filter((d) => d.slug !== dest.slug);
+
 const breadcrumbs: BreadcrumbItem[] = [
   { name: "Home", url: "https://www.yunnan-province.com/" },
-  { name: dest.name, url: "https://www.yunnan-province.com/" + dest.slug },
+  { name: dest.name, url: "https://www.yunnan-province.com/" + dest.slug + "/" },
 ];
 
 const pageTitle = dest.name.length > 15
   ? dest.name + " – Yunnan Travel Guide 2026"
   : dest.name + " Travel Guide 2026: Tips for Your Yunnan Trip";
-const pageDesc = "Complete " + dest.name + " travel guide: things to do, where to stay, local food and practical tips for your Yunnan trip.";
+
+const descLead = dest.name + " travel guide (" + dest.region + "): things to do, where to stay, what to eat and how to get there.";
+const descSeason = " Best time: " + dest.bestTime + ".";
+const pageDesc = (descLead + descSeason).length <= 158 ? descLead + descSeason : descLead;
 
 const pageSchema = {
   "@graph": [
@@ -516,6 +521,25 @@ const packingItems = (() => {
               </a>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Other Yunnan destinations -->
+    <section class="py-16 bg-white">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-2">Other places in Yunnan</h2>
+        <p class="text-sm text-gray-500 mb-8">Each guide covers getting there, where to stay, and what one day looks like on the ground.</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {siblings.map((s) => (
+            <a href={"/" + s.slug + "/"} class="rounded-xl border border-gray-200 p-4 hover:border-brand-300 hover:bg-brand-50/40 transition-colors">
+              <span class="flex items-baseline justify-between gap-3">
+                <span class="font-semibold text-gray-900 text-sm">{s.name}</span>
+                <span class="text-xs text-gray-400 shrink-0">{s.region}</span>
+              </span>
+              <span class="block text-xs text-gray-500 mt-1.5 leading-relaxed">{s.highlights[0]}</span>
+            </a>
+          ))}
         </div>
       </div>
     </section>

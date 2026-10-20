@@ -20,25 +20,28 @@ import type { BreadcrumbItem } from "../../../utils/schema";
  const breadcrumbs: BreadcrumbItem[] = [
    { name: "Home", url: "https://www.yunnan-province.com/" },
    { name: "Best Time to Visit", url: "https://www.yunnan-province.com/best-time-to-visit/" },
-   { name: data.name, url: "https://www.yunnan-province.com/best-time-to-visit/" + month },
+   { name: data.name, url: "https://www.yunnan-province.com/best-time-to-visit/" + month + "/" },
  ];
- 
+
+ const ratingColor = (rating: string) =>
+   rating === "Excellent" ? "text-green-600 bg-green-100" : rating === "Very Good" ? "text-brand-600 bg-brand-100" : rating === "Good" ? "text-blue-600 bg-blue-100" : "text-amber-600 bg-amber-100";
+
+ // Built from the month record, so the summary line and the page can never drift apart.
+ const pageDesc =
+   "Yunnan in " + data.name + ": " + data.temp + ", " + data.rain.toLowerCase() + " rain, rated " + data.rating.toLowerCase() + ". " +
+   "Best for " + data.bestFor + ". Where to go, what to expect and what to watch out for.";
+
  const pageSchema = {
    "@graph": [
      articleSchema({
        headline: "Yunnan in " + data.name + ": Weather, Best Places and Travel Tips 2026",
-       description: "Visiting Yunnan Province in " + data.name + "? " + data.verdict,
+       description: pageDesc,
        datePublished: "2026-08-07",
        dateModified: "2026-08-07",
      }),
      breadcrumbList(breadcrumbs),
    ],
  };
- 
- const shortVerdict = data.verdict.length > 85 ? data.verdict.substring(0, 85).trim() + "..." : data.verdict;
- const ratingColor = (rating: string) =>
-   rating === "Excellent" ? "text-green-600 bg-green-100" : rating === "Very Good" ? "text-brand-600 bg-brand-100" : rating === "Good" ? "text-blue-600 bg-blue-100" : "text-amber-600 bg-amber-100";
- const pageDesc = "Visiting Yunnan in " + data.name + "? " + shortVerdict;
 
  // Decision panel helpers: map month-level destination names to destination slugs
  const destSlugMap: Record<string, string> = {
@@ -69,7 +72,7 @@ import type { BreadcrumbItem } from "../../../utils/schema";
    ogType="article"
  >
    <slot name="head"><script type="application/ld+json" set:html={JSON.stringify(pageSchema)}></script></slot>
-   <Nav />
+   <Nav solid />
    <main class="min-h-screen">
      <section class="pt-32 pb-12 bg-gradient-to-b from-brand-50 to-white">
        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -110,13 +113,12 @@ import type { BreadcrumbItem } from "../../../utils/schema";
                {data.rating}
              </span>
            </div>
-           <p class="text-gray-600 leading-relaxed mb-6">{data.verdict}</p>
            {bestDestinations.length > 0 && (
              <div class="mb-6">
                <p class="text-xs font-semibold uppercase tracking-widest text-brand-600 mb-3">Best destinations this month</p>
                <div class="flex flex-wrap gap-2">
                  {bestDestinations.map((d) => (
-                   <a href={"/" + d.slug} class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-brand-50 border border-brand-100 text-brand-700 text-sm font-semibold hover:bg-brand-100 transition-colors">
+                   <a href={"/" + d.slug + "/"} class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-brand-50 border border-brand-100 text-brand-700 text-sm font-semibold hover:bg-brand-100 transition-colors">
                      {d.name}
                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
                    </a>
@@ -126,14 +128,14 @@ import type { BreadcrumbItem } from "../../../utils/schema";
            )}
            <p class="text-xs font-semibold uppercase tracking-widest text-brand-600 mb-3">Not sure? Compare with neighbouring months</p>
            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-             <a href={"/best-time-to-visit/" + prevMonth.name.toLowerCase()} class="group rounded-xl border border-gray-200 p-4 hover:border-brand-300 hover:bg-brand-50/40 transition-colors">
+             <a href={"/best-time-to-visit/" + prevMonth.name.toLowerCase() + "/"} class="group rounded-xl border border-gray-200 p-4 hover:border-brand-300 hover:bg-brand-50/40 transition-colors">
                <p class="text-xs text-gray-400 font-semibold uppercase tracking-widest mb-1">Previous: {prevMonth.name}</p>
                <div class="flex items-start justify-between gap-3">
                  <p class="text-sm text-gray-700 leading-snug">{shortVerdictFor(prevMonth)}</p>
                  <span class={"inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium shrink-0 " + ratingColor(prevMonth.rating)}>{prevMonth.rating}</span>
                </div>
              </a>
-             <a href={"/best-time-to-visit/" + nextMonth.name.toLowerCase()} class="group rounded-xl border border-gray-200 p-4 hover:border-brand-300 hover:bg-brand-50/40 transition-colors">
+             <a href={"/best-time-to-visit/" + nextMonth.name.toLowerCase() + "/"} class="group rounded-xl border border-gray-200 p-4 hover:border-brand-300 hover:bg-brand-50/40 transition-colors">
                <p class="text-xs text-gray-400 font-semibold uppercase tracking-widest mb-1">Next: {nextMonth.name}</p>
                <div class="flex items-start justify-between gap-3">
                  <p class="text-sm text-gray-700 leading-snug">{shortVerdictFor(nextMonth)}</p>
@@ -173,7 +175,7 @@ import type { BreadcrumbItem } from "../../../utils/schema";
          <h2 class="text-2xl font-bold text-gray-900 mb-4">Explore Other Months</h2>
          <div class="flex flex-wrap gap-3">
            {months.map((m) => (
-             <a href={"/best-time-to-visit/" + m.name.toLowerCase()} class={"px-4 py-2 rounded-full text-sm font-medium transition-colors " + (m.name === data.name ? "bg-brand-600 text-white" : "bg-white border border-gray-200 text-gray-600 hover:border-brand-300 hover:text-brand-700")}>
+             <a href={"/best-time-to-visit/" + m.name.toLowerCase() + "/"} class={"px-4 py-2 rounded-full text-sm font-medium transition-colors " + (m.name === data.name ? "bg-brand-600 text-white" : "bg-white border border-gray-200 text-gray-600 hover:border-brand-300 hover:text-brand-700")}>
                {m.name}
              </a>
            ))}

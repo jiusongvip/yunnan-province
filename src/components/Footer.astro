@@ -9,7 +9,7 @@ import { SITE } from "../data/config";
         <h4 class="text-white font-semibold mb-4">Destinations</h4>
         <ul class="space-y-2">
           {destinations.map((d) => (
-            <li><a href={"/" + d.slug} class="text-sm hover:text-white transition-colors">{d.name}</a></li>
+            <li><a href={"/" + d.slug + "/"} class="text-sm hover:text-white transition-colors">{d.name}</a></li>
           ))}
         </ul>
       </div>

@@ -1,7 +1,12 @@
 ---
 import { destinations } from "../data/destinations";
+
+interface Props {
+  solid?: boolean;
+}
+const { solid = false } = Astro.props;
 ---
-<nav id="main-nav" class="fixed top-0 left-0 right-0 z-50 bg-transparent transition-all duration-300">
+<nav id="main-nav" data-static-solid={solid || undefined} class={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${solid ? "nav-solid" : "bg-transparent"}`}>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16 lg:h-20">
       <a href="/" class="nav-logo text-lg font-bold tracking-tight text-white drop-shadow-sm">
@@ -14,7 +19,7 @@ import { destinations } from "../data/destinations";
           </button>
           <div class="absolute top-full left-0 mt-1 w-56 bg-white rounded-xl shadow-lg border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 py-2">
             {destinations.map((d) => (
-              <a href={"/" + d.slug} class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-brand-50 hover:text-brand-700 transition-colors">
+              <a href={"/" + d.slug + "/"} class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-brand-50 hover:text-brand-700 transition-colors">
                 {d.name} <span class="text-gray-400 ml-1">{d.chinese}</span>
               </a>
             ))}
@@ -44,7 +49,7 @@ import { destinations } from "../data/destinations";
     <div class="px-4 py-3 space-y-1">
       <p class="px-3 py-2 text-xs font-semibold text-gray-400 uppercase tracking-wider">Destinations</p>
       {destinations.map((d) => (
-        <a href={"/" + d.slug} class="block px-3 py-2 text-sm text-gray-700 hover:bg-brand-50 rounded-lg">{d.name}</a>
+        <a href={"/" + d.slug + "/"} class="block px-3 py-2 text-sm text-gray-700 hover:bg-brand-50 rounded-lg">{d.name}</a>
       ))}
       <div class="border-t border-gray-100 my-2"></div>
       <a href="/#itineraries" class="block px-3 py-2 text-sm font-medium text-gray-700 hover:bg-brand-50 rounded-lg">Itineraries</a>
@@ -62,7 +67,9 @@ import { destinations } from "../data/destinations";
 
 <script>
   const nav = document.getElementById("main-nav");
-  if (nav) {
+  // Pages whose hero is light render the nav already solid; the scroll handler must
+  // not strip the class there, or the white logo and links sit on a white page.
+  if (nav && !nav.hasAttribute("data-static-solid")) {
     const onScroll = () => nav.classList.toggle("nav-solid", window.scrollY > 60);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
